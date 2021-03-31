@@ -19,10 +19,10 @@ final class XmlParser implements Parser
      */
     private array $parsers;
 
-    public function __construct()
+    public function __construct(XmlTextComponentParser $xmlTextComponentParser)
     {
         $this->parsers = [
-            new XmlTextComponentParser(),
+            $xmlTextComponentParser,
         ];
     }
 

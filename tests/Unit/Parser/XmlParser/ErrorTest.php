@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Parser\XmlParser;
 
+use EasyAdmin\Parser\Component\Simple\XmlTextComponentParser;
 use EasyAdmin\Parser\XmlParser;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
@@ -17,7 +18,7 @@ final class ErrorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        (new XmlParser())->parse('fake_path.xml');
+        $this->getXmlParser()->parse('fake_path.xml');
     }
 
     /**
@@ -27,7 +28,7 @@ final class ErrorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        (new XmlParser())->parse(__DIR__ . '/Resources/wrong-extension.txt');
+        $this->getXmlParser()->parse(__DIR__ . '/Resources/wrong-extension.txt');
     }
 
     /**
@@ -37,7 +38,7 @@ final class ErrorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        (new XmlParser())->parse(__DIR__ . '/Resources/without-primary-root.xml');
+        $this->getXmlParser()->parse(__DIR__ . '/Resources/without-primary-root.xml');
     }
 
     /**
@@ -47,6 +48,11 @@ final class ErrorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        (new XmlParser())->parse(__DIR__ . '/Resources/parsing-error.xml');
+        $this->getXmlParser()->parse(__DIR__ . '/Resources/parsing-error.xml');
+    }
+
+    private function getXmlParser(): XmlParser
+    {
+        return new XmlParser(new XmlTextComponentParser());
     }
 }

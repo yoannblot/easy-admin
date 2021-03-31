@@ -6,6 +6,7 @@ namespace Tests\Unit\Parser\XmlParser;
 
 use EasyAdmin\Form\Component\Simple\TextComponent;
 use EasyAdmin\Form\Item\ItemStructure;
+use EasyAdmin\Parser\Component\Simple\XmlTextComponentParser;
 use EasyAdmin\Parser\XmlParser;
 use PHPUnit\Framework\TestCase;
 
@@ -41,6 +42,6 @@ final class OnlyTextTest extends TestCase
 
     private function parse(): ItemStructure
     {
-        return (new XmlParser())->parse(self::FILE_PATH);
+        return (new XmlParser(new XmlTextComponentParser()))->parse(self::FILE_PATH);
     }
 }
