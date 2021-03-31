@@ -20,13 +20,13 @@ final class TextComponent implements Component
         $this->textElement = $textElement;
     }
 
-    public function getLabel(): Label
+    public function getLabelValue(): string
     {
-        return $this->label;
+        return $this->label->getValue();
     }
 
-    public function getTextElement(): TextElement
+    public function getTextElementValue(): string
     {
-        return $this->textElement;
+        return $this->textElement->getValue();
     }
 }

@@ -16,7 +16,7 @@ final class TextComponentTest extends TestCase
     {
         $component = (new TextComponentBuilder())->build();
 
-        self::assertNotSame('', $component->getLabel()->getValue());
-        self::assertNotSame('', $component->getTextElement()->getValue());
+        self::assertNotSame('', $component->getLabelValue());
+        self::assertNotSame('', $component->getTextElementValue());
     }
 }
