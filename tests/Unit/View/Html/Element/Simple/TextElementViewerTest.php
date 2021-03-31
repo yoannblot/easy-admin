@@ -18,4 +18,14 @@ final class TextElementViewerTest extends TestCase
 
         self::assertSame('<input type="text">', $html);
     }
+
+    /**
+     * @test
+     */
+    public function it_creates_text_input(): void
+    {
+        $html = (new TextElementViewer())->toHtml('John Doe');
+
+        self::assertSame('<input type="text" value="John Doe">', $html);
+    }
 }

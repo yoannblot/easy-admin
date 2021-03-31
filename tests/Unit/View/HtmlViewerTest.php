@@ -21,7 +21,7 @@ final class HtmlViewerTest extends TestCase
         $itemStructure = (new ItemStructureBuilder())->build();
 
         $html = $this->getViewer()->toHtml($itemStructure);
-        self::assertSame('<label>label value</label><input type="text">', $html);
+        self::assertSame('<label>label value</label><input type="text" value="text value">', $html);
     }
 
     private function getViewer(): HtmlViewer
