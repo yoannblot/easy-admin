@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Form\Component\Simple;
+namespace Tests\Unit\Form\Component\Simple;
 
 use EasyAdmin\Form\Component\Simple\TextComponent;
 use EasyAdmin\Form\Element\Simple\TextElement;

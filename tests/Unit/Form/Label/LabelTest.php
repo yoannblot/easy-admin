@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Form\Label;
+namespace Tests\Unit\Form\Label;
 
 use EasyAdmin\Form\Label\Label;
 use PHPUnit\Framework\TestCase;

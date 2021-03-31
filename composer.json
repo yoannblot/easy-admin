@@ -1,23 +1,28 @@
 {
-    "name": "yoann/easy-admin",
-    "description": "Easy tools for building an administration linked to a relational database",
-    "type": "library",
-    "license": "Apache",
-    "authors": [
-        {
-            "name": "yoann",
-            "email": "yoann.blot@gmail.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "EasyAdmin\\": "src/"
-        }
-    },
-    "require": {
-        "symfony/dependency-injection": "^5.2"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9.5"
+  "name": "yoann/easy-admin",
+  "description": "Easy tools for building an administration linked to a relational database",
+  "type": "library",
+  "license": "Apache",
+  "authors": [
+    {
+      "name": "yoann",
+      "email": "yoann.blot@gmail.com"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "EasyAdmin\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "symfony/dependency-injection": "^5.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  }
 }

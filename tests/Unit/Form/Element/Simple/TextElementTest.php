@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Unit\Form\Element\Simple;
+namespace Tests\Unit\Form\Element\Simple;
 
 use EasyAdmin\Form\Element\Simple\TextElement;
 use PHPUnit\Framework\TestCase;
