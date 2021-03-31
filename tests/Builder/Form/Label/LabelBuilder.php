@@ -10,10 +10,6 @@ final class LabelBuilder
 {
     private string $value;
 
-    /**
-     * LabelBuilder constructor.
-     *
-     */
     public function __construct()
     {
         $this->value = 'label value';

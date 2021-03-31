@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Builder\Form\Item;
 
-use EasyAdmin\Form\Component\Simple\TextComponent;
 use EasyAdmin\Form\Item\ItemStructure;
-use Tests\Builder\Form\Element\Simple\TextElementBuilder;
-use Tests\Builder\Form\Label\LabelBuilder;
+use Tests\Builder\Form\Component\TextComponentBuilder;
 
 final class ItemStructureBuilder
 {
@@ -19,7 +17,7 @@ final class ItemStructureBuilder
     {
         $this->name = 'structure';
         $this->components = [
-            new TextComponent((new LabelBuilder())->build(), (new TextElementBuilder())->build()),
+            (new TextComponentBuilder())->build(),
         ];
     }
 
