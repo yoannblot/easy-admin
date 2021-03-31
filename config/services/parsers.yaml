@@ -1,0 +1,10 @@
+services:
+
+    EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser:
+        class: EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser
+
+    EasyAdmin\Parser\Xml\XmlParser:
+        class: EasyAdmin\Parser\Xml\XmlParser
+        arguments:
+            -
+                - '@EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser'

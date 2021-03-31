@@ -1,36 +1,4 @@
-services:
-    # Parsers
-    EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser:
-        class: EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser
-
-    EasyAdmin\Parser\Xml\XmlParser:
-        class: EasyAdmin\Parser\Xml\XmlParser
-        arguments:
-            -
-                - '@EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser'
-
-    # Viewers
-    EasyAdmin\Viewer\Html\Label\LabelViewer:
-        class: EasyAdmin\Viewer\Html\Label\LabelViewer
-
-    EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer:
-        class: EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer
-
-    EasyAdmin\Viewer\Html\Component\Simple\TextComponentViewer:
-        class: EasyAdmin\Viewer\Html\Component\Simple\TextComponentViewer
-        arguments:
-            - '@EasyAdmin\Viewer\Html\Label\LabelViewer'
-            - '@EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer'
-
-    EasyAdmin\Viewer\HtmlViewer:
-        class: EasyAdmin\Viewer\HtmlViewer
-        arguments:
-            -
-                - '@EasyAdmin\Viewer\Html\Component\Simple\TextComponentViewer'
-
-    # Application
-    EasyAdmin\Application\ConfigFileToHtml:
-        class: EasyAdmin\Application\ConfigFileToHtml
-        arguments:
-            - '@EasyAdmin\Parser\Xml\XmlParser'
-            - '@EasyAdmin\Viewer\HtmlViewer'
+imports:
+    - { resource: services/application.yaml }
+    - { resource: services/parsers.yaml }
+    - { resource: services/viewers.yaml }

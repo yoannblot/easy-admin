@@ -1,0 +1,7 @@
+services:
+
+    EasyAdmin\Application\ConfigFileToHtml:
+        class: EasyAdmin\Application\ConfigFileToHtml
+        arguments:
+            - '@EasyAdmin\Parser\Xml\XmlParser'
+            - '@EasyAdmin\Viewer\HtmlViewer'

@@ -1,0 +1,19 @@
+services:
+
+    EasyAdmin\Viewer\Html\Label\LabelViewer:
+        class: EasyAdmin\Viewer\Html\Label\LabelViewer
+
+    EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer:
+        class: EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer
+
+    EasyAdmin\Viewer\Html\Component\Simple\TextComponentViewer:
+        class: EasyAdmin\Viewer\Html\Component\Simple\TextComponentViewer
+        arguments:
+            - '@EasyAdmin\Viewer\Html\Label\LabelViewer'
+            - '@EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer'
+
+    EasyAdmin\Viewer\HtmlViewer:
+        class: EasyAdmin\Viewer\HtmlViewer
+        arguments:
+            -
+                - '@EasyAdmin\Viewer\Html\Component\Simple\TextComponentViewer'
