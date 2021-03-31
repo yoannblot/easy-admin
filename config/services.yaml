@@ -1,12 +1,4 @@
 services:
-    _defaults:
-        autowire: true
-        autoconfigure: true
-
-    EasyAdmin\:
-        resource: '../src/*'
-        exclude: '../src/Form/*'
-
     # Parsers
     EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser:
         class: EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser
