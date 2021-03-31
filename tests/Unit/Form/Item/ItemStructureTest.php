@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Form\Item;
 
-use EasyAdmin\Form\Component\Simple\TextComponent;
-use EasyAdmin\Form\Element\Simple\TextElement;
-use EasyAdmin\Form\Item\ItemStructure;
-use EasyAdmin\Form\Label\Label;
 use PHPUnit\Framework\TestCase;
+use Tests\Builder\Form\Item\ItemStructureBuilder;
 
 final class ItemStructureTest extends TestCase
 {
@@ -17,7 +14,7 @@ final class ItemStructureTest extends TestCase
      */
     public function it_creates_empty_structure(): void
     {
-        $itemStructure = new ItemStructure('empty', []);
+        $itemStructure = (new ItemStructureBuilder())->withoutComponents()->build();
 
         self::assertEmpty($itemStructure->getComponents());
     }
@@ -27,10 +24,8 @@ final class ItemStructureTest extends TestCase
      */
     public function it_creates_structure(): void
     {
-        $component = new TextComponent(new Label('label'), new TextElement('value'));
+        $itemStructure = (new ItemStructureBuilder())->withName('structure')->build();
 
-        $itemStructure = new ItemStructure('structure', [$component]);
         self::assertSame('structure', $itemStructure->getName());
-        self::assertCount(1, $itemStructure->getComponents());
     }
 }
