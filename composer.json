@@ -1,0 +1,15 @@
+{
+    "name": "yoann/easy-admin",
+    "description": "Easy tools for building an administration linked to a relational database",
+    "type": "library",
+    "license": "Apache",
+    "authors": [
+        {
+            "name": "yoann",
+            "email": "yoann.blot@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/dependency-injection": "^5.2"
+    }
+}
