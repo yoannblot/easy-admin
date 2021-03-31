@@ -5,15 +5,27 @@ declare(strict_types=1);
 namespace EasyAdmin\Parser;
 
 use EasyAdmin\Form\Component\Simple\TextComponent;
-use EasyAdmin\Form\Element\Simple\TextElement;
 use EasyAdmin\Form\Item\ItemStructure;
-use EasyAdmin\Form\Label\Label;
+use EasyAdmin\Parser\Component\Simple\XmlTextComponentParser;
+use EasyAdmin\Parser\Component\XmlComponentParser;
 use Exception;
 use InvalidArgumentException;
 use SimpleXMLElement;
 
 final class XmlParser implements Parser
 {
+    /**
+     * @var XmlComponentParser[]
+     */
+    private array $parsers;
+
+    public function __construct()
+    {
+        $this->parsers = [
+            new XmlTextComponentParser(),
+        ];
+    }
+
     /**
      * @param string $path
      *
@@ -47,6 +59,11 @@ final class XmlParser implements Parser
         }
     }
 
+    private function getItemName(string $path): string
+    {
+        return basename($path, '.xml');
+    }
+
     /**
      * @param string $path
      *
@@ -55,6 +72,28 @@ final class XmlParser implements Parser
      * @throws InvalidArgumentException
      */
     private function getComponents(string $path): array
+    {
+        $components = [];
+        foreach ($this->createXmlElementFromFile($path) as $componentType => $xmlElement) {
+            foreach ($this->parsers as $parser) {
+                if ($parser->canHandle($componentType)) {
+                    $components[] = $parser->parse($xmlElement);
+                    break;
+                }
+            }
+        }
+
+        return $components;
+    }
+
+    /**
+     * @param string $path
+     *
+     * @return SimpleXMLElement
+     *
+     * @throws InvalidArgumentException
+     */
+    private function createXmlElementFromFile(string $path): SimpleXMLElement
     {
         try {
             $xml = new SimpleXMLElement(file_get_contents($path));
@@ -66,21 +105,6 @@ final class XmlParser implements Parser
             throw new InvalidArgumentException('Primary root must be <item>');
         }
 
-        $components = [];
-        foreach ($xml as $componentType => $xmlElement) {
-            if ($componentType === 'text') {
-                $attributes = $xmlElement->attributes();
-                $label = (string) $attributes['name'];
-
-                $components[] = new TextComponent(new Label($label), new TextElement(''));
-            }
-        }
-
-        return $components;
-    }
-
-    private function getItemName(string $path): string
-    {
-        return basename($path, '.xml');
+        return $xml;
     }
 }
