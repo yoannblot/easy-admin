@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Form\Element\Simple;
 
-use EasyAdmin\Form\Element\Simple\TextElement;
 use PHPUnit\Framework\TestCase;
+use Tests\Builder\Form\Element\Simple\TextElementBuilder;
 
 final class TextElementTest extends TestCase
 {
@@ -16,7 +16,7 @@ final class TextElementTest extends TestCase
     {
         $value = 'this is a value';
 
-        $element = new TextElement($value);
+        $element = (new TextElementBuilder())->withValue($value)->build();
         self::assertSame($value, $element->getValue());
     }
 }
