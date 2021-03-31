@@ -7,7 +7,7 @@ namespace Tests\Builder\Form\Item;
 use EasyAdmin\Form\Component\Simple\TextComponent;
 use EasyAdmin\Form\Element\Simple\TextElement;
 use EasyAdmin\Form\Item\ItemStructure;
-use EasyAdmin\Form\Label\Label;
+use Tests\Builder\Form\Label\LabelBuilder;
 
 final class ItemStructureBuilder
 {
@@ -19,7 +19,7 @@ final class ItemStructureBuilder
     {
         $this->name = 'structure';
         $this->components = [
-            new TextComponent(new Label('label'), new TextElement('value')),
+            new TextComponent((new LabelBuilder())->build(), new TextElement('value')),
         ];
     }
 

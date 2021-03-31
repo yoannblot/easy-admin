@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Form\Label;
 
-use EasyAdmin\Form\Label\Label;
 use PHPUnit\Framework\TestCase;
+use Tests\Builder\Form\Label\LabelBuilder;
 
 final class LabelTest extends TestCase
 {
@@ -16,7 +16,7 @@ final class LabelTest extends TestCase
     {
         $value = 'this is a label';
 
-        $element = new Label($value);
+        $element = (new LabelBuilder())->withValue($value)->build();
         self::assertSame($value, $element->getValue());
     }
 }
