@@ -21,8 +21,9 @@
   },
   "minimum-stability": "dev",
   "require": {
-    "symfony/dependency-injection": "^5.2",
+    "php": "^7.4",
     "ext-simplexml": "*",
+    "symfony/dependency-injection": "^5.2",
     "symfony/config": "^5.2",
     "symfony/yaml": "^5.2",
     "phing/phing": "3.0.0-RC1"
