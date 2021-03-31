@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Form\Component\Simple;
 
+use EasyAdmin\Form\Component\Component;
 use EasyAdmin\Form\Element\Simple\TextElement;
 use EasyAdmin\Form\Label\Label;
 
-final class TextComponent
+final class TextComponent implements Component
 {
     private Label $label;
 
