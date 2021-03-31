@@ -7,16 +7,16 @@ namespace EasyAdmin\View\Html\Component\Simple;
 use EasyAdmin\Form\Component\Component;
 use EasyAdmin\Form\Component\Simple\TextComponent;
 use EasyAdmin\View\Html\Component\HtmlComponentView;
-use EasyAdmin\View\Html\Element\Simple\HtmlTextElementView;
+use EasyAdmin\View\Html\Element\Simple\TextElementView;
 use EasyAdmin\View\Html\Label\LabelView;
 
-final class TextHtmlComponentView implements HtmlComponentView
+final class TextComponentView implements HtmlComponentView
 {
     private LabelView $labelView;
 
-    private HtmlTextElementView $textElementView;
+    private TextElementView $textElementView;
 
-    public function __construct(LabelView $labelView, HtmlTextElementView $textElementView)
+    public function __construct(LabelView $labelView, TextElementView $textElementView)
     {
         $this->labelView = $labelView;
         $this->textElementView = $textElementView;

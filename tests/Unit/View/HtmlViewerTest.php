@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\View;
 
-use EasyAdmin\View\Html\Component\Simple\TextHtmlComponentView;
-use EasyAdmin\View\Html\Element\Simple\HtmlTextElementView;
+use EasyAdmin\View\Html\Component\Simple\TextComponentView;
+use EasyAdmin\View\Html\Element\Simple\TextElementView;
 use EasyAdmin\View\Html\Label\LabelView;
 use EasyAdmin\View\HtmlViewer;
 use PHPUnit\Framework\TestCase;
@@ -28,9 +28,9 @@ final class HtmlViewerTest extends TestCase
     {
         return new HtmlViewer(
             [
-                new TextHtmlComponentView(
+                new TextComponentView(
                     new LabelView(),
-                    new HtmlTextElementView()
+                    new TextElementView()
                 ),
             ]
         );
