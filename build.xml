@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="${project.name}" basedir="." default="phar">
+<project name="${project.name}" basedir="." default="build">
     <property file="./build.properties"/>
     <property name="phar.file" value="build/${phing.project.name}.phar"/>
+    <property name="composer.exec" value="composer"/>
+    <property name="phpunit.exec" value="vendor/bin/phpunit"/>
 
-    <target name="tests" description="Run tests">
-        <exec executable="vendor/bin/phpunit" passthru="true">
+    <target name="install" description="Install all dependencies">
+        <exec executable="${composer.exec}" passthru="true">
+            <arg value="install"/>
+        </exec>
+    </target>
+
+    <target name="tests" depends="install" description="Run tests">
+        <exec executable="${phpunit.exec}" passthru="true">
             <arg value="--configuration"/>
             <arg value="phpunit.xml.dist"/>
         </exec>
     </target>
 
-    <target name="phar" depends="tests" description="Create phar file">
+    <target name="clean" description="Remove dev dependencies">
+        <exec executable="${composer.exec}" passthru="true">
+            <arg value="install"/>
+            <arg value="--no-dev"/>
+        </exec>
+    </target>
+
+    <target name="build" depends="tests, clean" description="Create phar file">
         <delete file="${phar.file}" quiet="true"/>
         <pharpackage destfile="${phar.file}" basedir="./"
                      compression="gzip">
