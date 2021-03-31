@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Parser\XmlParser;
+namespace Tests\Unit\Parser\Xml;
 
 use EasyAdmin\Form\Component\Simple\TextComponent;
 use EasyAdmin\Form\Item\ItemStructure;
-use EasyAdmin\Parser\Component\Simple\XmlTextComponentParser;
-use EasyAdmin\Parser\XmlParser;
+use EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser;
+use EasyAdmin\Parser\Xml\XmlParser;
 use PHPUnit\Framework\TestCase;
 
 final class OnlyTextTest extends TestCase
@@ -42,6 +42,6 @@ final class OnlyTextTest extends TestCase
 
     private function parse(): ItemStructure
     {
-        return (new XmlParser([new XmlTextComponentParser()]))->parse(self::FILE_PATH);
+        return (new XmlParser([new TextComponentParser()]))->parse(self::FILE_PATH);
     }
 }

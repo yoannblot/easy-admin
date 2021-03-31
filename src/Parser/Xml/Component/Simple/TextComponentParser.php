@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\Parser\Component\Simple;
+namespace EasyAdmin\Parser\Xml\Component\Simple;
 
 use EasyAdmin\Form\Component\Simple\TextComponent;
 use EasyAdmin\Form\Element\Simple\TextElement;
 use EasyAdmin\Form\Label\Label;
-use EasyAdmin\Parser\Component\XmlComponentParser;
+use EasyAdmin\Parser\Xml\Component\XmlComponentParser;
 use SimpleXMLElement;
 
-final class XmlTextComponentParser implements XmlComponentParser
+final class TextComponentParser implements XmlComponentParser
 {
     public function canHandle(string $componentType): bool
     {

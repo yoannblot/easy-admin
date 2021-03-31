@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Parser\XmlParser;
+namespace Tests\Unit\Parser\Xml;
 
-use EasyAdmin\Parser\Component\Simple\XmlTextComponentParser;
-use EasyAdmin\Parser\XmlParser;
+use EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser;
+use EasyAdmin\Parser\Xml\XmlParser;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -53,6 +53,6 @@ final class ErrorTest extends TestCase
 
     private function getXmlParser(): XmlParser
     {
-        return new XmlParser([new XmlTextComponentParser()]);
+        return new XmlParser([new TextComponentParser()]);
     }
 }
