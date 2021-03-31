@@ -22,6 +22,13 @@ final class TextElementBuilder
         return $this;
     }
 
+    public function withoutValue(): self
+    {
+        $this->value = '';
+
+        return $this;
+    }
+
     public function build(): TextElement
     {
         return new TextElement($this->value);

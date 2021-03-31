@@ -7,15 +7,19 @@ namespace EasyAdmin\View\Html\Component\Simple;
 use EasyAdmin\Form\Component\Component;
 use EasyAdmin\Form\Component\Simple\TextComponent;
 use EasyAdmin\View\Html\Component\HtmlComponentView;
+use EasyAdmin\View\Html\Element\Simple\HtmlTextElementView;
 use EasyAdmin\View\Html\Label\LabelView;
 
 final class TextHtmlComponentView implements HtmlComponentView
 {
     private LabelView $labelView;
 
-    public function __construct(LabelView $labelView)
+    private HtmlTextElementView $textElementView;
+
+    public function __construct(LabelView $labelView, HtmlTextElementView $textElementView)
     {
         $this->labelView = $labelView;
+        $this->textElementView = $textElementView;
     }
 
     public function toHtml(Component $component): string
@@ -24,6 +28,10 @@ final class TextHtmlComponentView implements HtmlComponentView
             return '';
         }
 
-        return $this->labelView->toHtml($component->getLabelValue());
+        $html = '';
+        $html .= $this->labelView->toHtml($component->getLabelValue());
+        $html .= $this->textElementView->toHtml($component->getTextElementValue());
+
+        return $html;
     }
 }
