@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="${project.name}" basedir="." default="phar">
+    <property file="./build.properties"/>
+    <property name="phar.file" value="build/${phing.project.name}.phar"/>
+
+    <target name="tests" description="Run tests">
+        <exec executable="vendor/bin/phpunit" passthru="true">
+            <arg value="--configuration"/>
+            <arg value="phpunit.xml.dist"/>
+        </exec>
+    </target>
+
+    <target name="phar" depends="tests" description="Create phar file">
+        <delete file="${phar.file}" quiet="true"/>
+        <pharpackage destfile="${phar.file}" basedir="./"
+                     compression="gzip">
+            <fileset dir="src" id="phpFiles">
+                <include name="**/*.php"/>
+            </fileset>
+            <fileset dir="bin"/>
+            <fileset dir="config"/>
+            <fileset dir="vendor"/>
+            <fileset dir="./">
+                <include name="build.properties"/>
+            </fileset>
+        </pharpackage>
+    </target>
+</project>
