@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use EasyAdmin\Application\ConfigFileToHtml;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+
+require __DIR__ . '/../src/autoload.php';
+
+/** @var ContainerBuilder $containerBuilder */
+/** @var ConfigFileToHtml $configFileToHtml */
+$configFileToHtml = $containerBuilder->get(ConfigFileToHtml::class);
+
+echo $configFileToHtml->execute($argv[1]) . PHP_EOL;
