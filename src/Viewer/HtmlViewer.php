@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\View;
+namespace EasyAdmin\Viewer;
 
 use EasyAdmin\Form\Item\ItemStructure;
-use EasyAdmin\View\Html\Component\HtmlComponentView;
+use EasyAdmin\Viewer\Html\Component\HtmlComponentViewer;
 
 final class HtmlViewer
 {
     /**
-     * @var HtmlComponentView[]
+     * @var HtmlComponentViewer[]
      */
     private array $viewers;
 
     /**
-     * @param HtmlComponentView[] $viewers
+     * @param HtmlComponentViewer[] $viewers
      */
     public function __construct(array $viewers)
     {

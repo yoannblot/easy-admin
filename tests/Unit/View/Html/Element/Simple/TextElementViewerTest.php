@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Tests\Unit\View\Html\Element\Simple;
 
-use EasyAdmin\View\Html\Element\Simple\TextElementView;
+use EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer;
 use PHPUnit\Framework\TestCase;
 
-final class TextElementViewTest extends TestCase
+final class TextElementViewerTest extends TestCase
 {
     /**
      * @test
      */
     public function it_creates_empty_text_input(): void
     {
-        $html = (new TextElementView())->toHtml('');
+        $html = (new TextElementViewer())->toHtml('');
 
         self::assertSame('<input type="text">', $html);
     }

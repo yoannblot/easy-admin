@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Unit\View;
 
-use EasyAdmin\View\Html\Component\Simple\TextComponentView;
-use EasyAdmin\View\Html\Element\Simple\TextElementView;
-use EasyAdmin\View\Html\Label\LabelView;
-use EasyAdmin\View\HtmlViewer;
+use EasyAdmin\Viewer\Html\Component\Simple\TextComponentViewer;
+use EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer;
+use EasyAdmin\Viewer\Html\Label\LabelViewer;
+use EasyAdmin\Viewer\HtmlViewer;
 use PHPUnit\Framework\TestCase;
 use Tests\Builder\Form\Item\ItemStructureBuilder;
 
@@ -28,9 +28,9 @@ final class HtmlViewerTest extends TestCase
     {
         return new HtmlViewer(
             [
-                new TextComponentView(
-                    new LabelView(),
-                    new TextElementView()
+                new TextComponentViewer(
+                    new LabelViewer(),
+                    new TextElementViewer()
                 ),
             ]
         );

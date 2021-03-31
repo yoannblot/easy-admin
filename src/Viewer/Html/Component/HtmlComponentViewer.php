@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\View\Html\Component;
+namespace EasyAdmin\Viewer\Html\Component;
 
 use EasyAdmin\Form\Component\Component;
 
-interface HtmlComponentView
+interface HtmlComponentViewer
 {
     public function toHtml(Component $component): string;
 }

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\View\Html\Element\Simple;
+namespace EasyAdmin\Viewer\Html\Element\Simple;
 
-final class TextElementView
+final class TextElementViewer
 {
     public function toHtml(string $value): string
     {

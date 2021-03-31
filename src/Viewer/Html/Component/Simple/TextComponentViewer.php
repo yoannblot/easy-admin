@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\View\Html\Component\Simple;
+namespace EasyAdmin\Viewer\Html\Component\Simple;
 
 use EasyAdmin\Form\Component\Component;
 use EasyAdmin\Form\Component\Simple\TextComponent;
-use EasyAdmin\View\Html\Component\HtmlComponentView;
-use EasyAdmin\View\Html\Element\Simple\TextElementView;
-use EasyAdmin\View\Html\Label\LabelView;
+use EasyAdmin\Viewer\Html\Component\HtmlComponentViewer;
+use EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer;
+use EasyAdmin\Viewer\Html\Label\LabelViewer;
 
-final class TextComponentView implements HtmlComponentView
+final class TextComponentViewer implements HtmlComponentViewer
 {
-    private LabelView $labelView;
+    private LabelViewer $labelView;
 
-    private TextElementView $textElementView;
+    private TextElementViewer $textElementView;
 
-    public function __construct(LabelView $labelView, TextElementView $textElementView)
+    public function __construct(LabelViewer $labelView, TextElementViewer $textElementView)
     {
         $this->labelView = $labelView;
         $this->textElementView = $textElementView;

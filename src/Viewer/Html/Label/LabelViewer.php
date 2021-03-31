@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\View\Html\Label;
+namespace EasyAdmin\Viewer\Html\Label;
 
-final class LabelView
+final class LabelViewer
 {
     public function toHtml(string $label): string
     {
