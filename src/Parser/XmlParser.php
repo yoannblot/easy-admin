@@ -23,6 +23,21 @@ final class XmlParser implements Parser
      */
     public function parse(string $path): ItemStructure
     {
+        $this->assertValidXmlFile($path);
+
+        return new ItemStructure(
+            $this->getItemName($path),
+            $this->getComponents($path)
+        );
+    }
+
+    /**
+     * @param string $path
+     *
+     * @throws InvalidArgumentException
+     */
+    private function assertValidXmlFile(string $path): void
+    {
         if (!is_file($path)) {
             throw new InvalidArgumentException('Given file not found');
         }
@@ -30,11 +45,6 @@ final class XmlParser implements Parser
         if (!str_ends_with($path, '.xml')) {
             throw new InvalidArgumentException('Wrong file format. Expected XML file');
         }
-
-        return new ItemStructure(
-            $this->getItemName($path),
-            $this->getComponents($path)
-        );
     }
 
     /**
