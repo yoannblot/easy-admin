@@ -53,6 +53,6 @@ final class ErrorTest extends TestCase
 
     private function getXmlParser(): XmlParser
     {
-        return new XmlParser(new XmlTextComponentParser());
+        return new XmlParser([new XmlTextComponentParser()]);
     }
 }

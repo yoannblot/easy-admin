@@ -6,7 +6,6 @@ namespace EasyAdmin\Parser;
 
 use EasyAdmin\Form\Component\Simple\TextComponent;
 use EasyAdmin\Form\Item\ItemStructure;
-use EasyAdmin\Parser\Component\Simple\XmlTextComponentParser;
 use EasyAdmin\Parser\Component\XmlComponentParser;
 use Exception;
 use InvalidArgumentException;
@@ -19,11 +18,9 @@ final class XmlParser implements Parser
      */
     private array $parsers;
 
-    public function __construct(XmlTextComponentParser $xmlTextComponentParser)
+    public function __construct(array $parsers)
     {
-        $this->parsers = [
-            $xmlTextComponentParser,
-        ];
+        $this->parsers = $parsers;
     }
 
     /**

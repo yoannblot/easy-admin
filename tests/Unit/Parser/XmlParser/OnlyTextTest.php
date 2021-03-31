@@ -42,6 +42,6 @@ final class OnlyTextTest extends TestCase
 
     private function parse(): ItemStructure
     {
-        return (new XmlParser(new XmlTextComponentParser()))->parse(self::FILE_PATH);
+        return (new XmlParser([new XmlTextComponentParser()]))->parse(self::FILE_PATH);
     }
 }
