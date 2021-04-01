@@ -4,4 +4,8 @@ services:
         class: EasyAdmin\Application\ConfigFileToHtml
         arguments:
             - '@EasyAdmin\Parser\Xml\XmlParser'
-            - '@EasyAdmin\Viewer\HtmlViewer'
+            - '@EasyAdmin\Viewer\Html\FormType\FormViewer'
+            - '@EasyAdmin\Application\FormTagFactory'
+
+    EasyAdmin\Application\FormTagFactory:
+        class: EasyAdmin\Application\FormTagFactory

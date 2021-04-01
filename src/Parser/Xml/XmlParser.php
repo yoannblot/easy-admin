@@ -14,6 +14,8 @@ use SimpleXMLElement;
 
 final class XmlParser implements Parser
 {
+    public const EXTENSION = '.xml';
+
     /**
      * @var XmlComponentParser[]
      */
@@ -52,14 +54,14 @@ final class XmlParser implements Parser
             throw new InvalidArgumentException('Given file not found');
         }
 
-        if (!str_ends_with($path, '.xml')) {
+        if (!str_ends_with($path, self::EXTENSION)) {
             throw new InvalidArgumentException('Wrong file format. Expected XML file');
         }
     }
 
     private function getItemName(string $path): string
     {
-        return basename($path, '.xml');
+        return basename($path, self::EXTENSION);
     }
 
     /**

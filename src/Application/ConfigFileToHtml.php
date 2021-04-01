@@ -4,25 +4,31 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Application;
 
+use EasyAdmin\Form\FormType\CreateForm;
 use EasyAdmin\Parser\Parser;
-use EasyAdmin\Viewer\HtmlViewer;
+use EasyAdmin\Viewer\Html\FormType\FormViewer;
 
 final class ConfigFileToHtml
 {
     private Parser $parser;
 
-    private HtmlViewer $htmlViewer;
+    private FormViewer $formViewer;
 
-    public function __construct(Parser $parser, HtmlViewer $htmlViewer)
+    private FormTagFactory $formTagFactory;
+
+    public function __construct(Parser $parser, FormViewer $formViewer, FormTagFactory $formTagFactory)
     {
         $this->parser = $parser;
-        $this->htmlViewer = $htmlViewer;
+        $this->formViewer = $formViewer;
+        $this->formTagFactory = $formTagFactory;
     }
 
     public function execute(string $filePath): string
     {
-        return $this->htmlViewer->toHtml(
-            $this->parser->parse($filePath)
+        $itemStructure = $this->parser->parse($filePath);
+
+        return $this->formViewer->toHtml(
+            new CreateForm($this->formTagFactory->getCreateFormTag($itemStructure), $itemStructure)
         );
     }
 }

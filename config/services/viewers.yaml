@@ -17,3 +17,12 @@ services:
         arguments:
             -
                 - '@EasyAdmin\Viewer\Html\Component\Simple\TextComponentViewer'
+
+    EasyAdmin\Viewer\Html\FormType\Tag\FormTagViewer:
+        class: EasyAdmin\Viewer\Html\FormType\Tag\FormTagViewer
+
+    EasyAdmin\Viewer\Html\FormType\FormViewer:
+        class: EasyAdmin\Viewer\Html\FormType\FormViewer
+        arguments:
+            - '@EasyAdmin\Viewer\Html\FormType\Tag\FormTagViewer'
+            - '@EasyAdmin\Viewer\HtmlViewer'
