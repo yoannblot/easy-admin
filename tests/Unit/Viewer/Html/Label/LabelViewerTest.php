@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\View\Html\Label;
+namespace Tests\Unit\Viewer\Html\Label;
 
 use EasyAdmin\Viewer\Html\Label\LabelViewer;
 use PHPUnit\Framework\TestCase;

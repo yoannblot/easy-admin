@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\View;
+namespace Tests\Unit\Viewer;
 
 use EasyAdmin\Viewer\Html\Component\Simple\TextComponentViewer;
 use EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer;

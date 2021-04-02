@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\View\Html\Element\Simple;
+namespace Tests\Unit\Viewer\Html\Element\Simple;
 
 use EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer;
 use PHPUnit\Framework\TestCase;
