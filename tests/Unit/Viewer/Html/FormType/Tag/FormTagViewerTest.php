@@ -24,4 +24,12 @@ final class FormTagViewerTest extends TestCase
         self::assertStringContainsString("method='{$tag->getMethod()}'", $html);
         self::assertStringContainsString("action='{$tag->getAction()}'", $html);
     }
+
+    /**
+     * @test
+     */
+    public function it_creates_html_end_tag(): void
+    {
+        self::assertSame('</form>', (new FormTagViewer())->endTagToHtml());
+    }
 }
