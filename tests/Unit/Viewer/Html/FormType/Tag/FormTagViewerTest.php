@@ -19,10 +19,10 @@ final class FormTagViewerTest extends TestCase
 
         $html = (new FormTagViewer())->startTagToHtml($tag);
         self::assertStringContainsString('<form', $html);
-        self::assertStringContainsString("id='{$tag->getId()}'", $html);
-        self::assertStringContainsString("name='{$tag->getName()}'", $html);
-        self::assertStringContainsString("method='{$tag->getMethod()}'", $html);
-        self::assertStringContainsString("action='{$tag->getAction()}'", $html);
+        self::assertStringContainsString("id=\"{$tag->getId()}\"", $html);
+        self::assertStringContainsString("name=\"{$tag->getName()}\"", $html);
+        self::assertStringContainsString("method=\"{$tag->getMethod()}\"", $html);
+        self::assertStringContainsString("action=\"{$tag->getAction()}\"", $html);
     }
 
     /**

@@ -21,7 +21,7 @@ final class TextComponentViewerTest extends TestCase
     {
         $label = (new LabelBuilder())->withValue('lastname')->build();
         $component = (new TextComponentBuilder())->withLabel($label)->build();
-        $html = (new TextComponentViewer(new LabelViewer(), new TextElementViewer()))->toHtml($component);
+        $html = $this->getComponentViewer()->toHtml($component);
 
         self::assertStringContainsString('<label>lastname</label>', $html);
     }
@@ -33,8 +33,22 @@ final class TextComponentViewerTest extends TestCase
     {
         $textElement = (new TextElementBuilder())->withoutValue()->build();
         $component = (new TextComponentBuilder())->withTextElement($textElement)->build();
-        $html = (new TextComponentViewer(new LabelViewer(), new TextElementViewer()))->toHtml($component);
+        $html = $this->getComponentViewer()->toHtml($component);
 
         self::assertStringContainsString('<input type="text">', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function it_does_output_invalid_component(): void
+    {
+        $component = new DummyComponent();
+        self::assertSame('', $this->getComponentViewer()->toHtml($component));;
+    }
+
+    private function getComponentViewer(): TextComponentViewer
+    {
+        return new TextComponentViewer(new LabelViewer(), new TextElementViewer());
     }
 }

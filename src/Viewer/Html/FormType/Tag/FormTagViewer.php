@@ -11,7 +11,7 @@ final class FormTagViewer
     public function startTagToHtml(FormTag $formTag): string
     {
         return sprintf(
-            "<form id='%s' name='%s' action='%s' method='%s'>",
+            '<form id="%s" name="%s" action="%s" method="%s">',
             $formTag->getId(),
             $formTag->getName(),
             $formTag->getAction(),

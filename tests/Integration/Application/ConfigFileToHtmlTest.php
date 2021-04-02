@@ -23,7 +23,7 @@ final class ConfigFileToHtmlTest extends TestCase
         $html = $configFileToHtml->execute($filePath);
 
         self::assertSame(
-            '<label>firstname</label><input type="text"><label>lastname</label><input type="text">',
+            '<form id="create-form-FullName" name="create-form-FullName" action="create/FullName" method="POST"><label>firstname</label><input type="text"><label>lastname</label><input type="text"></form>',
             $html
         );
     }
