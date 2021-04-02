@@ -6,7 +6,7 @@ declare(strict_types=1);
 use EasyAdmin\Application\ConfigFileToHtml;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-require __DIR__ . '/../src/autoload.php';
+require __DIR__ . '/../config/autoload.php';
 
 /** @var ContainerBuilder $containerBuilder */
 /** @var ConfigFileToHtml $configFileToHtml */
