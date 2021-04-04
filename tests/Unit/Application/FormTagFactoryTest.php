@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Application;
 
-use EasyAdmin\Application\Loader\FormTagFactory;
+use EasyAdmin\Application\FormTagFactory;
 use PHPUnit\Framework\TestCase;
 use Tests\Builder\Form\Item\ItemStructureBuilder;
 

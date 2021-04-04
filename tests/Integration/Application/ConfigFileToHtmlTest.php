@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Integration\Application;
 
-use EasyAdmin\Application\Loader\ConfigFileToHtml;
+use EasyAdmin\Application\ConfigFileToHtml;
 use Tests\Integration\TestCase;
 
 final class ConfigFileToHtmlTest extends TestCase
@@ -19,8 +19,7 @@ final class ConfigFileToHtmlTest extends TestCase
         /** @var ConfigFileToHtml $configFileToHtml */
         $configFileToHtml = $this->getService(ConfigFileToHtml::class);
 
-        $filePath = __DIR__ . '/FullName.xml';
-        $html = $configFileToHtml->execute($filePath);
+        $html = $configFileToHtml->execute('FullName');
 
         self::assertSameFileContents(__DIR__ . '/expected-output.html', $html);
     }
