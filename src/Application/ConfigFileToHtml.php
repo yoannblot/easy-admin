@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Application;
 
+use EasyAdmin\Form\Button\CreateButton;
 use EasyAdmin\Form\FormType\CreateForm;
 use EasyAdmin\Parser\Parser;
 use EasyAdmin\Viewer\Html\FormType\FormViewer;
@@ -28,7 +29,11 @@ final class ConfigFileToHtml
         $itemStructure = $this->parser->parse($filePath);
 
         return $this->formViewer->toHtml(
-            new CreateForm($this->formTagFactory->getCreateFormTag($itemStructure), $itemStructure)
+            new CreateForm(
+                $this->formTagFactory->getCreateFormTag($itemStructure),
+                $itemStructure,
+                new CreateButton('create-' . $itemStructure->getName())
+            )
         );
     }
 }

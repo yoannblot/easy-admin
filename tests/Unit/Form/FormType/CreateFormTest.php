@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Form\FormType;
 
+use EasyAdmin\Form\Button\CreateButton;
 use PHPUnit\Framework\TestCase;
 use Tests\Builder\Form\FormType\CreateFormBuilder;
 use Tests\Builder\Form\FormType\Tag\FormTagBuilder;
@@ -42,5 +43,16 @@ final class CreateFormTest extends TestCase
         $form = (new CreateFormBuilder())->withStructure($structure)->build();
 
         self::assertSame($structure, $form->getStructure());
+    }
+
+    /**
+     * @test
+     */
+    public function it_contains_a_submit_button(): void
+    {
+        $structure = (new ItemStructureBuilder())->build();
+        $form = (new CreateFormBuilder())->withStructure($structure)->build();
+
+        self::assertInstanceOf(CreateButton::class, $form->getButton());
     }
 }

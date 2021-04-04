@@ -1,5 +1,8 @@
 services:
 
+    EasyAdmin\Viewer\Html\Button\ButtonViewer:
+        class: EasyAdmin\Viewer\Html\Button\ButtonViewer
+
     EasyAdmin\Viewer\Html\Label\LabelViewer:
         class: EasyAdmin\Viewer\Html\Label\LabelViewer
 
@@ -26,3 +29,4 @@ services:
         arguments:
             - '@EasyAdmin\Viewer\Html\FormType\Tag\FormTagViewer'
             - '@EasyAdmin\Viewer\HtmlViewer'
+            - '@EasyAdmin\Viewer\Html\Button\ButtonViewer'

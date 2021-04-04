@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Builder\Form\FormType;
 
+use EasyAdmin\Form\Button\CreateButton;
 use EasyAdmin\Form\FormType\CreateForm;
 use EasyAdmin\Form\FormType\Tag\FormTag;
 use EasyAdmin\Form\Item\ItemStructure;
@@ -38,6 +39,6 @@ final class CreateFormBuilder
 
     public function build(): CreateForm
     {
-        return new CreateForm($this->tag, $this->structure);
+        return new CreateForm($this->tag, $this->structure, new CreateButton('create'));
     }
 }

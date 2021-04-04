@@ -14,7 +14,15 @@ abstract class TestCase extends PhpUnitTestCase
         global $containerBuilder;
 
         /** @var ContainerBuilder $containerBuilder */
-
         return $containerBuilder->get($className);
+    }
+
+    protected static function assertSameFileContents(string $expectedFilePath, string $actual): void
+    {
+        $expectedOutput = file_get_contents($expectedFilePath);
+
+        $expectedOutput = str_replace(["\n", "    "], '', $expectedOutput);
+
+        self::assertSame($expectedOutput, $actual);
     }
 }

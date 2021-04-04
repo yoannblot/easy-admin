@@ -22,9 +22,6 @@ final class ConfigFileToHtmlTest extends TestCase
         $filePath = __DIR__ . '/FullName.xml';
         $html = $configFileToHtml->execute($filePath);
 
-        self::assertSame(
-            '<form id="create-form-FullName" name="create-form-FullName" action="create/FullName" method="POST"><label>firstname</label><input type="text"><label>lastname</label><input type="text"></form>',
-            $html
-        );
+        self::assertSameFileContents(__DIR__ . '/expected-output.html', $html);
     }
 }
