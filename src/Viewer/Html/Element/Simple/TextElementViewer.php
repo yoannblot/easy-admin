@@ -8,11 +8,14 @@ use EasyAdmin\Viewer\Html\Builder\InputBuilder;
 
 final class TextElementViewer
 {
-    public function toHtml(string $value): string
+    public function toHtml(string $value, string $componentName): string
     {
         $builder = new InputBuilder();
         if ($value !== '') {
             $builder->withValue($value);
+        }
+        if ($componentName !== '') {
+            $builder->withName($componentName);
         }
 
         return $builder->build();

@@ -42,14 +42,14 @@ final class InputBuilder
 
     public function build(): string
     {
-        $outputValue = '';
-        if ($this->value !== null) {
-            $outputValue = sprintf(' value="%s"', $this->value);
-        }
+        $attributes = '';
         if ($this->name !== null) {
-            $outputValue = sprintf(' name="%s"', $this->name);
+            $attributes .= sprintf(' name="%s"', $this->name);
+        }
+        if ($this->value !== null) {
+            $attributes .= sprintf(' value="%s"', $this->value);
         }
 
-        return sprintf('<input type="%s"%s>', $this->type, $outputValue);
+        return sprintf('<input type="%s"%s>', $this->type, $attributes);
     }
 }

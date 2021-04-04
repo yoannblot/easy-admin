@@ -10,14 +10,22 @@ use EasyAdmin\Form\Label\Label;
 
 final class TextComponent implements Component
 {
+    private string $name;
+
     private Label $label;
 
     private TextElement $textElement;
 
-    public function __construct(Label $label, TextElement $textElement)
+    public function __construct(string $name, Label $label, TextElement $textElement)
     {
+        $this->name = $name;
         $this->label = $label;
         $this->textElement = $textElement;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     public function getLabelValue(): string

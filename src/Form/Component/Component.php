@@ -6,4 +6,5 @@ namespace EasyAdmin\Form\Component;
 
 interface Component
 {
+    public function getName(): string;
 }

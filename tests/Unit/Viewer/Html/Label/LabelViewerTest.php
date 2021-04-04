@@ -12,10 +12,20 @@ final class LabelViewerTest extends TestCase
     /**
      * @test
      */
-    public function it_creates_html_label(): void
+    public function it_creates_label(): void
     {
-        $html = (new LabelViewer())->toHtml('firstname');
+        $html = (new LabelViewer())->toHtml('firstname', '');
 
         self::assertSame('<label>firstname</label>', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function it_creates_label_with_for_attribute(): void
+    {
+        $html = (new LabelViewer())->toHtml('My firstname', 'firstname');
+
+        self::assertSame('<label for="firstname">My firstname</label>', $html);
     }
 }

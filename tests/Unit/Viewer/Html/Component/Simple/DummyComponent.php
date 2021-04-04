@@ -8,4 +8,8 @@ use EasyAdmin\Form\Component\Component;
 
 final class DummyComponent implements Component
 {
+    public function getName(): string
+    {
+        return '';
+    }
 }

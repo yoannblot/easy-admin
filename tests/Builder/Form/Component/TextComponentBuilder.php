@@ -12,12 +12,15 @@ use Tests\Builder\Form\Label\LabelBuilder;
 
 final class TextComponentBuilder
 {
+    private string $name;
+
     private Label $label;
 
     private TextElement $textElement;
 
     public function __construct()
     {
+        $this->name = '';
         $this->label = (new LabelBuilder())->build();
         $this->textElement = (new TextElementBuilder())->build();
     }
@@ -38,6 +41,6 @@ final class TextComponentBuilder
 
     public function build(): TextComponent
     {
-        return new TextComponent($this->label, $this->textElement);
+        return new TextComponent($this->name, $this->label, $this->textElement);
     }
 }

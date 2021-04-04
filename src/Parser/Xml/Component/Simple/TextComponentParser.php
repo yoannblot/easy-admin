@@ -22,6 +22,6 @@ final class TextComponentParser implements XmlComponentParser
         $attributes = $xmlElement->attributes();
         $label = (string) $attributes['name'];
 
-        return new TextComponent(new Label($label), new TextElement(''));
+        return new TextComponent($label, new Label($label), new TextElement(''));
     }
 }

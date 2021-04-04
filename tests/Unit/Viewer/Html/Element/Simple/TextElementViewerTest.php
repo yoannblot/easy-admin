@@ -14,7 +14,7 @@ final class TextElementViewerTest extends TestCase
      */
     public function it_creates_empty_text_input(): void
     {
-        $html = (new TextElementViewer())->toHtml('');
+        $html = (new TextElementViewer())->toHtml('', '');
 
         self::assertSame('<input type="text">', $html);
     }
@@ -24,8 +24,18 @@ final class TextElementViewerTest extends TestCase
      */
     public function it_creates_text_input(): void
     {
-        $html = (new TextElementViewer())->toHtml('John Doe');
+        $html = (new TextElementViewer())->toHtml('John Doe', '');
 
         self::assertSame('<input type="text" value="John Doe">', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function it_creates_text_input_with_name(): void
+    {
+        $html = (new TextElementViewer())->toHtml('John Doe', 'fullname');
+
+        self::assertSame('<input type="text" name="fullname" value="John Doe">', $html);
     }
 }
