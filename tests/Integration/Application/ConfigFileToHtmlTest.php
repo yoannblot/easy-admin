@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Integration\Application;
 
-use EasyAdmin\Application\ConfigFileToHtml;
+use EasyAdmin\Application\Loader\ConfigFileToHtml;
 use Tests\Integration\TestCase;
 
 final class ConfigFileToHtmlTest extends TestCase
