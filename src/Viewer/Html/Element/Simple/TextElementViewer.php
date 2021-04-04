@@ -16,6 +16,7 @@ final class TextElementViewer
         }
         if ($componentName !== '') {
             $builder->withName($componentName);
+            $builder->withId($componentName);
         }
 
         return $builder->build();

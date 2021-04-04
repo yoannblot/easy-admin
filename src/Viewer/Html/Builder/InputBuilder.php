@@ -12,11 +12,21 @@ final class InputBuilder
 
     private ?string $name;
 
+    private ?string $id;
+
     public function __construct()
     {
         $this->type = 'text';
         $this->value = null;
         $this->name = null;
+        $this->id = null;
+    }
+
+    public function withId(string $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function withType(string $type): self
@@ -45,6 +55,9 @@ final class InputBuilder
         $attributes = '';
         if ($this->name !== null) {
             $attributes .= sprintf(' name="%s"', $this->name);
+        }
+        if ($this->id !== null) {
+            $attributes .= sprintf(' id="%s"', $this->id);
         }
         if ($this->value !== null) {
             $attributes .= sprintf(' value="%s"', $this->value);

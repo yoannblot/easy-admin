@@ -36,6 +36,6 @@ final class TextElementViewerTest extends TestCase
     {
         $html = (new TextElementViewer())->toHtml('John Doe', 'fullname');
 
-        self::assertSame('<input type="text" name="fullname" value="John Doe">', $html);
+        self::assertSame('<input type="text" name="fullname" id="fullname" value="John Doe">', $html);
     }
 }
