@@ -8,14 +8,22 @@ final class CreateButton implements Button
 {
     private string $name;
 
-    public function __construct(string $name)
+    private string $value;
+
+    public function __construct(string $name, string $value)
     {
         $this->name = $name;
+        $this->value = $value;
     }
 
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getValue(): string
+    {
+        return $this->value;
     }
 
     public function getType(): ButtonType

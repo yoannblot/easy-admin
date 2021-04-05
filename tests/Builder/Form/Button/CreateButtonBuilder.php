@@ -24,6 +24,6 @@ final class CreateButtonBuilder
 
     public function build(): CreateButton
     {
-        return new CreateButton($this->name);
+        return new CreateButton($this->name, 'submit');
     }
 }

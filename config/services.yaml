@@ -1,5 +1,6 @@
 imports:
     - { resource: services/application.yaml }
     - { resource: services/helper.yaml }
+    - { resource: services/i18n.yaml }
     - { resource: services/parsers.yaml }
     - { resource: services/viewers.yaml }

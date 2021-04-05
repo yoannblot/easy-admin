@@ -39,6 +39,6 @@ final class CreateFormBuilder
 
     public function build(): CreateForm
     {
-        return new CreateForm($this->tag, $this->structure, new CreateButton('create'));
+        return new CreateForm($this->tag, $this->structure, new CreateButton('create', 'submit'));
     }
 }

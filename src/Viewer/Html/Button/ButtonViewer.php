@@ -16,6 +16,9 @@ final class ButtonViewer
         if ($button->getName() !== '') {
             $builder->withName($button->getName());
         }
+        if ($button->getValue() !== '') {
+            $builder->withValue($button->getValue());
+        }
 
         return $builder->build();
     }

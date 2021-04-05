@@ -9,4 +9,6 @@ interface Button
     public function getType(): ButtonType;
 
     public function getName(): string;
+
+    public function getValue(): string;
 }
