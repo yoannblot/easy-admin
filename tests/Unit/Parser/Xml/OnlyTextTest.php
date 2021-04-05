@@ -6,6 +6,7 @@ namespace Tests\Unit\Parser\Xml;
 
 use EasyAdmin\Form\Component\Simple\TextComponent;
 use EasyAdmin\Form\Item\ItemStructure;
+use EasyAdmin\Helper\Convertor\StringToBooleanConvertor;
 use EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser;
 use EasyAdmin\Parser\Xml\XmlParser;
 use PHPUnit\Framework\TestCase;
@@ -59,6 +60,6 @@ final class OnlyTextTest extends TestCase
 
     private function parse(string $filePath): ItemStructure
     {
-        return (new XmlParser([new TextComponentParser()]))->parse($filePath);
+        return (new XmlParser([new TextComponentParser(new StringToBooleanConvertor())]))->parse($filePath);
     }
 }

@@ -6,11 +6,14 @@ namespace EasyAdmin\Viewer\Html\Label;
 
 final class LabelViewer
 {
-    public function toHtml(string $label, string $componentName): string
+    public function toHtml(string $label, string $componentName, bool $required): string
     {
         $attributes = '';
         if ($componentName !== '') {
-            $attributes = sprintf(' for="%s"', $componentName);
+            $attributes .= sprintf(' for="%s"', $componentName);
+        }
+        if ($required) {
+            $attributes .= ' class="required"';
         }
 
         return "<label{$attributes}>{$label}</label>";

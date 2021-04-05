@@ -18,11 +18,14 @@ final class TextComponentBuilder
 
     private TextElement $textElement;
 
+    private bool $required;
+
     public function __construct()
     {
         $this->name = '';
         $this->label = (new LabelBuilder())->build();
         $this->textElement = (new TextElementBuilder())->build();
+        $this->required = false;
     }
 
     public function withLabel(Label $label): self
@@ -41,6 +44,6 @@ final class TextComponentBuilder
 
     public function build(): TextComponent
     {
-        return new TextComponent($this->name, $this->label, $this->textElement);
+        return new TextComponent($this->name, $this->label, $this->textElement, $this->required);
     }
 }

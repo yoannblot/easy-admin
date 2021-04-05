@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Parser\Xml;
 
+use EasyAdmin\Helper\Convertor\StringToBooleanConvertor;
 use EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser;
 use EasyAdmin\Parser\Xml\XmlParser;
 use InvalidArgumentException;
@@ -53,6 +54,6 @@ final class ErrorTest extends TestCase
 
     private function getXmlParser(): XmlParser
     {
-        return new XmlParser([new TextComponentParser()]);
+        return new XmlParser([new TextComponentParser(new StringToBooleanConvertor())]);
     }
 }
