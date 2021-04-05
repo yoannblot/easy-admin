@@ -8,6 +8,7 @@ use EasyAdmin\Form\Component\Simple\TextComponent;
 use EasyAdmin\Form\Element\Simple\TextElement;
 use EasyAdmin\Form\Label\Label;
 use EasyAdmin\Helper\Convertor\StringToBooleanConvertor;
+use EasyAdmin\I18N\Translator;
 use EasyAdmin\Parser\Xml\Component\XmlComponentParser;
 use SimpleXMLElement;
 
@@ -15,9 +16,12 @@ final class TextComponentParser implements XmlComponentParser
 {
     private StringToBooleanConvertor $toBooleanConvertor;
 
-    public function __construct(StringToBooleanConvertor $toBooleanConvertor)
+    private Translator $translator;
+
+    public function __construct(StringToBooleanConvertor $toBooleanConvertor, Translator $translator)
     {
         $this->toBooleanConvertor = $toBooleanConvertor;
+        $this->translator = $translator;
     }
 
     public function canHandle(string $componentType): bool
@@ -32,6 +36,11 @@ final class TextComponentParser implements XmlComponentParser
         $value = (string) $attributes['value'];
         $required = $this->toBooleanConvertor->convert((string) $attributes['required']);
 
-        return new TextComponent($label, new Label($label), new TextElement($value), $required);
+        return new TextComponent(
+            $label,
+            new Label($this->translator->translate($label)),
+            new TextElement($value),
+            $required
+        );
     }
 }
