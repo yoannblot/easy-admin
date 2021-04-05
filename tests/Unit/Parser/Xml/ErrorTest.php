@@ -6,6 +6,8 @@ namespace Tests\Unit\Parser\Xml;
 
 use EasyAdmin\Helper\Convertor\StringToBooleanConvertor;
 use EasyAdmin\I18N\I18nLoader;
+use EasyAdmin\I18N\LanguageDetector;
+use EasyAdmin\I18N\LanguageFactory;
 use EasyAdmin\I18N\Translator;
 use EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser;
 use EasyAdmin\Parser\Xml\XmlParser;
@@ -57,7 +59,12 @@ final class ErrorTest extends TestCase
     private function getXmlParser(): XmlParser
     {
         return new XmlParser(
-            [new TextComponentParser(new StringToBooleanConvertor(), new Translator(new I18nLoader()))]
+            [
+                new TextComponentParser(
+                    new StringToBooleanConvertor(),
+                    new Translator(new I18nLoader(), new LanguageDetector(new LanguageFactory()))
+                ),
+            ]
         );
     }
 }

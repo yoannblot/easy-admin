@@ -6,8 +6,7 @@ services:
             - '@EasyAdmin\Application\Loader\ConfigurationLoader'
             - '@EasyAdmin\Parser\Xml\XmlParser'
             - '@EasyAdmin\Viewer\Html\FormType\FormViewer'
-            - '@EasyAdmin\Application\FormTagFactory'
-            - '@EasyAdmin\I18N\Translator'
+            - '@EasyAdmin\Form\FormType\FormFactory'
 
     EasyAdmin\Application\FormTagFactory:
         class: EasyAdmin\Application\FormTagFactory

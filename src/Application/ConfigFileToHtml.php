@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace EasyAdmin\Application;
 
 use EasyAdmin\Application\Loader\ConfigurationLoader;
-use EasyAdmin\Form\Button\CreateButton;
-use EasyAdmin\Form\FormType\CreateForm;
-use EasyAdmin\I18N\Translator;
+use EasyAdmin\Form\FormType\FormFactory;
 use EasyAdmin\Parser\Parser;
 use EasyAdmin\Viewer\Html\FormType\FormViewer;
 
@@ -19,36 +17,26 @@ final class ConfigFileToHtml
 
     private FormViewer $formViewer;
 
-    private FormTagFactory $formTagFactory;
-
-    private Translator $translationRepository;
+    private FormFactory $formFactory;
 
     public function __construct(
         ConfigurationLoader $loader,
         Parser $parser,
         FormViewer $formViewer,
-        FormTagFactory $formTagFactory,
-        Translator $translationRepository
+        FormFactory $formFactory
     ) {
+        $this->loader = $loader;
         $this->parser = $parser;
         $this->formViewer = $formViewer;
-        $this->formTagFactory = $formTagFactory;
-        $this->loader = $loader;
-        $this->translationRepository = $translationRepository;
+        $this->formFactory = $formFactory;
     }
 
     public function execute(string $itemName): string
     {
-        $itemStructure = $this->parser->parse($this->loader->getFilePath($itemName));
-
         return $this->formViewer->toHtml(
-            new CreateForm(
-                $this->formTagFactory->getCreateFormTag($itemStructure),
-                $itemStructure,
-                new CreateButton(
-                    'create-' . $itemStructure->getName(),
-                    $this->translationRepository->translate('submit')
-                )
+            $this->formFactory->createForm(
+                $this->parser->parse($this->loader->getFilePath($itemName)),
+                'create'
             )
         );
     }
