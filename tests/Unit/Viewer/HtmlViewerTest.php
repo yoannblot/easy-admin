@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Viewer;
 
+use EasyAdmin\Viewer\Html\Component\ComponentTagViewer;
 use EasyAdmin\Viewer\Html\Component\Simple\TextComponentViewer;
 use EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer;
 use EasyAdmin\Viewer\Html\Label\LabelViewer;
@@ -21,7 +22,7 @@ final class HtmlViewerTest extends TestCase
         $itemStructure = (new ItemStructureBuilder())->build();
 
         $html = $this->getViewer()->toHtml($itemStructure);
-        self::assertSame('<label>label value</label><input type="text" value="text value">', $html);
+        self::assertSame('<div class="form-item text"><label>label value</label><input type="text" value="text value"></div>', $html);
     }
 
     private function getViewer(): HtmlViewer
@@ -29,6 +30,7 @@ final class HtmlViewerTest extends TestCase
         return new HtmlViewer(
             [
                 new TextComponentViewer(
+                    new ComponentTagViewer(),
                     new LabelViewer(),
                     new TextElementViewer()
                 ),

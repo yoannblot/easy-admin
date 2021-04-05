@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Viewer\Html\Component\Simple;
 
+use EasyAdmin\Viewer\Html\Component\ComponentTagViewer;
 use EasyAdmin\Viewer\Html\Component\Simple\TextComponentViewer;
 use EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer;
 use EasyAdmin\Viewer\Html\Label\LabelViewer;
@@ -49,6 +50,6 @@ final class TextComponentViewerTest extends TestCase
 
     private function getComponentViewer(): TextComponentViewer
     {
-        return new TextComponentViewer(new LabelViewer(), new TextElementViewer());
+        return new TextComponentViewer(new ComponentTagViewer(), new LabelViewer(), new TextElementViewer());
     }
 }

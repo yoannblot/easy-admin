@@ -9,9 +9,13 @@ services:
     EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer:
         class: EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer
 
+    EasyAdmin\Viewer\Html\Component\ComponentTagViewer:
+        class: EasyAdmin\Viewer\Html\Component\ComponentTagViewer
+
     EasyAdmin\Viewer\Html\Component\Simple\TextComponentViewer:
         class: EasyAdmin\Viewer\Html\Component\Simple\TextComponentViewer
         arguments:
+            - '@EasyAdmin\Viewer\Html\Component\ComponentTagViewer'
             - '@EasyAdmin\Viewer\Html\Label\LabelViewer'
             - '@EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer'
 
