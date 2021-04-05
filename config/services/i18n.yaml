@@ -4,6 +4,15 @@ services:
         class: EasyAdmin\I18N\Translator
         arguments:
             - '@EasyAdmin\I18N\I18nLoader'
+            - '@EasyAdmin\I18N\LanguageDetector'
 
     EasyAdmin\I18N\I18nLoader:
         class: EasyAdmin\I18N\I18nLoader
+
+    EasyAdmin\I18N\LanguageDetector:
+        class: EasyAdmin\I18N\LanguageDetector
+        arguments:
+            - '@EasyAdmin\I18N\LanguageFactory'
+
+    EasyAdmin\I18N\LanguageFactory:
+        class: EasyAdmin\I18N\LanguageFactory

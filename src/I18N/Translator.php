@@ -6,27 +6,29 @@ namespace EasyAdmin\I18N;
 
 final class Translator
 {
+    private I18nLoader $loader;
+
+    private LanguageDetector $languageDetector;
+
     /**
      * @var Translation[]
      */
     private array $translations;
 
-    private I18nLoader $loader;
-
     private bool $loaded;
 
-    public function __construct(I18nLoader $loader)
+    public function __construct(I18nLoader $loader, LanguageDetector $languageDetector)
     {
-        $this->translations = [];
         $this->loader = $loader;
+        $this->languageDetector = $languageDetector;
+        $this->translations = [];
         $this->loaded = false;
     }
 
     public function translate(string $key): string
     {
         if (!$this->loaded) {
-            // TODO retrieve current language
-            $this->translations = $this->loader->getAll(new Language('french', 'fr_FR'));
+            $this->translations = $this->loader->getAll($this->languageDetector->detect());
         }
 
         return $this->getTranslation($key)->translate();

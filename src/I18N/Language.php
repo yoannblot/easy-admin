@@ -10,7 +10,17 @@ final class Language
 
     private string $fileName;
 
-    public function __construct(string $name, string $fileName)
+    public static function fr(): self
+    {
+        return new Language('french', 'fr_FR');
+    }
+
+    public static function en(): self
+    {
+        return new Language('english', 'en_EN');
+    }
+
+    private function __construct(string $name, string $fileName)
     {
         $this->name = $name;
         $this->fileName = $fileName;
