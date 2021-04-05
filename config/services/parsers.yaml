@@ -2,6 +2,8 @@ services:
 
     EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser:
         class: EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser
+        arguments:
+            - '@EasyAdmin\Helper\Convertor\StringToBooleanConvertor'
 
     EasyAdmin\Parser\Xml\XmlParser:
         class: EasyAdmin\Parser\Xml\XmlParser

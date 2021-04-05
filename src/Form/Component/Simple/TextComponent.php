@@ -16,11 +16,14 @@ final class TextComponent implements Component
 
     private TextElement $textElement;
 
-    public function __construct(string $name, Label $label, TextElement $textElement)
+    private bool $required;
+
+    public function __construct(string $name, Label $label, TextElement $textElement, bool $required)
     {
         $this->name = $name;
         $this->label = $label;
         $this->textElement = $textElement;
+        $this->required = $required;
     }
 
     public function getName(): string
@@ -36,5 +39,10 @@ final class TextComponent implements Component
     public function getTextElementValue(): string
     {
         return $this->textElement->getValue();
+    }
+
+    public function isRequired(): bool
+    {
+        return $this->required;
     }
 }
