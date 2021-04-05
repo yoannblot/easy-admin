@@ -34,7 +34,9 @@ final class I18nLoader
         foreach ($this->directories as $directory) {
             $filePath = $directory . DIRECTORY_SEPARATOR . $language->getFileName() . '.lang';
             if (is_file($filePath)) {
-                $translations = array_merge($this->getTranslations($filePath));
+                foreach ($this->getTranslations($filePath) as $translation) {
+                    $translations[] = $translation;
+                }
             }
         }
 
