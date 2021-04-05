@@ -30,7 +30,7 @@ final class TextComponentViewer implements HtmlComponentViewer
 
         $html = '';
         $html .= $this->labelView->toHtml($component->getLabelValue(), $component->getName());
-        $html .= $this->textElementView->toHtml($component->getTextElementValue(), $component->getName());
+        $html .= $this->textElementView->toHtml($component->getTextElementValue(), $component->getName(), $component->isRequired());
 
         return $html;
     }

@@ -6,8 +6,8 @@ namespace EasyAdmin\Helper\Convertor;
 
 final class StringToBooleanConvertor
 {
-    public function convert(string $asBoolean):bool
+    public function convert(string $asBoolean): bool
     {
-        return false;
-}
+        return ('on' === $asBoolean || 'true' === $asBoolean);
+    }
 }

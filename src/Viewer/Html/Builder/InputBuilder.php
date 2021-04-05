@@ -14,12 +14,22 @@ final class InputBuilder
 
     private ?string $id;
 
+    private bool $required;
+
     public function __construct()
     {
         $this->type = 'text';
         $this->value = null;
         $this->name = null;
         $this->id = null;
+        $this->required = false;
+    }
+
+    public function required(): self
+    {
+        $this->required = true;
+
+        return $this;
     }
 
     public function withId(string $id): self
@@ -61,6 +71,9 @@ final class InputBuilder
         }
         if ($this->value !== null) {
             $attributes .= sprintf(' value="%s"', $this->value);
+        }
+        if ($this->required) {
+            $attributes .= ' required="required"';
         }
 
         return sprintf('<input type="%s"%s>', $this->type, $attributes);
