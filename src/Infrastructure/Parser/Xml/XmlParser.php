@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\Parser\Xml;
+namespace EasyAdmin\Infrastructure\Parser\Xml;
 
 use EasyAdmin\Domain\Form\Component\Simple\TextComponent;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
-use EasyAdmin\Parser\Parser;
-use EasyAdmin\Parser\Xml\Component\XmlComponentParser;
+use EasyAdmin\Domain\Parser\Parser;
+use EasyAdmin\Infrastructure\Parser\Xml\Component\XmlComponentParser;
 use Exception;
 use InvalidArgumentException;
 use SimpleXMLElement;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\Parser\Xml\Component;
+namespace EasyAdmin\Infrastructure\Parser\Xml\Component;
 
 use EasyAdmin\Domain\Form\Component\Simple\TextComponent;
 use SimpleXMLElement;

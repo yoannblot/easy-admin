@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Parser\Xml;
+namespace Tests\Unit\Infrastructure\Parser\Xml;
 
 use EasyAdmin\Helper\Convertor\StringToBooleanConvertor;
 use EasyAdmin\I18N\I18nLoader;
 use EasyAdmin\I18N\LanguageDetector;
 use EasyAdmin\I18N\LanguageFactory;
 use EasyAdmin\I18N\Translator;
-use EasyAdmin\Parser\Xml\Component\Simple\TextComponentParser;
-use EasyAdmin\Parser\Xml\XmlParser;
+use EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser;
+use EasyAdmin\Infrastructure\Parser\Xml\XmlParser;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 

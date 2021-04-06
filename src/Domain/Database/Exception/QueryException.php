@@ -8,7 +8,7 @@ use Throwable;
 
 final class QueryException extends DatabaseException
 {
-    public static function fromException(string $query, string $errorMessage, ?Throwable $e): self
+    public static function fromException(string $query, string $errorMessage, Throwable $e): self
     {
         return new self(
             sprintf(

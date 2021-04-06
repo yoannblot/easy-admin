@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\Parser;
+namespace EasyAdmin\Domain\Parser;
 
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 
