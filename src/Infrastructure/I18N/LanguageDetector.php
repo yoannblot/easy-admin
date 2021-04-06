@@ -8,14 +8,18 @@ use EasyAdmin\Domain\I18N\Language;
 use EasyAdmin\Domain\I18N\LanguageDetector as LanguageDetectorInterface;
 use EasyAdmin\Domain\I18N\LanguageFactory;
 use EasyAdmin\Domain\I18N\LanguageNotFoundException;
+use Symfony\Component\HttpFoundation\Request;
 
 final class LanguageDetector implements LanguageDetectorInterface
 {
     private LanguageFactory $factory;
 
-    public function __construct(LanguageFactory $factory)
+    private Request $request;
+
+    public function __construct(LanguageFactory $factory, Request $request)
     {
         $this->factory = $factory;
+        $this->request = $request;
     }
 
     public function detect(): Language
@@ -40,7 +44,7 @@ final class LanguageDetector implements LanguageDetectorInterface
      */
     private function detectFromQuery(): Language
     {
-        $language = $_GET['lang'] ?? '';
+        $language = $this->request->query->get('lang', '');
 
         return $this->factory->createFromIso2($language);
     }
@@ -58,6 +62,7 @@ final class LanguageDetector implements LanguageDetectorInterface
 
     private function detectFromBrowser(): Language
     {
+        // TODO use request
         $acceptedLanguages = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '';
         foreach (explode(';', $acceptedLanguages) as $sLangInfos) {
             // take the first language accepted

@@ -13,3 +13,4 @@ services:
         class: EasyAdmin\Infrastructure\I18N\LanguageDetector
         arguments:
             - '@EasyAdmin\Domain\I18N\LanguageFactory'
+            - '@Symfony\Component\HttpFoundation\Request'
