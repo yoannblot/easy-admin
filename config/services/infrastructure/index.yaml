@@ -1,5 +1,6 @@
 imports:
     - { resource: database.yaml }
+    - { resource: helper.yaml }
     - { resource: i18n.yaml }
     - { resource: parser.yaml }
     - { resource: viewer.yaml }

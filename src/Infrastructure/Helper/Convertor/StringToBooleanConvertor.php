@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\Helper\Convertor;
+namespace EasyAdmin\Infrastructure\Helper\Convertor;
 
 final class StringToBooleanConvertor
 {

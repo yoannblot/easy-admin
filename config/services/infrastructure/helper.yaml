@@ -1,0 +1,4 @@
+services:
+
+    EasyAdmin\Infrastructure\Helper\Convertor\StringToBooleanConvertor:
+        class: EasyAdmin\Infrastructure\Helper\Convertor\StringToBooleanConvertor

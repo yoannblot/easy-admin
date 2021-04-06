@@ -2,4 +2,3 @@ imports:
     - { resource: services/domain/index.yaml }
     - { resource: services/application.yaml }
     - { resource: services/infrastructure/index.yaml }
-    - { resource: services/helper.yaml }

@@ -8,7 +8,7 @@ use EasyAdmin\Domain\Form\Component\Simple\TextComponent;
 use EasyAdmin\Domain\Form\Element\Simple\TextElement;
 use EasyAdmin\Domain\Form\Label\Label;
 use EasyAdmin\Domain\I18N\Translator;
-use EasyAdmin\Helper\Convertor\StringToBooleanConvertor;
+use EasyAdmin\Infrastructure\Helper\Convertor\StringToBooleanConvertor;
 use EasyAdmin\Infrastructure\Parser\Xml\Component\XmlComponentParser;
 use SimpleXMLElement;
 
