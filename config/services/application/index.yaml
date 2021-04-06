@@ -4,10 +4,11 @@ imports:
 
 services:
 
-    EasyAdmin\Application\ConfigFileToHtml:
-        class: EasyAdmin\Application\ConfigFileToHtml
+    EasyAdmin\Application\Router:
+        class: EasyAdmin\Application\Router
         arguments:
             - '@EasyAdmin\Application\Controller\CreateController'
+            - '@Symfony\Component\HttpFoundation\Request'
 
     EasyAdmin\Application\FormTagFactory:
         class: EasyAdmin\Application\FormTagFactory

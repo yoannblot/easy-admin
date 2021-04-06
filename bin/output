@@ -3,13 +3,13 @@
 
 declare(strict_types=1);
 
-use EasyAdmin\Application\ConfigFileToHtml;
+use EasyAdmin\Application\Router;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 require __DIR__ . '/../config/autoload.php';
 
 /** @var ContainerBuilder $containerBuilder */
-/** @var ConfigFileToHtml $configFileToHtml */
-$configFileToHtml = $containerBuilder->get(ConfigFileToHtml::class);
+/** @var Router $configFileToHtml */
+$configFileToHtml = $containerBuilder->get(Router::class);
 
-echo $configFileToHtml->execute($argv[1]) . PHP_EOL;
+echo $configFileToHtml->execute() . PHP_EOL;

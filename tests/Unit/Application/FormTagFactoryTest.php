@@ -21,6 +21,6 @@ final class FormTagFactoryTest extends TestCase
         self::assertSame('POST', $formTag->getMethod());
         self::assertSame('create-form-name', $formTag->getName());
         self::assertSame('create-form-name', $formTag->getId());
-        self::assertSame('create/name', $formTag->getAction());
+        self::assertSame('?type=name&page=create', $formTag->getAction());
     }
 }

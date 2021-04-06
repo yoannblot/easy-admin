@@ -12,7 +12,7 @@ final class FormTagFactory
     public function getCreateFormTag(ItemStructure $structure): FormTag
     {
         $id = 'create-form-' . $structure->getName();
-        $action = 'create/' . $structure->getName();
+        $action = sprintf('?type=%s&page=%s', $structure->getName(), 'create');
 
         return new FormTag($id, $id, 'POST', $action);
     }

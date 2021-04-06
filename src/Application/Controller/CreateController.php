@@ -8,6 +8,7 @@ use EasyAdmin\Application\Loader\ConfigurationLoader;
 use EasyAdmin\Domain\Form\FormType\FormFactory;
 use EasyAdmin\Domain\Parser\Parser;
 use EasyAdmin\Infrastructure\Viewer\Html\FormType\FormViewer;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class CreateController
@@ -32,8 +33,13 @@ final class CreateController
         $this->formFactory = $formFactory;
     }
 
-    public function index(string $itemName): Response
+    public function index(string $itemName, Request $request): Response
     {
+        if ($request->getMethod() === Request::METHOD_POST) {
+            // TODO retrieve values
+            $values = $request->request->all();
+        }
+
         return new Response(
             $this->formViewer->toHtml(
                 $this->formFactory->createForm(
