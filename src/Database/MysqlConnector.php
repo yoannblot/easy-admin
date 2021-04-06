@@ -12,8 +12,18 @@ use PDOStatement;
 
 final class MysqlConnector
 {
-    private PDO $connection;
+    private ?PDO $connection;
 
+    public function __construct()
+    {
+        $this->connection = null;
+    }
+
+    /**
+     * @param MysqlConnexion $connexion
+     *
+     * @throws InvalidConnexionException
+     */
     public function load(MysqlConnexion $connexion): void
     {
         try {
@@ -28,7 +38,17 @@ final class MysqlConnector
             );
             $this->connection->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         } catch (Exception $e) {
-            throw new InvalidConnexionException($connexion);
+            throw InvalidConnexionException::fromConnexion($connexion);
+        }
+    }
+
+    /**
+     * @throws InvalidConnexionException
+     */
+    private function assertConnexionIsValid(): void
+    {
+        if ($this->connection === null) {
+            throw InvalidConnexionException::notLoaded();
         }
     }
 
@@ -38,12 +58,12 @@ final class MysqlConnector
      * @return PDOStatement
      *
      * @throws QueryException
+     *
+     * @throws InvalidConnexionException
      */
     public function exec(string $sQuery): PDOStatement
     {
-        if ('' === $sQuery || null === $this->connection) {
-            throw QueryException::fromQuery($sQuery);
-        }
+        $this->assertConnexionIsValid();
         try {
             return $this->connection->query($sQuery);
         } catch (Exception $e) {
@@ -53,10 +73,6 @@ final class MysqlConnector
 
     private function getLastError(): string
     {
-        if ($this->connection === null) {
-            return '';
-        }
-
         $aError = $this->connection->errorInfo();
 
         return 'code SQLSTATE : ' . $aError[0] . ' - driver code : ' . $aError[1] . ' - message : ' . $aError[2];

@@ -8,9 +8,9 @@ use EasyAdmin\Database\MysqlConnexion;
 
 final class InvalidConnexionException extends DatabaseException
 {
-    public function __construct(MysqlConnexion $connexion)
+    public static function fromConnexion(MysqlConnexion $connexion): self
     {
-        parent::__construct(
+        return new self(
             sprintf(
                 'Unable to connect to "%s" with couple "%s"/%s"',
                 $connexion->getDsn(),
@@ -18,5 +18,15 @@ final class InvalidConnexionException extends DatabaseException
                 $connexion->getPassword()
             )
         );
+    }
+
+    public static function notLoaded()
+    {
+        return new self('Database connexion not loaded');
+    }
+
+    private function __construct(string $message)
+    {
+        parent::__construct($message);
     }
 }
