@@ -4,42 +4,37 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Application;
 
-use EasyAdmin\Application\Controller\CreateController;
+use EasyAdmin\Application\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 final class Router
 {
-    private CreateController $createController;
+    /**
+     * @var Controller[]
+     */
+    private array $controllers;
 
     private Request $request;
 
-    public function __construct(CreateController $createController, Request $request)
+    public function __construct(array $controllers, Request $request)
     {
-        $this->createController = $createController;
+        $this->controllers = $controllers;
         $this->request = $request;
     }
 
     public function execute(): string
     {
-        if ($this->getItemType() === null) {
-            // TODO home page
-            return '';
-        }
-
-        if ($this->getPageType() === 'create') {
-            return $this->createController->index($this->getItemType(), $this->request)->getContent();
+        foreach ($this->controllers as $controller) {
+            if ($this->getAction() === $controller->getAction()) {
+                return $controller->__invoke($this->request)->getContent();
+            }
         }
 
         // TODO 404
-        return '';
+        return '404';
     }
 
-    private function getItemType(): ?string
-    {
-        return $this->request->query->get('type');
-    }
-
-    private function getPageType(): ?string
+    private function getAction(): ?string
     {
         return $this->request->query->get('page');
     }

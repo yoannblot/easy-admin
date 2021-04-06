@@ -11,7 +11,7 @@ use EasyAdmin\Infrastructure\Viewer\Html\FormType\FormViewer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-final class CreateController
+final class CreateController implements Controller
 {
     private ConfigurationLoader $loader;
 
@@ -33,12 +33,19 @@ final class CreateController
         $this->formFactory = $formFactory;
     }
 
-    public function index(string $itemName, Request $request): Response
+    public function getAction(): string
+    {
+        return 'create';
+    }
+
+    public function __invoke(Request $request): Response
     {
         if ($request->getMethod() === Request::METHOD_POST) {
             // TODO retrieve values
             $values = $request->request->all();
         }
+
+        $itemName = $request->query->get('type');
 
         return new Response(
             $this->formViewer->toHtml(

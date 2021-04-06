@@ -7,7 +7,8 @@ services:
     EasyAdmin\Application\Router:
         class: EasyAdmin\Application\Router
         arguments:
-            - '@EasyAdmin\Application\Controller\CreateController'
+            -
+                - '@EasyAdmin\Application\Controller\CreateController'
             - '@Symfony\Component\HttpFoundation\Request'
 
     EasyAdmin\Application\FormTagFactory:
