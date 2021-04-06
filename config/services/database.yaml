@@ -1,0 +1,4 @@
+services:
+
+    EasyAdmin\Database\MysqlConnector:
+        class: EasyAdmin\Database\MysqlConnector
