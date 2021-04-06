@@ -49,6 +49,18 @@ final class MysqlConnector implements Connector
         }
     }
 
+    public function execOnce(string $sQuery): bool
+    {
+        $this->assertConnexionIsValid();
+        try {
+            $iNbLines = $this->connection->exec($sQuery);
+
+            return $iNbLines !== false;
+        } catch (Exception $e) {
+            throw QueryException::fromException($sQuery, $this->getLastError(), $e);
+        }
+    }
+
     /**
      * @throws InvalidConnexionException
      */

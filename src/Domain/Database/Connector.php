@@ -27,4 +27,15 @@ interface Connector
      * @throws InvalidConnexionException
      */
     public function exec(string $sQuery): PDOStatement;
+
+    /**
+     * @param string $sQuery
+     *
+     * @return bool
+     *
+     * @throws QueryException
+     *
+     * @throws InvalidConnexionException
+     */
+    public function execOnce(string $sQuery): bool;
 }

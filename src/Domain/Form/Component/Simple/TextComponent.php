@@ -45,4 +45,16 @@ final class TextComponent implements Component
     {
         return $this->required;
     }
+
+    public function getBind(): string
+    {
+        // TODO: Implement getBind() method.
+        return 'firstname';
+    }
+
+    public function getValue()
+    {
+        // TODO: Implement getValue() method.
+        return '';
+    }
 }

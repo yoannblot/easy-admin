@@ -37,4 +37,10 @@ final class ItemStructure
     {
         return $this->components;
     }
+
+    public function getTable(): string
+    {
+        // TODO
+        return 'contact';
+    }
 }
