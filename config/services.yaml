@@ -4,4 +4,3 @@ imports:
     - { resource: services/infrastructure/index.yaml }
     - { resource: services/helper.yaml }
     - { resource: services/i18n.yaml }
-    - { resource: services/viewers.yaml }

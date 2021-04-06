@@ -1,0 +1,3 @@
+services:
+
+    EasyAdmin\Domain\Viewer\Html\Viewer: '@EasyAdmin\Infrastructure\Viewer\HtmlViewer'

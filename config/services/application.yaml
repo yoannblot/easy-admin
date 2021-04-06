@@ -5,7 +5,7 @@ services:
         arguments:
             - '@EasyAdmin\Application\Loader\ConfigurationLoader'
             - '@EasyAdmin\Domain\Parser\Parser'
-            - '@EasyAdmin\Viewer\Html\FormType\FormViewer'
+            - '@EasyAdmin\Infrastructure\Viewer\Html\FormType\FormViewer'
             - '@EasyAdmin\Domain\Form\FormType\FormFactory'
 
     EasyAdmin\Application\FormTagFactory:

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Integration\Viewer\Html\FormType;
 
-use EasyAdmin\Viewer\Html\FormType\FormViewer;
+use EasyAdmin\Infrastructure\Viewer\Html\FormType\FormViewer;
 use Tests\Builder\Form\FormType\CreateFormBuilder;
 use Tests\Integration\TestCase;
 
