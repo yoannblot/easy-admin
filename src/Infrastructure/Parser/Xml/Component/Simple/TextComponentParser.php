@@ -29,18 +29,31 @@ final class TextComponentParser implements XmlComponentParser
         return $componentType === 'text';
     }
 
-    public function parse(SimpleXMLElement $xmlElement): TextComponent
+    public function parse(SimpleXMLElement $xmlElement, array $values): TextComponent
+    {
+        $attributes = $this->getAttributes($xmlElement);
+        $label = $attributes['label'];
+        if (array_key_exists($label, $values)) {
+            $value = (string) $values[$label];
+        } else {
+            $value = $attributes['defaultValue'];
+        }
+
+        return new TextComponent(
+            $attributes['label'],
+            new Label($this->translator->translate($attributes['label'])),
+            new TextElement($value),
+            $attributes['required']
+        );
+    }
+
+    private function getAttributes(SimpleXMLElement $xmlElement): array
     {
         $attributes = $xmlElement->attributes();
         $label = (string) $attributes['name'];
-        $value = (string) $attributes['value'];
+        $defaultValue = (string) $attributes['value'];
         $required = $this->toBooleanConvertor->convert((string) $attributes['required']);
 
-        return new TextComponent(
-            $label,
-            new Label($this->translator->translate($label)),
-            new TextElement($value),
-            $required
-        );
+        return ['label' => $label, 'defaultValue' => $defaultValue, 'required' => $required];
     }
 }

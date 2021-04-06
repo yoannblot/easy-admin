@@ -32,7 +32,7 @@ final class XmlParser implements Parser
 
         return new ItemStructure(
             $this->getItemName($path),
-            $this->getComponents($path)
+            $this->getComponents($path, $values)
         );
     }
 
@@ -59,18 +59,19 @@ final class XmlParser implements Parser
 
     /**
      * @param string $path
+     * @param array  $values
      *
      * @return TextComponent[]
      *
      * @throws InvalidArgumentException
      */
-    private function getComponents(string $path): array
+    private function getComponents(string $path, array $values): array
     {
         $components = [];
         foreach ($this->createXmlElementFromFile($path) as $componentType => $xmlElement) {
             foreach ($this->parsers as $parser) {
                 if ($parser->canHandle($componentType)) {
-                    $components[] = $parser->parse($xmlElement);
+                    $components[] = $parser->parse($xmlElement, $values);
                     break;
                 }
             }

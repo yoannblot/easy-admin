@@ -11,5 +11,5 @@ interface XmlComponentParser
 {
     public function canHandle(string $componentType): bool;
 
-    public function parse(SimpleXMLElement $xmlElement): TextComponent;
+    public function parse(SimpleXMLElement $xmlElement, array $values): TextComponent;
 }
