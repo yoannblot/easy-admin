@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\Database\Exception;
+namespace EasyAdmin\Domain\Database\Exception;
 
 use RuntimeException;
 

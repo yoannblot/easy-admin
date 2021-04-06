@@ -1,6 +1,6 @@
 imports:
+    - { resource: services/domain/database.yaml }
     - { resource: services/application.yaml }
-    - { resource: services/database.yaml }
     - { resource: services/form.yaml }
     - { resource: services/helper.yaml }
     - { resource: services/i18n.yaml }

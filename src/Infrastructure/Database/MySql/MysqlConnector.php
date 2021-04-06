@@ -2,15 +2,17 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\Database;
+namespace EasyAdmin\Infrastructure\Database\MySql;
 
-use EasyAdmin\Database\Exception\InvalidConnexionException;
-use EasyAdmin\Database\Exception\QueryException;
+use EasyAdmin\Domain\Database\Connector;
+use EasyAdmin\Domain\Database\Connexion;
+use EasyAdmin\Domain\Database\Exception\InvalidConnexionException;
+use EasyAdmin\Domain\Database\Exception\QueryException;
 use Exception;
 use PDO;
 use PDOStatement;
 
-final class MysqlConnector
+final class MysqlConnector implements Connector
 {
     private ?PDO $connection;
 
@@ -19,12 +21,7 @@ final class MysqlConnector
         $this->connection = null;
     }
 
-    /**
-     * @param MysqlConnexion $connexion
-     *
-     * @throws InvalidConnexionException
-     */
-    public function load(MysqlConnexion $connexion): void
+    public function load(Connexion $connexion): void
     {
         try {
             $this->connection = new PDO(
@@ -42,25 +39,6 @@ final class MysqlConnector
         }
     }
 
-    /**
-     * @throws InvalidConnexionException
-     */
-    private function assertConnexionIsValid(): void
-    {
-        if ($this->connection === null) {
-            throw InvalidConnexionException::notLoaded();
-        }
-    }
-
-    /**
-     * @param string $sQuery
-     *
-     * @return PDOStatement
-     *
-     * @throws QueryException
-     *
-     * @throws InvalidConnexionException
-     */
     public function exec(string $sQuery): PDOStatement
     {
         $this->assertConnexionIsValid();
@@ -68,6 +46,16 @@ final class MysqlConnector
             return $this->connection->query($sQuery);
         } catch (Exception $e) {
             throw QueryException::fromException($sQuery, $this->getLastError(), $e);
+        }
+    }
+
+    /**
+     * @throws InvalidConnexionException
+     */
+    private function assertConnexionIsValid(): void
+    {
+        if ($this->connection === null) {
+            throw InvalidConnexionException::notLoaded();
         }
     }
 

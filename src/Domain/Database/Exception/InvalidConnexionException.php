@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\Database\Exception;
+namespace EasyAdmin\Domain\Database\Exception;
 
-use EasyAdmin\Database\MysqlConnexion;
+use EasyAdmin\Domain\Database\Connexion;
 
 final class InvalidConnexionException extends DatabaseException
 {
-    public static function fromConnexion(MysqlConnexion $connexion): self
+    public static function fromConnexion(Connexion $connexion): self
     {
         return new self(
             sprintf(
