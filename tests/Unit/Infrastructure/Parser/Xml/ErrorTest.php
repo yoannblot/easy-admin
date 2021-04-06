@@ -24,7 +24,7 @@ final class ErrorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $this->getXmlParser()->parse('fake_path.xml');
+        $this->getXmlParser()->parse('fake_path.xml', []);
     }
 
     /**
@@ -34,7 +34,7 @@ final class ErrorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $this->getXmlParser()->parse(__DIR__ . '/Resources/wrong-extension.txt');
+        $this->getXmlParser()->parse(__DIR__ . '/Resources/wrong-extension.txt', []);
     }
 
     /**
@@ -44,7 +44,7 @@ final class ErrorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $this->getXmlParser()->parse(__DIR__ . '/Resources/without-primary-root.xml');
+        $this->getXmlParser()->parse(__DIR__ . '/Resources/without-primary-root.xml', []);
     }
 
     /**
@@ -54,7 +54,7 @@ final class ErrorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $this->getXmlParser()->parse(__DIR__ . '/Resources/parsing-error.xml');
+        $this->getXmlParser()->parse(__DIR__ . '/Resources/parsing-error.xml', []);
     }
 
     private function getXmlParser(): XmlParser

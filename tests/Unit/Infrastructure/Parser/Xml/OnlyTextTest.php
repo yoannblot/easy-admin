@@ -75,6 +75,6 @@ final class OnlyTextTest extends TestCase
                     )
                 ),
             ]
-        ))->parse($filePath);
+        ))->parse($filePath, []);
     }
 }

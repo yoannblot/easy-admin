@@ -6,7 +6,6 @@ namespace EasyAdmin\Application\Controller;
 
 use EasyAdmin\Application\Loader\ConfigurationLoader;
 use EasyAdmin\Domain\Form\FormType\FormFactory;
-use EasyAdmin\Domain\Form\Item\ItemStructure;
 use EasyAdmin\Domain\Parser\Parser;
 use EasyAdmin\Infrastructure\Viewer\Html\FormType\FormViewer;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,11 +41,7 @@ final class CreateController implements Controller
     public function __invoke(Request $request): Response
     {
         $itemName = $request->query->get('type');
-        $itemStructure = $this->parser->parse($this->loader->getFilePath($itemName));
-
-        if ($request->getMethod() === Request::METHOD_POST) {
-            return $this->createItem($itemStructure, $request->request->all());
-        }
+        $itemStructure = $this->parser->parse($this->loader->getFilePath($itemName), $this->getValues($request));
 
         return new Response(
             $this->formViewer->toHtml(
@@ -57,12 +52,13 @@ final class CreateController implements Controller
         );
     }
 
-    private function createItem(ItemStructure $itemStructure, array $values): Response
+    private function getValues(Request $request): array
     {
-        // TODO create item from values
+        $values = [];
+        if ($request->getMethod() === Request::METHOD_POST) {
+            $values = $request->request->all();
+        }
 
-        return new Response(
-            'creation ok', Response::HTTP_OK
-        );
+        return $values;
     }
 }

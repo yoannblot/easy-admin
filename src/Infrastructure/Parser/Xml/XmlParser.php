@@ -26,14 +26,7 @@ final class XmlParser implements Parser
         $this->parsers = $parsers;
     }
 
-    /**
-     * @param string $path
-     *
-     * @return ItemStructure
-     *
-     * @throws InvalidArgumentException
-     */
-    public function parse(string $path): ItemStructure
+    public function parse(string $path, array $values): ItemStructure
     {
         $this->assertValidXmlFile($path);
 
