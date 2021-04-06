@@ -3,4 +3,3 @@ imports:
     - { resource: services/application.yaml }
     - { resource: services/infrastructure/index.yaml }
     - { resource: services/helper.yaml }
-    - { resource: services/i18n.yaml }

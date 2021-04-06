@@ -2,11 +2,17 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\I18N;
+namespace EasyAdmin\Infrastructure\I18N;
 
-final class Translator
+use EasyAdmin\Domain\I18N\LanguageDetector;
+use EasyAdmin\Domain\I18N\Loader;
+use EasyAdmin\Domain\I18N\Translation;
+use EasyAdmin\Domain\I18N\TranslationNotFound;
+use EasyAdmin\Domain\I18N\Translator as TranslatorInterface;
+
+final class Translator implements TranslatorInterface
 {
-    private I18nLoader $loader;
+    private Loader $loader;
 
     private LanguageDetector $languageDetector;
 
@@ -17,7 +23,7 @@ final class Translator
 
     private bool $loaded;
 
-    public function __construct(I18nLoader $loader, LanguageDetector $languageDetector)
+    public function __construct(Loader $loader, LanguageDetector $languageDetector)
     {
         $this->loader = $loader;
         $this->languageDetector = $languageDetector;

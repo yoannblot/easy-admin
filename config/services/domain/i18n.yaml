@@ -1,0 +1,10 @@
+services:
+
+    EasyAdmin\Domain\I18N\Translator: '@EasyAdmin\Infrastructure\I18N\Translator'
+
+    EasyAdmin\Domain\I18N\Loader: '@EasyAdmin\Infrastructure\I18N\Loader'
+
+    EasyAdmin\Domain\I18N\LanguageDetector: '@EasyAdmin\Infrastructure\I18N\LanguageDetector'
+
+    EasyAdmin\Domain\I18N\LanguageFactory:
+        class: EasyAdmin\Domain\I18N\LanguageFactory

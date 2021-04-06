@@ -4,7 +4,7 @@ services:
         class: EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser
         arguments:
             - '@EasyAdmin\Helper\Convertor\StringToBooleanConvertor'
-            - '@EasyAdmin\I18N\Translator'
+            - '@EasyAdmin\Domain\I18N\Translator'
 
     EasyAdmin\Infrastructure\Parser\Xml\XmlParser:
         class: EasyAdmin\Infrastructure\Parser\Xml\XmlParser

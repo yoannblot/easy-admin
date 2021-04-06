@@ -4,4 +4,4 @@ services:
         class: EasyAdmin\Domain\Form\FormType\FormFactory
         arguments:
             - '@EasyAdmin\Application\FormTagFactory'
-            - '@EasyAdmin\I18N\Translator'
+            - '@EasyAdmin\Domain\I18N\Translator'

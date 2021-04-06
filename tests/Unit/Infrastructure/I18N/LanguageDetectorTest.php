@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\I18N;
+namespace Tests\Unit\Infrastructure\I18N;
 
-use EasyAdmin\I18N\Language;
-use EasyAdmin\I18N\LanguageDetector;
-use EasyAdmin\I18N\LanguageFactory;
+use EasyAdmin\Domain\I18N\Language;
+use EasyAdmin\Domain\I18N\LanguageFactory;
+use EasyAdmin\Infrastructure\I18N\LanguageDetector;
 use PHPUnit\Framework\TestCase;
 
 final class LanguageDetectorTest extends TestCase

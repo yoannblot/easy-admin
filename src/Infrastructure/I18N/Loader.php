@@ -2,11 +2,14 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\I18N;
+namespace EasyAdmin\Infrastructure\I18N;
 
+use EasyAdmin\Domain\I18N\Language;
+use EasyAdmin\Domain\I18N\Loader as LoaderInterface;
+use EasyAdmin\Domain\I18N\Translation;
 use InvalidArgumentException;
 
-final class I18nLoader
+final class Loader implements LoaderInterface
 {
     private array $directories;
 
@@ -23,11 +26,6 @@ final class I18nLoader
         $this->directories[] = $directory;
     }
 
-    /**
-     * @param Language $language
-     *
-     * @return Translation[]
-     */
     public function getAll(Language $language): array
     {
         $translations = [];

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\I18N;
+namespace EasyAdmin\Domain\I18N;
 
 final class TranslationNotFound extends Translation
 {

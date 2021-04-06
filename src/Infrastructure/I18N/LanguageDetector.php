@@ -2,9 +2,14 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\I18N;
+namespace EasyAdmin\Infrastructure\I18N;
 
-final class LanguageDetector
+use EasyAdmin\Domain\I18N\Language;
+use EasyAdmin\Domain\I18N\LanguageDetector as LanguageDetectorInterface;
+use EasyAdmin\Domain\I18N\LanguageFactory;
+use EasyAdmin\Domain\I18N\LanguageNotFoundException;
+
+final class LanguageDetector implements LanguageDetectorInterface
 {
     private LanguageFactory $factory;
 

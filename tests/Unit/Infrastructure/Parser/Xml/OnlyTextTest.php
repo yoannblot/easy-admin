@@ -6,11 +6,11 @@ namespace Tests\Unit\Infrastructure\Parser\Xml;
 
 use EasyAdmin\Domain\Form\Component\Simple\TextComponent;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
+use EasyAdmin\Domain\I18N\LanguageFactory;
 use EasyAdmin\Helper\Convertor\StringToBooleanConvertor;
-use EasyAdmin\I18N\I18nLoader;
-use EasyAdmin\I18N\LanguageDetector;
-use EasyAdmin\I18N\LanguageFactory;
-use EasyAdmin\I18N\Translator;
+use EasyAdmin\Infrastructure\I18N\LanguageDetector;
+use EasyAdmin\Infrastructure\I18N\Loader;
+use EasyAdmin\Infrastructure\I18N\Translator;
 use EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser;
 use EasyAdmin\Infrastructure\Parser\Xml\XmlParser;
 use PHPUnit\Framework\TestCase;
@@ -68,7 +68,7 @@ final class OnlyTextTest extends TestCase
             [
                 new TextComponentParser(
                     new StringToBooleanConvertor(),
-                    new Translator(new I18nLoader(), new LanguageDetector(new LanguageFactory()))
+                    new Translator(new Loader(), new LanguageDetector(new LanguageFactory()))
                 ),
             ]
         ))->parse($filePath);

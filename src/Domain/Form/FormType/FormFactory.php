@@ -7,7 +7,7 @@ namespace EasyAdmin\Domain\Form\FormType;
 use EasyAdmin\Application\FormTagFactory;
 use EasyAdmin\Domain\Form\Button\CreateButton;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
-use EasyAdmin\I18N\Translator;
+use EasyAdmin\Domain\I18N\Translator;
 use InvalidArgumentException;
 
 final class FormFactory
