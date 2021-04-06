@@ -1,4 +1,4 @@
 imports:
     - { resource: services/domain/index.yaml }
-    - { resource: services/application.yaml }
+    - { resource: services/application/index.yaml }
     - { resource: services/infrastructure/index.yaml }

@@ -1,0 +1,4 @@
+services:
+
+    EasyAdmin\Application\Loader\ConfigurationLoader:
+        class: EasyAdmin\Application\Loader\ConfigurationLoader

@@ -1,0 +1,13 @@
+imports:
+    - { resource: controller.yaml }
+    - { resource: loader.yaml }
+
+services:
+
+    EasyAdmin\Application\ConfigFileToHtml:
+        class: EasyAdmin\Application\ConfigFileToHtml
+        arguments:
+            - '@EasyAdmin\Application\Controller\CreateController'
+
+    EasyAdmin\Application\FormTagFactory:
+        class: EasyAdmin\Application\FormTagFactory

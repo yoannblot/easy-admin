@@ -1,0 +1,9 @@
+services:
+
+    EasyAdmin\Application\Controller\CreateController:
+        class: EasyAdmin\Application\Controller\CreateController
+        arguments:
+            - '@EasyAdmin\Application\Loader\ConfigurationLoader'
+            - '@EasyAdmin\Domain\Parser\Parser'
+            - '@EasyAdmin\Infrastructure\Viewer\Html\FormType\FormViewer'
+            - '@EasyAdmin\Domain\Form\FormType\FormFactory'
