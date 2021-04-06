@@ -8,6 +8,7 @@ use EasyAdmin\Domain\I18N\Language;
 use EasyAdmin\Domain\I18N\LanguageFactory;
 use EasyAdmin\Infrastructure\I18N\LanguageDetector;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpFoundation\Request;
 
 final class LanguageDetectorTest extends TestCase
 {
@@ -56,6 +57,6 @@ final class LanguageDetectorTest extends TestCase
 
     private function detectLanguage(): Language
     {
-        return (new LanguageDetector(new LanguageFactory()))->detect();
+        return (new LanguageDetector(new LanguageFactory(), Request::createFromGlobals()))->detect();
     }
 }

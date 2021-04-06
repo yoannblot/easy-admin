@@ -13,6 +13,7 @@ use EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser;
 use EasyAdmin\Infrastructure\Parser\Xml\XmlParser;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpFoundation\Request;
 
 final class ErrorTest extends TestCase
 {
@@ -62,7 +63,10 @@ final class ErrorTest extends TestCase
             [
                 new TextComponentParser(
                     new StringToBooleanConvertor(),
-                    new Translator(new Loader(), new LanguageDetector(new LanguageFactory()))
+                    new Translator(
+                        new Loader(),
+                        new LanguageDetector(new LanguageFactory(), Request::createFromGlobals())
+                    )
                 ),
             ]
         );

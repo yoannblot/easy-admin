@@ -7,21 +7,21 @@ namespace EasyAdmin\Domain\I18N;
 final class LanguageFactory
 {
     /**
-     * @param string $iso2Name
+     * @param string $code
      *
      * @return Language
      *
      * @throws LanguageNotFoundException
      */
-    public function createFromIso2(string $iso2Name): Language
+    public function createFromCode(string $code): Language
     {
-        if ($iso2Name === 'fr') {
+        if ($code === 'fr' || $code === 'fr_FR') {
             return Language::fr();
         }
-        if ($iso2Name === 'en') {
+        if ($code === 'en' || $code === 'en_US') {
             return Language::en();
         }
 
-        throw new LanguageNotFoundException($iso2Name);
+        throw new LanguageNotFoundException($code);
     }
 }

@@ -46,7 +46,7 @@ final class LanguageDetector implements LanguageDetectorInterface
     {
         $language = $this->request->query->get('lang', '');
 
-        return $this->factory->createFromIso2($language);
+        return $this->factory->createFromCode($language);
     }
 
     /**
@@ -57,21 +57,16 @@ final class LanguageDetector implements LanguageDetectorInterface
     private function detectFromSession(): Language
     {
         // TODO not implemented yet
-        return $this->factory->createFromIso2('');
+        return $this->factory->createFromCode('');
     }
 
     private function detectFromBrowser(): Language
     {
-        // TODO use request
-        $acceptedLanguages = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '';
-        foreach (explode(';', $acceptedLanguages) as $sLangInfos) {
-            // take the first language accepted
-            foreach (explode(',', $sLangInfos) as $sLanguage) {
-                try {
-                    return $this->factory->createFromIso2($sLanguage);
-                } catch (LanguageNotFoundException $e) {
-                    continue;
-                }
+        foreach ($this->request->getLanguages() as $languageCode) {
+            try {
+                return $this->factory->createFromCode($languageCode);
+            } catch (LanguageNotFoundException $e) {
+                continue;
             }
         }
 

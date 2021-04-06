@@ -14,6 +14,7 @@ use EasyAdmin\Infrastructure\I18N\Translator;
 use EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser;
 use EasyAdmin\Infrastructure\Parser\Xml\XmlParser;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpFoundation\Request;
 
 final class OnlyTextTest extends TestCase
 {
@@ -68,7 +69,10 @@ final class OnlyTextTest extends TestCase
             [
                 new TextComponentParser(
                     new StringToBooleanConvertor(),
-                    new Translator(new Loader(), new LanguageDetector(new LanguageFactory()))
+                    new Translator(
+                        new Loader(),
+                        new LanguageDetector(new LanguageFactory(), Request::createFromGlobals())
+                    )
                 ),
             ]
         ))->parse($filePath);
