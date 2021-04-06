@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Builder\Form\Element\Simple;
 
-use EasyAdmin\Form\Element\Simple\TextElement;
+use EasyAdmin\Domain\Form\Element\Simple\TextElement;
 
 final class TextElementBuilder
 {

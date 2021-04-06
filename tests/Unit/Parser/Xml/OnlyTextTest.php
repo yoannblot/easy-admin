@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Parser\Xml;
 
-use EasyAdmin\Form\Component\Simple\TextComponent;
-use EasyAdmin\Form\Item\ItemStructure;
+use EasyAdmin\Domain\Form\Component\Simple\TextComponent;
+use EasyAdmin\Domain\Form\Item\ItemStructure;
 use EasyAdmin\Helper\Convertor\StringToBooleanConvertor;
 use EasyAdmin\I18N\I18nLoader;
 use EasyAdmin\I18N\LanguageDetector;

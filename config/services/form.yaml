@@ -1,7 +1,0 @@
-services:
-
-    EasyAdmin\Form\FormType\FormFactory:
-        class: EasyAdmin\Form\FormType\FormFactory
-        arguments:
-            - '@EasyAdmin\Application\FormTagFactory'
-            - '@EasyAdmin\I18N\Translator'

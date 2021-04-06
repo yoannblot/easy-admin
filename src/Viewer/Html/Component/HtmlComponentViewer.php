@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Viewer\Html\Component;
 
-use EasyAdmin\Form\Component\Component;
+use EasyAdmin\Domain\Form\Component\Component;
 
 interface HtmlComponentViewer
 {

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Parser\Xml\Component\Simple;
 
-use EasyAdmin\Form\Component\Simple\TextComponent;
-use EasyAdmin\Form\Element\Simple\TextElement;
-use EasyAdmin\Form\Label\Label;
+use EasyAdmin\Domain\Form\Component\Simple\TextComponent;
+use EasyAdmin\Domain\Form\Element\Simple\TextElement;
+use EasyAdmin\Domain\Form\Label\Label;
 use EasyAdmin\Helper\Convertor\StringToBooleanConvertor;
 use EasyAdmin\I18N\Translator;
 use EasyAdmin\Parser\Xml\Component\XmlComponentParser;

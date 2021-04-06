@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Viewer\Html\Component\Simple;
 
-use EasyAdmin\Form\Component\Component;
+use EasyAdmin\Domain\Form\Component\Component;
 
 final class DummyComponent implements Component
 {

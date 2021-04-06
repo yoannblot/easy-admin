@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Builder\Form\FormType;
 
-use EasyAdmin\Form\Button\CreateButton;
-use EasyAdmin\Form\FormType\CreateForm;
-use EasyAdmin\Form\FormType\Tag\FormTag;
-use EasyAdmin\Form\Item\ItemStructure;
+use EasyAdmin\Domain\Form\Button\CreateButton;
+use EasyAdmin\Domain\Form\FormType\CreateForm;
+use EasyAdmin\Domain\Form\FormType\Tag\FormTag;
+use EasyAdmin\Domain\Form\Item\ItemStructure;
 use Tests\Builder\Form\FormType\Tag\FormTagBuilder;
 use Tests\Builder\Form\Item\ItemStructureBuilder;
 

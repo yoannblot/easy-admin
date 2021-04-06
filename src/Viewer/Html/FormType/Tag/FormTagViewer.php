@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Viewer\Html\FormType\Tag;
 
-use EasyAdmin\Form\FormType\Tag\FormTag;
+use EasyAdmin\Domain\Form\FormType\Tag\FormTag;
 
 final class FormTagViewer
 {

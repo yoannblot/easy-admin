@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Parser\Xml;
 
-use EasyAdmin\Form\Component\Simple\TextComponent;
-use EasyAdmin\Form\Item\ItemStructure;
+use EasyAdmin\Domain\Form\Component\Simple\TextComponent;
+use EasyAdmin\Domain\Form\Item\ItemStructure;
 use EasyAdmin\Parser\Parser;
 use EasyAdmin\Parser\Xml\Component\XmlComponentParser;
 use Exception;

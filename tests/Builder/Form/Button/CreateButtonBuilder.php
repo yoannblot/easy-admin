@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Builder\Form\Button;
 
-use EasyAdmin\Form\Button\CreateButton;
+use EasyAdmin\Domain\Form\Button\CreateButton;
 
 final class CreateButtonBuilder
 {

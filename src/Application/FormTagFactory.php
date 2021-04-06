@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Application;
 
-use EasyAdmin\Form\FormType\Tag\FormTag;
-use EasyAdmin\Form\Item\ItemStructure;
+use EasyAdmin\Domain\Form\FormType\Tag\FormTag;
+use EasyAdmin\Domain\Form\Item\ItemStructure;
 
 final class FormTagFactory
 {

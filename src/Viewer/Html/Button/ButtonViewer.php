@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Viewer\Html\Button;
 
-use EasyAdmin\Form\Button\Button;
+use EasyAdmin\Domain\Form\Button\Button;
 use EasyAdmin\Viewer\Html\Builder\InputBuilder;
 
 final class ButtonViewer

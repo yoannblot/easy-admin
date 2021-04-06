@@ -20,11 +20,6 @@ final class QueryException extends DatabaseException
         );
     }
 
-    public static function fromQuery(string $query): self
-    {
-        return new self(sprintf('Invalid query \n%s', $query));
-    }
-
     private function __construct(string $message)
     {
         parent::__construct($message);

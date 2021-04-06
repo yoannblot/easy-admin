@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Builder\Form\Component;
 
-use EasyAdmin\Form\Component\Simple\TextComponent;
-use EasyAdmin\Form\Element\Simple\TextElement;
-use EasyAdmin\Form\Label\Label;
+use EasyAdmin\Domain\Form\Component\Simple\TextComponent;
+use EasyAdmin\Domain\Form\Element\Simple\TextElement;
+use EasyAdmin\Domain\Form\Label\Label;
 use Tests\Builder\Form\Element\Simple\TextElementBuilder;
 use Tests\Builder\Form\Label\LabelBuilder;
 

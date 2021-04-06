@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Builder\Form\Label;
 
-use EasyAdmin\Form\Label\Label;
+use EasyAdmin\Domain\Form\Label\Label;
 
 final class LabelBuilder
 {

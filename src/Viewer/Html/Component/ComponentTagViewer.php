@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Viewer\Html\Component;
 
-use EasyAdmin\Form\Component\Component;
-use EasyAdmin\Form\Component\Simple\TextComponent;
+use EasyAdmin\Domain\Form\Component\Component;
+use EasyAdmin\Domain\Form\Component\Simple\TextComponent;
 
 final class ComponentTagViewer
 {

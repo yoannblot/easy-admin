@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Viewer\Html\Component\Simple;
 
-use EasyAdmin\Form\Component\Component;
-use EasyAdmin\Form\Component\Simple\TextComponent;
+use EasyAdmin\Domain\Form\Component\Component;
+use EasyAdmin\Domain\Form\Component\Simple\TextComponent;
 use EasyAdmin\Viewer\Html\Component\ComponentTagViewer;
 use EasyAdmin\Viewer\Html\Component\HtmlComponentViewer;
 use EasyAdmin\Viewer\Html\Element\Simple\TextElementViewer;

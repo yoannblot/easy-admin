@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Builder\Form\Item;
 
-use EasyAdmin\Form\Item\ItemStructure;
+use EasyAdmin\Domain\Form\Item\ItemStructure;
 use Tests\Builder\Form\Component\TextComponentBuilder;
 
 final class ItemStructureBuilder

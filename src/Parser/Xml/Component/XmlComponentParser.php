@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Parser\Xml\Component;
 
-use EasyAdmin\Form\Component\Simple\TextComponent;
+use EasyAdmin\Domain\Form\Component\Simple\TextComponent;
 use SimpleXMLElement;
 
 interface XmlComponentParser

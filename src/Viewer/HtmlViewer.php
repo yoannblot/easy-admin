@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Viewer;
 
-use EasyAdmin\Form\Item\ItemStructure;
+use EasyAdmin\Domain\Form\Item\ItemStructure;
 use EasyAdmin\Viewer\Html\Component\HtmlComponentViewer;
 
 final class HtmlViewer

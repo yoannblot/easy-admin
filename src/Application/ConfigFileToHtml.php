@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace EasyAdmin\Application;
 
 use EasyAdmin\Application\Loader\ConfigurationLoader;
-use EasyAdmin\Form\FormType\FormFactory;
+use EasyAdmin\Domain\Form\FormType\FormFactory;
 use EasyAdmin\Parser\Parser;
 use EasyAdmin\Viewer\Html\FormType\FormViewer;
 

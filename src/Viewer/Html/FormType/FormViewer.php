@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Viewer\Html\FormType;
 
-use EasyAdmin\Form\FormType\Form;
+use EasyAdmin\Domain\Form\FormType\Form;
 use EasyAdmin\Viewer\Html\Button\ButtonViewer;
 use EasyAdmin\Viewer\Html\FormType\Tag\FormTagViewer;
 use EasyAdmin\Viewer\HtmlViewer;
