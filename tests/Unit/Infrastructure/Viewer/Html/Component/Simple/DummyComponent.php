@@ -12,4 +12,15 @@ final class DummyComponent implements Component
     {
         return '';
     }
+
+    public function getBind(): string
+    {
+        return '';
+    }
+
+    public function getValue()
+    {
+        return '';
+    }
+
 }
