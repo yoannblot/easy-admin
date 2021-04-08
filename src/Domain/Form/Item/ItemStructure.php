@@ -10,6 +10,8 @@ final class ItemStructure
 {
     private string $name;
 
+    private string $table;
+
     /**
      * @var Component[]
      */
@@ -17,11 +19,13 @@ final class ItemStructure
 
     /**
      * @param string      $name
+     * @param string      $table
      * @param Component[] $components
      */
-    public function __construct(string $name, array $components)
+    public function __construct(string $name, string $table, array $components)
     {
         $this->name = $name;
+        $this->table = $table;
         $this->components = $components;
     }
 
@@ -30,17 +34,16 @@ final class ItemStructure
         return $this->name;
     }
 
+    public function getTable(): string
+    {
+        return $this->table;
+    }
+
     /**
      * @return Component[]
      */
     public function getComponents(): array
     {
         return $this->components;
-    }
-
-    public function getTable(): string
-    {
-        // TODO
-        return 'contact';
     }
 }

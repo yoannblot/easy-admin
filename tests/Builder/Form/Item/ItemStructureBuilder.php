@@ -11,11 +11,14 @@ final class ItemStructureBuilder
 {
     private string $name;
 
+    private string $table;
+
     private array $components;
 
     public function __construct()
     {
         $this->name = 'structure';
+        $this->table = 'table';
         $this->components = [
             (new TextComponentBuilder())->build(),
         ];
@@ -37,6 +40,6 @@ final class ItemStructureBuilder
 
     public function build(): ItemStructure
     {
-        return new ItemStructure($this->name, $this->components);
+        return new ItemStructure($this->name, $this->table, $this->components);
     }
 }

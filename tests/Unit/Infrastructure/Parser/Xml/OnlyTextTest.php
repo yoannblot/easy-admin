@@ -34,6 +34,16 @@ final class OnlyTextTest extends TestCase
     /**
      * @test
      */
+    public function it_retrieves_table(): void
+    {
+        $itemStructure = $this->parse(self::FILE_PATH);
+
+        self::assertSame('contacts', $itemStructure->getTable());
+    }
+
+    /**
+     * @test
+     */
     public function it_retrieves_text_component(): void
     {
         $itemStructure = $this->parse(self::FILE_PATH);

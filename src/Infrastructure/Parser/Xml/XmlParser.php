@@ -30,9 +30,12 @@ final class XmlParser implements Parser
     {
         $this->assertValidXmlFile($path);
 
+        $xmlElement = $this->createXmlElementFromFile($path);
+
         return new ItemStructure(
             $this->getItemName($path),
-            $this->getComponents($path, $values)
+            $this->getItemTable($xmlElement),
+            $this->getComponents($xmlElement, $values)
         );
     }
 
@@ -57,18 +60,23 @@ final class XmlParser implements Parser
         return basename($path, self::EXTENSION);
     }
 
+    private function getItemTable(SimpleXMLElement $xmlRootElement): string
+    {
+        return (string) $xmlRootElement->attributes()['table'];
+    }
+
     /**
-     * @param string $path
-     * @param array  $values
+     * @param SimpleXMLElement $xmlRootElement
+     * @param array            $values
      *
      * @return TextComponent[]
      *
      * @throws InvalidArgumentException
      */
-    private function getComponents(string $path, array $values): array
+    private function getComponents(SimpleXMLElement $xmlRootElement, array $values): array
     {
         $components = [];
-        foreach ($this->createXmlElementFromFile($path) as $componentType => $xmlElement) {
+        foreach ($xmlRootElement as $componentType => $xmlElement) {
             foreach ($this->parsers as $parser) {
                 if ($parser->canHandle($componentType)) {
                     $components[] = $parser->parse($xmlElement, $values);
