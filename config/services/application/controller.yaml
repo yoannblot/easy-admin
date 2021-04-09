@@ -1,12 +1,27 @@
 services:
 
-    EasyAdmin\Application\Controller\CreateController:
-        class: EasyAdmin\Application\Controller\CreateController
+    EasyAdmin\Application\Controller\Create\CreateController:
+        class: EasyAdmin\Application\Controller\Create\CreateController
         arguments:
-            - '@EasyAdmin\Application\Loader\ConfigurationLoader'
-            - '@EasyAdmin\Domain\Parser\Parser'
-            - '@EasyAdmin\Infrastructure\Viewer\Html\FormType\FormViewer'
-            - '@EasyAdmin\Domain\Form\FormType\FormFactory'
+            - '@EasyAdmin\Application\Controller\Create\ItemStructureFactory'
+            - '@EasyAdmin\Application\Controller\Create\ItemCreator'
+            - '@EasyAdmin\Application\Controller\Create\ItemStructureViewer'
+
+    EasyAdmin\Application\Controller\Create\ItemCreator:
+        class: EasyAdmin\Application\Controller\Create\ItemCreator
+        arguments:
             - '@EasyAdmin\Domain\Database\ItemRepository'
             - '@EasyAdmin\Domain\Message\FlashMessageFactory'
             - '@EasyAdmin\Infrastructure\Viewer\Html\Message\FlashMessageViewer'
+
+    EasyAdmin\Application\Controller\Create\ItemStructureFactory:
+        class: EasyAdmin\Application\Controller\Create\ItemStructureFactory
+        arguments:
+            - '@EasyAdmin\Application\Loader\ConfigurationLoader'
+            - '@EasyAdmin\Domain\Parser\Parser'
+
+    EasyAdmin\Application\Controller\Create\ItemStructureViewer:
+        class: EasyAdmin\Application\Controller\Create\ItemStructureViewer
+        arguments:
+            - '@EasyAdmin\Infrastructure\Viewer\Html\FormType\FormViewer'
+            - '@EasyAdmin\Domain\Form\FormType\FormFactory'

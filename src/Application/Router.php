@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Application;
 
-use EasyAdmin\Application\Controller\Controller;
+use EasyAdmin\Application\Controller\Create\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 final class Router
