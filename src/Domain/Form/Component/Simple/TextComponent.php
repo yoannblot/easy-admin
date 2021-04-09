@@ -48,13 +48,14 @@ final class TextComponent implements Component
 
     public function getBind(): string
     {
-        // TODO: Implement getBind() method.
-        return 'firstname';
+        return $this->textElement->getBind();
     }
 
+    /**
+     * @return string
+     */
     public function getValue()
     {
-        // TODO: Implement getValue() method.
-        return '';
+        return $this->textElement->getValue();
     }
 }

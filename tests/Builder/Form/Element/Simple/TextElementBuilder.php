@@ -10,9 +10,12 @@ final class TextElementBuilder
 {
     private string $value;
 
+    private string $bind;
+
     public function __construct()
     {
         $this->value = 'text value';
+        $this->bind = 'value';
     }
 
     public function withValue(string $value): self
@@ -31,6 +34,6 @@ final class TextElementBuilder
 
     public function build(): TextElement
     {
-        return new TextElement($this->value);
+        return new TextElement($this->value, $this->bind);
     }
 }

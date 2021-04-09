@@ -42,7 +42,7 @@ final class TextComponentParser implements XmlComponentParser
         return new TextComponent(
             $attributes['label'],
             new Label($this->translator->translate($attributes['label'])),
-            new TextElement($value),
+            new TextElement($value, $attributes['bind']),
             $attributes['required']
         );
     }
@@ -52,8 +52,9 @@ final class TextComponentParser implements XmlComponentParser
         $attributes = $xmlElement->attributes();
         $label = (string) $attributes['name'];
         $defaultValue = (string) $attributes['value'];
+        $bind = (string) $attributes['bind'];
         $required = $this->toBooleanConvertor->convert((string) $attributes['required']);
 
-        return ['label' => $label, 'defaultValue' => $defaultValue, 'required' => $required];
+        return ['label' => $label, 'bind' => $bind, 'defaultValue' => $defaultValue, 'required' => $required];
     }
 }

@@ -8,9 +8,17 @@ final class TextElement
 {
     private string $value;
 
-    public function __construct(string $value)
+    private string $bind;
+
+    public function __construct(string $value, string $bind)
     {
         $this->value = $value;
+        $this->bind = $bind;
+    }
+
+    public function getBind(): string
+    {
+        return $this->bind;
     }
 
     public function getValue(): string
