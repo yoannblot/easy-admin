@@ -10,6 +10,7 @@ services:
         arguments:
             -
                 - '@EasyAdmin\Application\Controller\Create\CreateController'
+                - '@EasyAdmin\Application\Controller\Update\UpdateController'
             - '@Symfony\Component\HttpFoundation\Request'
 
     EasyAdmin\Application\FormTagFactory:

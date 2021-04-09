@@ -1,5 +1,8 @@
 services:
 
+    ##########
+    # CREATE #
+    ##########
     EasyAdmin\Application\Controller\Create\CreateController:
         class: EasyAdmin\Application\Controller\Create\CreateController
         arguments:
@@ -25,3 +28,26 @@ services:
         arguments:
             - '@EasyAdmin\Infrastructure\Viewer\Html\FormType\FormViewer'
             - '@EasyAdmin\Domain\Form\FormType\FormFactory'
+
+    ##########
+    # UPDATE #
+    ##########
+    EasyAdmin\Application\Controller\Update\UpdateController:
+        class: EasyAdmin\Application\Controller\Update\UpdateController
+        arguments:
+            - '@EasyAdmin\Application\Controller\Update\ItemStructureFactory'
+            - '@EasyAdmin\Application\Controller\Update\ItemStructureViewer'
+
+    EasyAdmin\Application\Controller\Update\ItemStructureFactory:
+        class: EasyAdmin\Application\Controller\Update\ItemStructureFactory
+        arguments:
+            - '@EasyAdmin\Application\Loader\ConfigurationLoader'
+            - '@EasyAdmin\Domain\Parser\Parser'
+            - '@EasyAdmin\Domain\Database\ItemRepository'
+
+    EasyAdmin\Application\Controller\Update\ItemStructureViewer:
+        class: EasyAdmin\Application\Controller\Update\ItemStructureViewer
+        arguments:
+            - '@EasyAdmin\Infrastructure\Viewer\Html\FormType\FormViewer'
+            - '@EasyAdmin\Domain\Form\FormType\FormFactory'
+

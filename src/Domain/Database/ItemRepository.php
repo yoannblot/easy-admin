@@ -9,4 +9,6 @@ use EasyAdmin\Domain\Form\Item\ItemStructure;
 interface ItemRepository
 {
     public function create(ItemStructure $itemStructure): bool;
+
+    public function get(ItemStructure $itemStructure, int $itemId): array;
 }

@@ -39,4 +39,22 @@ final class FormFactory
             )
         );
     }
+
+    /**
+     * @param ItemStructure $itemStructure
+     *
+     * @return Form
+     */
+    public function updateForm(ItemStructure $itemStructure): Form
+    {
+        // TODO update form
+        return new CreateForm(
+            $this->formTagFactory->getCreateFormTag($itemStructure),
+            $itemStructure,
+            new CreateButton(
+                'create-' . $itemStructure->getName(),
+                $this->translator->translate('submit')
+            )
+        );
+    }
 }

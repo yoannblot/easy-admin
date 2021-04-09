@@ -29,6 +29,12 @@ final class ItemStructure
         $this->components = $components;
     }
 
+    public function getIdField(): string
+    {
+        // TODO retrieve from configuration
+        return 'id';
+    }
+
     public function getName(): string
     {
         return $this->name;
