@@ -7,3 +7,4 @@ services:
             - '@EasyAdmin\Domain\Parser\Parser'
             - '@EasyAdmin\Infrastructure\Viewer\Html\FormType\FormViewer'
             - '@EasyAdmin\Domain\Form\FormType\FormFactory'
+            - '@EasyAdmin\Domain\Database\ItemRepository'

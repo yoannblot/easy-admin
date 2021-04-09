@@ -1,4 +1,5 @@
 services:
 
-    EasyAdmin\Infrastructure\Database\MySql\MysqlConnector:
-        class: EasyAdmin\Infrastructure\Database\MySql\MysqlConnector
+    EasyAdmin\Domain\Database\Connector: '@EasyAdmin\Infrastructure\Database\MySql\MysqlConnector'
+
+    EasyAdmin\Domain\Database\ItemRepository: '@EasyAdmin\Infrastructure\Database\MySql\ItemRepository'
