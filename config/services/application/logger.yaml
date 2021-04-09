@@ -1,0 +1,4 @@
+services:
+
+    Psr\Log\LoggerInterface:
+        class: EasyAdmin\Application\Logger\Logger

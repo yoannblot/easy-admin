@@ -7,3 +7,4 @@ services:
         class: EasyAdmin\Infrastructure\Database\MySql\ItemRepository
         arguments:
             - '@EasyAdmin\Infrastructure\Database\MySql\MysqlConnector'
+            - '@Psr\Log\LoggerInterface'

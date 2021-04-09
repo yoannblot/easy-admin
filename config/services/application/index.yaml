@@ -1,6 +1,7 @@
 imports:
     - { resource: controller.yaml }
     - { resource: loader.yaml }
+    - { resource: logger.yaml }
 
 services:
 
