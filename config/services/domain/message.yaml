@@ -2,3 +2,5 @@ services:
 
     EasyAdmin\Domain\Message\FlashMessageFactory:
         class: EasyAdmin\Domain\Message\FlashMessageFactory
+        arguments:
+            - '@EasyAdmin\Domain\I18N\Translator'

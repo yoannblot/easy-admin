@@ -63,11 +63,9 @@ final class CreateController implements Controller
         if ($request->getMethod() === Request::METHOD_POST) {
             $isCreationSuccess = $this->itemRepository->create($itemStructure);
             if ($isCreationSuccess) {
-                // TODO translate
-                $message = $this->messageFactory->create(FlashMessage::SUCCESS, 'Création réussi');
+                $message = $this->messageFactory->create(FlashMessage::SUCCESS, 'createSuccess');
             } else {
-                // TODO translate
-                $message = $this->messageFactory->create(FlashMessage::ERROR, 'Problème de création');
+                $message = $this->messageFactory->create(FlashMessage::ERROR, 'createFailed');
             }
 
             $htmlContent .= $this->messageViewer->toHtml($message);

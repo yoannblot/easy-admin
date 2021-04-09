@@ -1,1 +1,3 @@
-submit="valider"
+submit = "valider"
+createFailed = "création impossible, contactez votre administrateur"
+createSuccess = "création réussie"
