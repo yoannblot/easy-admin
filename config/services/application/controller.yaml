@@ -8,3 +8,5 @@ services:
             - '@EasyAdmin\Infrastructure\Viewer\Html\FormType\FormViewer'
             - '@EasyAdmin\Domain\Form\FormType\FormFactory'
             - '@EasyAdmin\Domain\Database\ItemRepository'
+            - '@EasyAdmin\Domain\Message\FlashMessageFactory'
+            - '@EasyAdmin\Infrastructure\Viewer\Html\Message\FlashMessageViewer'

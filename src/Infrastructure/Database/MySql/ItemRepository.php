@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace EasyAdmin\Infrastructure\Database\MySql;
 
 use EasyAdmin\Domain\Database\Connector;
+use EasyAdmin\Domain\Database\Exception\QueryException;
 use EasyAdmin\Domain\Database\ItemRepository as ItemRepositoryInterface;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 
@@ -34,6 +35,11 @@ final class ItemRepository implements ItemRepositoryInterface
 
         $query = sprintf('INSERT INTO %s (%s) VALUES (%s);', $itemStructure->getTable(), $fields, $values);
 
-        return $this->connector->execOnce($query);
+        try {
+            return $this->connector->execOnce($query);
+        } catch (QueryException $e) {
+            // TODO log error
+            return false;
+        }
     }
 }

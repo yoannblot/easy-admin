@@ -52,10 +52,14 @@ final class TextComponent implements Component
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getValue()
     {
+        if ($this->textElement->getValue() === '') {
+            return null;
+        }
+
         return $this->textElement->getValue();
     }
 }

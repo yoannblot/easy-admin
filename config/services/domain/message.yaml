@@ -1,0 +1,4 @@
+services:
+
+    EasyAdmin\Domain\Message\FlashMessageFactory:
+        class: EasyAdmin\Domain\Message\FlashMessageFactory

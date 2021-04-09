@@ -2,5 +2,6 @@ imports:
     - { resource: database.yaml }
     - { resource: form.yaml }
     - { resource: i18n.yaml }
+    - { resource: message.yaml }
     - { resource: parser.yaml }
     - { resource: viewer.yaml }

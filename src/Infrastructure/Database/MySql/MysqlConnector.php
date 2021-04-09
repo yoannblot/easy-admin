@@ -8,8 +8,8 @@ use EasyAdmin\Domain\Database\Connector;
 use EasyAdmin\Domain\Database\Connexion;
 use EasyAdmin\Domain\Database\Exception\InvalidConnexionException;
 use EasyAdmin\Domain\Database\Exception\QueryException;
-use Exception;
 use PDO;
+use PDOException;
 use PDOStatement;
 
 final class MysqlConnector implements Connector
@@ -30,11 +30,11 @@ final class MysqlConnector implements Connector
                 $connexion->getPassword(),
                 [
                     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 ]
             );
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->connection->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
-        } catch (Exception $e) {
+        } catch (PDOException $e) {
             throw InvalidConnexionException::fromConnexion($connexion);
         }
     }
@@ -44,7 +44,7 @@ final class MysqlConnector implements Connector
         $this->assertConnexionIsValid();
         try {
             return $this->connection->query($sQuery);
-        } catch (Exception $e) {
+        } catch (PDOException $e) {
             throw QueryException::fromException($sQuery, $this->getLastError(), $e);
         }
     }
@@ -56,7 +56,7 @@ final class MysqlConnector implements Connector
             $iNbLines = $this->connection->exec($sQuery);
 
             return $iNbLines !== false;
-        } catch (Exception $e) {
+        } catch (PDOException $e) {
             throw QueryException::fromException($sQuery, $this->getLastError(), $e);
         }
     }
