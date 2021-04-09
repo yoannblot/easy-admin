@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Infrastructure\Database\MySql;
 
+use EasyAdmin\Application\Logger\Logger;
 use EasyAdmin\Domain\Database\Connector;
 use EasyAdmin\Domain\Database\Exception\QueryException;
 use EasyAdmin\Domain\Database\ItemRepository as ItemRepositoryInterface;
@@ -13,9 +14,12 @@ final class ItemRepository implements ItemRepositoryInterface
 {
     private Connector $connector;
 
-    public function __construct(Connector $connector)
+    private Logger $logger;
+
+    public function __construct(Connector $connector, Logger $logger)
     {
         $this->connector = $connector;
+        $this->logger = $logger;
     }
 
     public function create(ItemStructure $itemStructure): bool
@@ -38,7 +42,8 @@ final class ItemRepository implements ItemRepositoryInterface
         try {
             return $this->connector->execOnce($query);
         } catch (QueryException $e) {
-            // TODO log error
+            $this->logger->queryError($e);
+
             return false;
         }
     }

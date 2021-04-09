@@ -45,7 +45,7 @@ final class MysqlConnector implements Connector
         try {
             return $this->connection->query($sQuery);
         } catch (PDOException $e) {
-            throw QueryException::fromException($sQuery, $this->getLastError(), $e);
+            throw QueryException::fromQuery($sQuery, $this->getLastError());
         }
     }
 
@@ -57,7 +57,7 @@ final class MysqlConnector implements Connector
 
             return $iNbLines !== false;
         } catch (PDOException $e) {
-            throw QueryException::fromException($sQuery, $this->getLastError(), $e);
+            throw QueryException::fromQuery($sQuery, $this->getLastError());
         }
     }
 
@@ -75,6 +75,6 @@ final class MysqlConnector implements Connector
     {
         $aError = $this->connection->errorInfo();
 
-        return 'code SQLSTATE : ' . $aError[0] . ' - driver code : ' . $aError[1] . ' - message : ' . $aError[2];
+        return sprintf('[%d] %s', $aError[0], $aError[2]);
     }
 }
