@@ -28,7 +28,7 @@ final class TextComponentParser implements XmlComponentParser
     public function parse(SimpleXMLElement $xmlElement, array $values): TextComponent
     {
         $attributes = $this->attributesParser->parse($xmlElement);
-        $value = $values[$attributes->getName()] ?? $attributes->getDefaultValue();
+        $value = $values[$attributes->getName()] ?? $values[$attributes->getBind()] ?? $attributes->getDefaultValue();
 
         return new TextComponent(
             $attributes->getName(),
