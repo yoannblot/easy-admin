@@ -1,5 +1,6 @@
 imports:
     - { resource: database.yaml }
+    - { resource: display-list.yaml }
     - { resource: form.yaml }
     - { resource: i18n.yaml }
     - { resource: message.yaml }

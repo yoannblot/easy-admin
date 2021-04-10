@@ -1,29 +1,32 @@
 <?php
 
+use EasyAdmin\Domain\DisplayList\Column;
+use EasyAdmin\Domain\DisplayList\DisplayItem;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 
 /** @var $itemStructure ItemStructure */
 
-/** @var $items array */
+/** @var $items DisplayItem[] */
 ?>
 <table>
     <thead>
     <tr>
-        <?php foreach (array_keys($items[0]) as $label) : ?>
-            <th><?= $label; ?></th>
+        <?php foreach ($items[array_key_first($items)]->getColumns() as $column) : ?>
+            <?php /** @var Column $column */ ?>
+            <th><?= $column->getLabel(); ?></th>
         <?php endforeach; ?>
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($items as $itemValues) : ?>
+    <?php foreach ($items as $displayItem) : ?>
         <tr>
-            <?php foreach ($itemValues as $elementValue) : ?>
+            <?php foreach ($displayItem->getColumns() as $column) : ?>
                 <td>
-                    <?= $elementValue; ?>
+                    <?= $column->getValue(); ?>
                 </td>
             <?php endforeach; ?>
             <td>
-                <a href="<?= sprintf('/?type=%s&page=update&id=%d', $itemStructure->getTable(), $itemValues['id']); ?>">modifier</a>
+                <a href="<?= $displayItem->getUpdateUrl(); ?>">modifier</a>
             </td>
         </tr>
     <?php endforeach; ?>

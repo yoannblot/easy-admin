@@ -6,6 +6,7 @@ namespace EasyAdmin\Domain\Form\Item;
 
 use EasyAdmin\Domain\Form\Component\Component;
 use EasyAdmin\Domain\Form\Component\Simple\IdComponent;
+use InvalidArgumentException;
 use LogicException;
 
 final class ItemStructure
@@ -29,6 +30,24 @@ final class ItemStructure
         $this->name = $name;
         $this->table = $table;
         $this->components = $components;
+    }
+
+    /**
+     * @param string $columnBind
+     *
+     * @return Component
+     *
+     * @throws InvalidArgumentException
+     */
+    public function getComponentByBind(string $columnBind): Component
+    {
+        foreach ($this->components as $component) {
+            if ($component->getBind() === $columnBind) {
+                return $component;
+            }
+        }
+
+        throw new InvalidArgumentException('Component not found with bind ' . $columnBind);
     }
 
     /**

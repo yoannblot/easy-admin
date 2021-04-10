@@ -1,0 +1,10 @@
+services:
+
+    EasyAdmin\Domain\DisplayList\ColumnsParser:
+        class: EasyAdmin\Domain\DisplayList\ColumnsParser
+
+    EasyAdmin\Domain\DisplayList\DisplayItemsParser:
+        class: EasyAdmin\Domain\DisplayList\DisplayItemsParser
+        arguments:
+            - '@EasyAdmin\Domain\DisplayList\ColumnsParser'
+            - '@EasyAdmin\Infrastructure\Helper\Convertor\StringToIntegerConvertor'

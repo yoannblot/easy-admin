@@ -67,6 +67,7 @@ services:
         arguments:
             - '@EasyAdmin\Application\Controller\DisplayList\ItemStructureFactory'
             - '@EasyAdmin\Domain\Database\ItemRepository'
+            - '@EasyAdmin\Domain\DisplayList\DisplayItemsParser'
 
     EasyAdmin\Application\Controller\DisplayList\ItemStructureFactory:
         class: EasyAdmin\Application\Controller\DisplayList\ItemStructureFactory
