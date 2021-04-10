@@ -65,5 +65,11 @@ services:
     EasyAdmin\Application\Controller\DisplayList\ListController:
         class: EasyAdmin\Application\Controller\DisplayList\ListController
         arguments:
-            - '@EasyAdmin\Application\Controller\Create\ItemStructureFactory'
+            - '@EasyAdmin\Application\Controller\DisplayList\ItemStructureFactory'
             - '@EasyAdmin\Domain\Database\ItemRepository'
+
+    EasyAdmin\Application\Controller\DisplayList\ItemStructureFactory:
+        class: EasyAdmin\Application\Controller\DisplayList\ItemStructureFactory
+        arguments:
+            - '@EasyAdmin\Application\Loader\ConfigurationLoader'
+            - '@EasyAdmin\Domain\Parser\Parser'
