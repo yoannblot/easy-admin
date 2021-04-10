@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<item table="contacts">
+    <id bind="my_custom_id"/>
+</item>
