@@ -7,6 +7,7 @@ namespace EasyAdmin\Application\Controller\DisplayList;
 use EasyAdmin\Application\Controller\Controller;
 use EasyAdmin\Domain\Database\ItemRepository;
 use EasyAdmin\Domain\DisplayList\DisplayItemsParser;
+use EasyAdmin\Domain\Form\Item\ItemStructure;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -38,12 +39,17 @@ final class ListController implements Controller
         $itemStructure = $this->factory->fromRequest($request);
 
         $htmlContent = '<h1>list of ' . $itemStructure->getName() . '</h1>';
+        $htmlContent .= $this->getTableContent($itemStructure);
 
+        return new Response($htmlContent, Response::HTTP_OK);
+    }
+
+    private function getTableContent(ItemStructure $itemStructure): string
+    {
         ob_start();
         $items = $this->itemsParser->parse($itemStructure, $this->repository->getItemValues($itemStructure));
         require __DIR__ . '/../../../Infrastructure/Template/DisplayList/table.php';
-        $htmlContent .= ob_get_clean();
 
-        return new Response($htmlContent, Response::HTTP_OK);
+        return ob_get_clean();
     }
 }
