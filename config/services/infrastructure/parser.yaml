@@ -1,14 +1,20 @@
 services:
 
-    EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser:
-        class: EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser
+    EasyAdmin\Infrastructure\Parser\Xml\Component\Common\AttributesParser:
+        class: EasyAdmin\Infrastructure\Parser\Xml\Component\Common\AttributesParser
         arguments:
             - '@EasyAdmin\Infrastructure\Helper\Convertor\StringToBooleanConvertor'
             - '@EasyAdmin\Domain\I18N\Translator'
 
+    EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser:
+        class: EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser
+        arguments:
+            - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Common\AttributesParser'
+
     EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\IdComponentParser:
         class: EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\IdComponentParser
         arguments:
+            - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Common\AttributesParser'
             - '@EasyAdmin\Infrastructure\Helper\Convertor\StringToIntegerConvertor'
 
     EasyAdmin\Infrastructure\Parser\Xml\XmlParser:

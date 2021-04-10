@@ -11,6 +11,7 @@ use EasyAdmin\Infrastructure\Helper\Convertor\StringToBooleanConvertor;
 use EasyAdmin\Infrastructure\I18N\LanguageDetector;
 use EasyAdmin\Infrastructure\I18N\Loader;
 use EasyAdmin\Infrastructure\I18N\Translator;
+use EasyAdmin\Infrastructure\Parser\Xml\Component\Common\AttributesParser;
 use EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser;
 use EasyAdmin\Infrastructure\Parser\Xml\XmlParser;
 use PHPUnit\Framework\TestCase;
@@ -78,10 +79,12 @@ final class OnlyTextTest extends TestCase
         return (new XmlParser(
             [
                 new TextComponentParser(
-                    new StringToBooleanConvertor(),
-                    new Translator(
-                        new Loader(),
-                        new LanguageDetector(new LanguageFactory(), Request::createFromGlobals())
+                    new AttributesParser(
+                        new StringToBooleanConvertor(),
+                        new Translator(
+                            new Loader(),
+                            new LanguageDetector(new LanguageFactory(), Request::createFromGlobals())
+                        )
                     )
                 ),
             ]
