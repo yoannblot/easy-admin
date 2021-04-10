@@ -11,4 +11,11 @@ interface ItemRepository
     public function create(ItemStructure $itemStructure): bool;
 
     public function get(ItemStructure $itemStructure, int $itemId): array;
+
+    /**
+     * @param ItemStructure $structure
+     *
+     * @return ItemStructure[]
+     */
+    public function getItemValues(ItemStructure $structure): array;
 }

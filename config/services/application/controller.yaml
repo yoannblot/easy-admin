@@ -59,3 +59,11 @@ services:
             - '@EasyAdmin\Infrastructure\Viewer\Html\FormType\FormViewer'
             - '@EasyAdmin\Domain\Form\FormType\FormFactory'
 
+    ##########
+    #  LIST  #
+    ##########
+    EasyAdmin\Application\Controller\DisplayList\ListController:
+        class: EasyAdmin\Application\Controller\DisplayList\ListController
+        arguments:
+            - '@EasyAdmin\Application\Controller\Create\ItemStructureFactory'
+            - '@EasyAdmin\Domain\Database\ItemRepository'
