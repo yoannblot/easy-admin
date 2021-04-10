@@ -55,7 +55,7 @@ final class ItemRepository implements ItemRepositoryInterface
         $query = sprintf(
             'SELECT * FROM %s WHERE %s=%d LIMIT 1',
             $itemStructure->getTable(),
-            $itemStructure->getIdField(),
+            $itemStructure->getIdBind(),
             $itemId
         );
 

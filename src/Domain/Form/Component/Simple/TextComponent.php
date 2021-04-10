@@ -54,7 +54,7 @@ final class TextComponent implements Component
     /**
      * @return string|null
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         if ($this->textElement->getValue() === '') {
             return null;

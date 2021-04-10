@@ -6,8 +6,14 @@ services:
             - '@EasyAdmin\Infrastructure\Helper\Convertor\StringToBooleanConvertor'
             - '@EasyAdmin\Domain\I18N\Translator'
 
+    EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\IdComponentParser:
+        class: EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\IdComponentParser
+        arguments:
+            - '@EasyAdmin\Infrastructure\Helper\Convertor\StringToIntegerConvertor'
+
     EasyAdmin\Infrastructure\Parser\Xml\XmlParser:
         class: EasyAdmin\Infrastructure\Parser\Xml\XmlParser
         arguments:
             -
                 - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser'
+                - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\IdComponentParser'

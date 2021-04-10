@@ -2,3 +2,6 @@ services:
 
     EasyAdmin\Infrastructure\Helper\Convertor\StringToBooleanConvertor:
         class: EasyAdmin\Infrastructure\Helper\Convertor\StringToBooleanConvertor
+
+    EasyAdmin\Infrastructure\Helper\Convertor\StringToIntegerConvertor:
+        class: EasyAdmin\Infrastructure\Helper\Convertor\StringToIntegerConvertor
