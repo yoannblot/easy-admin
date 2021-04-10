@@ -14,13 +14,17 @@ final class UpdateController implements Controller
 {
     private ItemStructureFactory $itemFactory;
 
+    private ItemUpdator $itemUpdator;
+
     private ItemStructureViewer $viewer;
 
     public function __construct(
         ItemStructureFactory $parser,
+        ItemUpdator $itemUpdator,
         ItemStructureViewer $viewer
     ) {
         $this->itemFactory = $parser;
+        $this->itemUpdator = $itemUpdator;
         $this->viewer = $viewer;
     }
 
@@ -39,7 +43,7 @@ final class UpdateController implements Controller
 
         $htmlContent = '';
         if ($request->getMethod() === Request::METHOD_POST) {
-            // TODO updator
+            $htmlContent .= $this->itemUpdator->updateAndRetrieveOutput($itemStructure);
         }
 
         $htmlContent .= $this->viewer->toHtml($itemStructure);

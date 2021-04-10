@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace EasyAdmin\Domain\Form\Item;
 
 use EasyAdmin\Domain\Form\Component\Component;
+use EasyAdmin\Domain\Form\Component\Simple\IdComponent;
 use LogicException;
 
 final class ItemStructure
@@ -37,13 +38,17 @@ final class ItemStructure
      */
     public function getIdBind(): string
     {
-        foreach ($this->components as $component) {
-            if ($component->getName() === 'id') {
-                return $component->getBind();
-            }
-        }
+        return $this->getIdComponent()->getBind();
+    }
 
-        throw new LogicException('No id field found');
+    /**
+     * @return int|null
+     *
+     * @throws LogicException
+     */
+    public function getId(): ?int
+    {
+        return $this->getIdComponent()->getValue();
     }
 
     public function getName(): string
@@ -62,5 +67,21 @@ final class ItemStructure
     public function getComponents(): array
     {
         return $this->components;
+    }
+
+    /**
+     * @return IdComponent
+     *
+     * @throws LogicException
+     */
+    private function getIdComponent(): IdComponent
+    {
+        foreach ($this->components as $component) {
+            if ($component instanceof IdComponent) {
+                return $component;
+            }
+        }
+
+        throw new LogicException('No id component found');
     }
 }

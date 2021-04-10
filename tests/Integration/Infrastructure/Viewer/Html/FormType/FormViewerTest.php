@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Integration\Infrastructure\Viewer\Html\FormType;
 
 use EasyAdmin\Infrastructure\Viewer\Html\FormType\FormViewer;
-use Tests\Builder\Form\FormType\CreateFormBuilder;
+use Tests\Builder\Form\FormType\FormBuilder;
 use Tests\Integration\TestCase;
 
 final class FormViewerTest extends TestCase
@@ -20,7 +20,7 @@ final class FormViewerTest extends TestCase
         /** @var FormViewer $formViewer */
         $formViewer = $this->getService(FormViewer::class);
 
-        $form = (new CreateFormBuilder())->build();
+        $form = (new FormBuilder())->build();
 
         $html = $formViewer->toHtml($form);
 

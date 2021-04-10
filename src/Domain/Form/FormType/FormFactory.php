@@ -30,7 +30,7 @@ final class FormFactory
      */
     public function createForm(ItemStructure $itemStructure): Form
     {
-        return new CreateForm(
+        return new BasicForm(
             $this->formTagFactory->getCreateFormTag($itemStructure),
             $itemStructure,
             new CreateButton(
@@ -47,12 +47,11 @@ final class FormFactory
      */
     public function updateForm(ItemStructure $itemStructure): Form
     {
-        // TODO update form
-        return new CreateForm(
-            $this->formTagFactory->getCreateFormTag($itemStructure),
+        return new BasicForm(
+            $this->formTagFactory->getUpdateFormTag($itemStructure),
             $itemStructure,
             new CreateButton(
-                'create-' . $itemStructure->getName(),
+                'update-' . $itemStructure->getName(),
                 $this->translator->translate('submit')
             )
         );

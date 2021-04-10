@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Tests\Builder\Form\FormType;
 
 use EasyAdmin\Domain\Form\Button\CreateButton;
-use EasyAdmin\Domain\Form\FormType\CreateForm;
+use EasyAdmin\Domain\Form\FormType\BasicForm;
 use EasyAdmin\Domain\Form\FormType\Tag\FormTag;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 use Tests\Builder\Form\FormType\Tag\FormTagBuilder;
 use Tests\Builder\Form\Item\ItemStructureBuilder;
 
-final class CreateFormBuilder
+final class FormBuilder
 {
     private FormTag $tag;
 
@@ -37,8 +37,8 @@ final class CreateFormBuilder
         return $this;
     }
 
-    public function build(): CreateForm
+    public function build(): BasicForm
     {
-        return new CreateForm($this->tag, $this->structure, new CreateButton('create', 'submit'));
+        return new BasicForm($this->tag, $this->structure, new CreateButton('create', 'submit'));
     }
 }

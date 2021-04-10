@@ -16,4 +16,12 @@ final class FormTagFactory
 
         return new FormTag($id, $id, 'POST', $action);
     }
+
+    public function getUpdateFormTag(ItemStructure $structure): FormTag
+    {
+        $id = 'update-form-' . $structure->getName();
+        $action = sprintf('?type=%s&page=%s&id=%d', $structure->getName(), 'update', $structure->getId());
+
+        return new FormTag($id, $id, 'POST', $action);
+    }
 }

@@ -6,8 +6,12 @@ namespace EasyAdmin\Infrastructure\Helper\Convertor;
 
 final class StringToIntegerConvertor
 {
-    public function convert(string $asInteger): ?int
+    public function convert($asInteger): ?int
     {
+        if (is_int($asInteger)) {
+            return $asInteger;
+        }
+
         if ($asInteger === '') {
             return null;
         }

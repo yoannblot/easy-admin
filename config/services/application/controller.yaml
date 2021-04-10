@@ -36,6 +36,7 @@ services:
         class: EasyAdmin\Application\Controller\Update\UpdateController
         arguments:
             - '@EasyAdmin\Application\Controller\Update\ItemStructureFactory'
+            - '@EasyAdmin\Application\Controller\Update\ItemUpdator'
             - '@EasyAdmin\Application\Controller\Update\ItemStructureViewer'
 
     EasyAdmin\Application\Controller\Update\ItemStructureFactory:
@@ -44,6 +45,13 @@ services:
             - '@EasyAdmin\Application\Loader\ConfigurationLoader'
             - '@EasyAdmin\Domain\Parser\Parser'
             - '@EasyAdmin\Domain\Database\ItemRepository'
+
+    EasyAdmin\Application\Controller\Update\ItemUpdator:
+        class: EasyAdmin\Application\Controller\Update\ItemUpdator
+        arguments:
+            - '@EasyAdmin\Domain\Database\ItemRepository'
+            - '@EasyAdmin\Domain\Message\FlashMessageFactory'
+            - '@EasyAdmin\Infrastructure\Viewer\Html\Message\FlashMessageViewer'
 
     EasyAdmin\Application\Controller\Update\ItemStructureViewer:
         class: EasyAdmin\Application\Controller\Update\ItemStructureViewer

@@ -1,3 +1,5 @@
 submit = "submit"
 createFailed = "unable to create, contact your administrator"
 createSuccess = "create success"
+updateFailed = "unable to update, contact your administrator"
+updateSuccess = "update success"

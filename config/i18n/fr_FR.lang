@@ -1,3 +1,5 @@
 submit = "valider"
 createFailed = "création impossible, contactez votre administrateur"
 createSuccess = "création réussie"
+updateFailed = "mise à jour impossible, contactez votre administrateur"
+updateSuccess = "mise à jour réussie"

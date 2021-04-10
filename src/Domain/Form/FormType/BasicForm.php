@@ -9,7 +9,7 @@ use EasyAdmin\Domain\Form\Button\CreateButton;
 use EasyAdmin\Domain\Form\FormType\Tag\FormTag;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 
-final class CreateForm implements Form
+final class BasicForm implements Form
 {
     private ItemStructure $structure;
 
