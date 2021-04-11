@@ -6,13 +6,13 @@ namespace EasyAdmin\Infrastructure\Parser\Xml;
 
 use EasyAdmin\Domain\Form\Component\Simple\TextComponent;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
-use EasyAdmin\Domain\Parser\Parser;
+use EasyAdmin\Domain\Parser\ItemParser;
 use EasyAdmin\Infrastructure\Parser\Xml\Component\XmlComponentParser;
 use Exception;
 use InvalidArgumentException;
 use SimpleXMLElement;
 
-final class XmlParser implements Parser
+final class XmlItemParser implements ItemParser
 {
     public const EXTENSION = '.xml';
 

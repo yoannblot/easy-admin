@@ -7,7 +7,7 @@ namespace EasyAdmin\Application\Controller\Remove;
 use EasyAdmin\Application\Loader\ConfigurationLoader;
 use EasyAdmin\Domain\Database\ItemRepository;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
-use EasyAdmin\Domain\Parser\Parser;
+use EasyAdmin\Domain\Parser\ItemParser;
 use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -15,11 +15,11 @@ final class ItemStructureFactory
 {
     private ConfigurationLoader $loader;
 
-    private Parser $parser;
+    private ItemParser $parser;
 
     private ItemRepository $itemRepository;
 
-    public function __construct(ConfigurationLoader $loader, Parser $parser, ItemRepository $itemRepository)
+    public function __construct(ConfigurationLoader $loader, ItemParser $parser, ItemRepository $itemRepository)
     {
         $this->loader = $loader;
         $this->parser = $parser;

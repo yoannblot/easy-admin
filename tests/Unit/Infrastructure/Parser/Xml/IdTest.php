@@ -13,7 +13,7 @@ use EasyAdmin\Infrastructure\I18N\Loader;
 use EasyAdmin\Infrastructure\I18N\Translator;
 use EasyAdmin\Infrastructure\Parser\Xml\Component\Common\AttributesParser;
 use EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\IdComponentParser;
-use EasyAdmin\Infrastructure\Parser\Xml\XmlParser;
+use EasyAdmin\Infrastructure\Parser\Xml\XmlItemParser;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -33,7 +33,7 @@ final class IdTest extends TestCase
 
     private function parse(string $filePath): ItemStructure
     {
-        return (new XmlParser(
+        return (new XmlItemParser(
             [
                 new IdComponentParser(
                     new AttributesParser(

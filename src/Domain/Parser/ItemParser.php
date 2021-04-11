@@ -7,7 +7,7 @@ namespace EasyAdmin\Domain\Parser;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 use InvalidArgumentException;
 
-interface Parser
+interface ItemParser
 {
     /**
      * @param string $path

@@ -17,8 +17,8 @@ services:
             - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Common\AttributesParser'
             - '@EasyAdmin\Infrastructure\Helper\Convertor\StringToIntegerConvertor'
 
-    EasyAdmin\Infrastructure\Parser\Xml\XmlParser:
-        class: EasyAdmin\Infrastructure\Parser\Xml\XmlParser
+    EasyAdmin\Infrastructure\Parser\Xml\XmlItemParser:
+        class: EasyAdmin\Infrastructure\Parser\Xml\XmlItemParser
         arguments:
             -
                 - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser'

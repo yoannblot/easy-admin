@@ -1,3 +1,3 @@
 services:
 
-    EasyAdmin\Domain\Parser\Parser: '@EasyAdmin\Infrastructure\Parser\Xml\XmlParser'
+    EasyAdmin\Domain\Parser\ItemParser: '@EasyAdmin\Infrastructure\Parser\Xml\XmlItemParser'

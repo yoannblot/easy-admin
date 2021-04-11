@@ -6,16 +6,16 @@ namespace EasyAdmin\Application\Controller\Create;
 
 use EasyAdmin\Application\Loader\ConfigurationLoader;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
-use EasyAdmin\Domain\Parser\Parser;
+use EasyAdmin\Domain\Parser\ItemParser;
 use Symfony\Component\HttpFoundation\Request;
 
 final class ItemStructureFactory
 {
     private ConfigurationLoader $loader;
 
-    private Parser $parser;
+    private ItemParser $parser;
 
-    public function __construct(ConfigurationLoader $loader, Parser $parser)
+    public function __construct(ConfigurationLoader $loader, ItemParser $parser)
     {
         $this->loader = $loader;
         $this->parser = $parser;

@@ -11,7 +11,7 @@ use EasyAdmin\Infrastructure\I18N\Loader;
 use EasyAdmin\Infrastructure\I18N\Translator;
 use EasyAdmin\Infrastructure\Parser\Xml\Component\Common\AttributesParser;
 use EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser;
-use EasyAdmin\Infrastructure\Parser\Xml\XmlParser;
+use EasyAdmin\Infrastructure\Parser\Xml\XmlItemParser;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
@@ -58,9 +58,9 @@ final class ErrorTest extends TestCase
         $this->getXmlParser()->parse(__DIR__ . '/Resources/parsing-error.xml', []);
     }
 
-    private function getXmlParser(): XmlParser
+    private function getXmlParser(): XmlItemParser
     {
-        return new XmlParser(
+        return new XmlItemParser(
             [
                 new TextComponentParser(
                     new AttributesParser(
