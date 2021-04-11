@@ -9,6 +9,7 @@ use EasyAdmin\Domain\Database\Connector;
 use EasyAdmin\Domain\Database\Exception\EntityNotFoundException;
 use EasyAdmin\Domain\Database\Exception\QueryException;
 use EasyAdmin\Domain\Database\ItemRepository as ItemRepositoryInterface;
+use EasyAdmin\Domain\DisplayList\Filters;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 use PDO;
 
@@ -117,9 +118,17 @@ final class ItemRepository implements ItemRepositoryInterface
         return false;
     }
 
-    public function getItemValues(ItemStructure $structure): array
+    public function getItemValues(ItemStructure $structure, Filters $filters): array
     {
-        $query = sprintf('SELECT * FROM %s', $structure->getTable());
+        $orderBind = $structure->getComponentByName($filters->getOrder())->getBind();
+        $query = sprintf(
+            'SELECT * FROM %s ORDER BY %s %s LIMIT %d',
+            $structure->getTable(),
+            $orderBind,
+            $filters->getOrderDirection(),
+            $filters->getSize()
+        );
+
         $statement = $this->connector->exec($query);
         $all = [];
         foreach ($statement->fetchAll(\PDO::FETCH_ASSOC) as $elementValues) {

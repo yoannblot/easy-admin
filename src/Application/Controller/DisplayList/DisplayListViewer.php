@@ -30,7 +30,7 @@ final class DisplayListViewer
         $items = $this->itemsParser->parse(
             $itemStructure,
             $displayItem,
-            $this->repository->getItemValues($itemStructure)
+            $this->repository->getItemValues($itemStructure, $displayItem->getFilters())
         );
         require __DIR__ . '/../../../Infrastructure/Template/DisplayList/table.php';
 

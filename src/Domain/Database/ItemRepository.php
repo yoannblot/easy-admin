@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Domain\Database;
 
+use EasyAdmin\Domain\DisplayList\Filters;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 
 interface ItemRepository
@@ -14,10 +15,11 @@ interface ItemRepository
 
     /**
      * @param ItemStructure $structure
+     * @param Filters       $filters
      *
      * @return ItemStructure[]
      */
-    public function getItemValues(ItemStructure $structure): array;
+    public function getItemValues(ItemStructure $structure, Filters $filters): array;
 
     public function remove(ItemStructure $structure): bool;
 }
