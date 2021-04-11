@@ -44,9 +44,9 @@ final class RemoveController implements Controller
         $htmlContent = '';
         if ($request->getMethod() === Request::METHOD_POST) {
             $htmlContent .= $this->itemRemoveService->removeAndRetrieveOutput($itemStructure);
+        } else {
+            $htmlContent .= $this->viewer->toHtml($itemStructure);
         }
-
-        $htmlContent .= $this->viewer->toHtml($itemStructure);
 
         return new Response($htmlContent, Response::HTTP_OK);
     }
