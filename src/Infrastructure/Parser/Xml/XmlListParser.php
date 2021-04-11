@@ -9,6 +9,7 @@ use EasyAdmin\Domain\DisplayList\Field;
 use EasyAdmin\Domain\DisplayList\Filters;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 use EasyAdmin\Domain\Parser\ListParser;
+use EasyAdmin\Infrastructure\I18N\Translator;
 use Exception;
 use InvalidArgumentException;
 use SimpleXMLElement;
@@ -16,6 +17,13 @@ use SimpleXMLElement;
 final class XmlListParser implements ListParser
 {
     public const EXTENSION = '.xml';
+
+    private Translator $translator;
+
+    public function __construct(Translator $translator)
+    {
+        $this->translator = $translator;
+    }
 
     public function parse(ItemStructure $itemStructure, string $path): DisplayItem
     {
@@ -60,7 +68,8 @@ final class XmlListParser implements ListParser
         foreach ($xmlRootElement->fields as $xmlFieldElement) {
             foreach ($xmlFieldElement->field as $xmlElement) {
                 $name = (string) $xmlElement['name'];
-                $fields[] = new Field($name, $name, '');
+                $label = $this->translator->translate($name);
+                $fields[] = new Field($name, $label, '');
             }
         }
 

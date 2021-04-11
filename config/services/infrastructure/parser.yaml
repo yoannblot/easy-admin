@@ -27,6 +27,4 @@ services:
     EasyAdmin\Infrastructure\Parser\Xml\XmlListParser:
         class: EasyAdmin\Infrastructure\Parser\Xml\XmlListParser
         arguments:
-            -
-                - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser'
-                - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\IdComponentParser'
+            - '@EasyAdmin\Domain\I18N\Translator'

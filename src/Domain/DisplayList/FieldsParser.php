@@ -18,10 +18,10 @@ final class FieldsParser
     public function parse(ItemStructure $itemStructure, DisplayItem $displayItem, array $itemValues): array
     {
         $columns = [];
-        foreach ($displayItem->getFields() as $column) {
-            $component = $itemStructure->getComponentByName($column->getName());
+        foreach ($displayItem->getFields() as $field) {
+            $component = $itemStructure->getComponentByName($field->getName());
             $fieldValue = $itemValues[$component->getBind()];
-            $columns[] = new Field($component->getName(), $component->getName(), $fieldValue);
+            $columns[] = new Field($field->getName(), $field->getLabel(), $fieldValue);
         }
 
         return $columns;
