@@ -55,6 +55,26 @@ final class LanguageDetectorTest extends TestCase
         self::assertSame('english', $language->getName());
     }
 
+    /**
+     * @test
+     */
+    public function it_detects_from_browser(): void
+    {
+        $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'fr';
+        $language = $this->detectLanguage();
+        self::assertSame('french', $language->getName());
+    }
+
+    /**
+     * @test
+     */
+    public function it_retrieves_default_language_when_no_available_language_detected_from_browser(): void
+    {
+        $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'it,de';
+        $language = $this->detectLanguage();
+        self::assertSame('english', $language->getName());
+    }
+
     private function detectLanguage(): Language
     {
         return (new LanguageDetector(new LanguageFactory(), Request::createFromGlobals()))->detect();
