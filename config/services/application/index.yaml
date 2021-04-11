@@ -2,17 +2,4 @@ imports:
     - { resource: controller.yaml }
     - { resource: loader.yaml }
     - { resource: logger.yaml }
-
-services:
-
-    EasyAdmin\Application\Router:
-        class: EasyAdmin\Application\Router
-        arguments:
-            -
-                - '@EasyAdmin\Application\Controller\Create\CreateController'
-                - '@EasyAdmin\Application\Controller\Update\UpdateController'
-                - '@EasyAdmin\Application\Controller\DisplayList\ListController'
-            - '@Symfony\Component\HttpFoundation\Request'
-
-    EasyAdmin\Application\FormTagFactory:
-        class: EasyAdmin\Application\FormTagFactory
+    - { resource: router.yaml }

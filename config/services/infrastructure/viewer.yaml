@@ -35,5 +35,11 @@ services:
             - '@EasyAdmin\Infrastructure\Viewer\HtmlViewer'
             - '@EasyAdmin\Infrastructure\Viewer\Html\Button\ButtonViewer'
 
+    EasyAdmin\Infrastructure\Viewer\Html\FormType\RemoveFormViewer:
+        class: EasyAdmin\Infrastructure\Viewer\Html\FormType\RemoveFormViewer
+        arguments:
+            - '@EasyAdmin\Infrastructure\Viewer\Html\FormType\Tag\FormTagViewer'
+            - '@EasyAdmin\Infrastructure\Viewer\Html\Button\ButtonViewer'
+
     EasyAdmin\Infrastructure\Viewer\Html\Message\FlashMessageViewer:
         class: EasyAdmin\Infrastructure\Viewer\Html\Message\FlashMessageViewer

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\Application\Controller\Create;
+namespace EasyAdmin\Application\Controller\Remove;
 
+use EasyAdmin\Domain\Database\ItemRepository;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 use EasyAdmin\Domain\Message\FlashMessage;
 use EasyAdmin\Domain\Message\FlashMessageFactory;
-use EasyAdmin\Domain\Database\ItemRepository;
 use EasyAdmin\Infrastructure\Viewer\Html\Message\FlashMessageViewer;
 
-final class ItemCreator
+final class ItemRemoveService
 {
     private ItemRepository $itemRepository;
 
@@ -28,13 +28,13 @@ final class ItemCreator
         $this->messageViewer = $messageViewer;
     }
 
-    public function createAndRetrieveOutput(ItemStructure $itemStructure): string
+    public function removeAndRetrieveOutput(ItemStructure $itemStructure): string
     {
-        $isCreationSuccess = $this->itemRepository->create($itemStructure);
+        $isCreationSuccess = $this->itemRepository->remove($itemStructure);
         if ($isCreationSuccess) {
-            $message = $this->messageFactory->create(FlashMessage::SUCCESS, 'createSuccess');
+            $message = $this->messageFactory->create(FlashMessage::SUCCESS, 'removeSuccess');
         } else {
-            $message = $this->messageFactory->create(FlashMessage::ERROR, 'createFailed');
+            $message = $this->messageFactory->create(FlashMessage::ERROR, 'removeFailed');
         }
 
         return $this->messageViewer->toHtml($message);

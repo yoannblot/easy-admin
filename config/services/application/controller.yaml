@@ -74,3 +74,33 @@ services:
         arguments:
             - '@EasyAdmin\Application\Loader\ConfigurationLoader'
             - '@EasyAdmin\Domain\Parser\Parser'
+
+    ############
+    #  REMOVE  #
+    ############
+    EasyAdmin\Application\Controller\Remove\RemoveController:
+        class: EasyAdmin\Application\Controller\Remove\RemoveController
+        arguments:
+            - '@EasyAdmin\Application\Controller\Remove\ItemStructureFactory'
+            - '@EasyAdmin\Application\Controller\Remove\ItemRemoveService'
+            - '@EasyAdmin\Application\Controller\Remove\ItemStructureViewer'
+
+    EasyAdmin\Application\Controller\Remove\ItemStructureFactory:
+        class: EasyAdmin\Application\Controller\Remove\ItemStructureFactory
+        arguments:
+            - '@EasyAdmin\Application\Loader\ConfigurationLoader'
+            - '@EasyAdmin\Domain\Parser\Parser'
+            - '@EasyAdmin\Domain\Database\ItemRepository'
+
+    EasyAdmin\Application\Controller\Remove\ItemRemoveService:
+        class: EasyAdmin\Application\Controller\Remove\ItemRemoveService
+        arguments:
+            - '@EasyAdmin\Domain\Database\ItemRepository'
+            - '@EasyAdmin\Domain\Message\FlashMessageFactory'
+            - '@EasyAdmin\Infrastructure\Viewer\Html\Message\FlashMessageViewer'
+
+    EasyAdmin\Application\Controller\Remove\ItemStructureViewer:
+        class: EasyAdmin\Application\Controller\Remove\ItemStructureViewer
+        arguments:
+            - '@EasyAdmin\Infrastructure\Viewer\Html\FormType\RemoveFormViewer'
+            - '@EasyAdmin\Domain\Form\FormType\FormFactory'

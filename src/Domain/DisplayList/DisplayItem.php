@@ -13,10 +13,13 @@ final class DisplayItem
 
     private string $updateUrl;
 
-    public function __construct(array $columns, string $updateUrl)
+    private string $removeUrl;
+
+    public function __construct(array $columns, string $updateUrl, string $removeUrl)
     {
         $this->columns = $columns;
         $this->updateUrl = $updateUrl;
+        $this->removeUrl = $removeUrl;
     }
 
     /**
@@ -30,5 +33,10 @@ final class DisplayItem
     public function getUpdateUrl(): string
     {
         return $this->updateUrl;
+    }
+
+    public function getRemoveUrl(): string
+    {
+        return $this->removeUrl;
     }
 }

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Domain\Form\FormType;
 
-use EasyAdmin\Application\FormTagFactory;
 use EasyAdmin\Domain\Form\Button\CreateButton;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 use EasyAdmin\Domain\I18N\Translator;
@@ -53,6 +52,23 @@ final class FormFactory
             new CreateButton(
                 'update-' . $itemStructure->getName(),
                 $this->translator->translate('submit')
+            )
+        );
+    }
+
+    /**
+     * @param ItemStructure $itemStructure
+     *
+     * @return Form
+     */
+    public function removeForm(ItemStructure $itemStructure): Form
+    {
+        return new BasicForm(
+            $this->formTagFactory->getRemoveFormTag($itemStructure),
+            $itemStructure,
+            new CreateButton(
+                'remove-' . $itemStructure->getName(),
+                $this->translator->translate('removeConfirm')
             )
         );
     }

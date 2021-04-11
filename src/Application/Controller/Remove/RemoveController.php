@@ -2,35 +2,35 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\Application\Controller\Update;
+namespace EasyAdmin\Application\Controller\Remove;
 
 use EasyAdmin\Application\Controller\Controller;
-use EasyAdmin\Application\Controller\Remove\NotFoundHttpResponse;
+use EasyAdmin\Application\Controller\Error\NotFoundHttpResponse;
 use EasyAdmin\Domain\Database\Exception\EntityNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-final class UpdateController implements Controller
+final class RemoveController implements Controller
 {
     private ItemStructureFactory $itemFactory;
 
-    private ItemUpdator $itemUpdator;
+    private ItemRemoveService $itemRemoveService;
 
     private ItemStructureViewer $viewer;
 
     public function __construct(
-        ItemStructureFactory $parser,
-        ItemUpdator $itemUpdator,
+        ItemStructureFactory $itemFactory,
+        ItemRemoveService $itemRemoveService,
         ItemStructureViewer $viewer
     ) {
-        $this->itemFactory = $parser;
-        $this->itemUpdator = $itemUpdator;
+        $this->itemFactory = $itemFactory;
+        $this->itemRemoveService = $itemRemoveService;
         $this->viewer = $viewer;
     }
 
     public function getAction(): string
     {
-        return 'update';
+        return 'remove';
     }
 
     public function __invoke(Request $request): Response
@@ -43,11 +43,12 @@ final class UpdateController implements Controller
 
         $htmlContent = '';
         if ($request->getMethod() === Request::METHOD_POST) {
-            $htmlContent .= $this->itemUpdator->updateAndRetrieveOutput($itemStructure);
+            $htmlContent .= $this->itemRemoveService->removeAndRetrieveOutput($itemStructure);
         }
 
         $htmlContent .= $this->viewer->toHtml($itemStructure);
 
         return new Response($htmlContent, Response::HTTP_OK);
     }
+
 }

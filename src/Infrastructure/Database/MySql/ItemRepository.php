@@ -123,36 +123,29 @@ final class ItemRepository implements ItemRepositoryInterface
         $statement = $this->connector->exec($query);
         $all = [];
         foreach ($statement->fetchAll(\PDO::FETCH_ASSOC) as $elementValues) {
-            // TODO convert $elementValues to ItemStructure
             $all[] = $elementValues;
         }
 
         return $all;
     }
 
-    public function getValues(
-        $sWhere = false,
-        $sOrder = false,
-        $sLimit = false,
-        $bAsObject = true,
-        $bAllCols = false
-    ) {
-        $sQuery = ' SELECT * ' . ' FROM ' . $this->getTable() . ($sWhere ? ' ' . $sWhere : null) . ($sOrder
-                ? ' ORDER BY ' . $sOrder : null) . ($sLimit ? ' LIMIT ' . $sLimit : null);
-        $aAll = [];
-        $oResult = ConnectorPDO::get()->exec($sQuery);
-        if (false !== $oResult) {
-            foreach ($oResult->fetchAll(\PDO::FETCH_ASSOC) as $aData) {
-                if ($bAsObject) {
-                    $aAll[] = ItemFactory::get($this->getType(), $aData[$this->getIdField()]);
-                } else {
-                    $aAll[] = ($bAllCols ? $aData : $aData[$this->getIdField()]);
-                }
-            }
-            $oResult->closeCursor();
+    public function remove(ItemStructure $structure): bool
+    {
+        $query = sprintf(
+            'DELETE FROM %s WHERE %s=%d LIMIT 1;',
+            $structure->getTable(),
+            $structure->getIdBind(),
+            $structure->getId()
+        );
+
+        try {
+            $this->logger->info($query);
+
+            return $this->connector->execOnce($query);
+        } catch (QueryException $e) {
+            $this->logger->queryError($e);
         }
 
-        return $aAll;
+        return false;
     }
-
 }

@@ -31,9 +31,11 @@ final class DisplayItemsParser
         foreach ($itemsValues as $itemValues) {
             $id = $this->integerConvertor->convert($itemValues[$itemStructure->getIdBind()]);
             $updateUrl = sprintf('/?type=%s&page=update&id=%d', $itemStructure->getTable(), $id);
+            $removeUrl = sprintf('/?type=%s&page=remove&id=%d', $itemStructure->getTable(), $id);
             $items[] = new DisplayItem(
                 $this->columnsParser->parse($itemStructure, $itemValues),
-                $updateUrl
+                $updateUrl,
+                $removeUrl
             );
         }
 

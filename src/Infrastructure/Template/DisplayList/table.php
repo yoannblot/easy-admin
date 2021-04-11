@@ -28,6 +28,9 @@ use EasyAdmin\Domain\Form\Item\ItemStructure;
             <td>
                 <a href="<?= $displayItem->getUpdateUrl(); ?>">modifier</a>
             </td>
+            <td>
+                <a href="<?= $displayItem->getRemoveUrl(); ?>">supprimer</a>
+            </td>
         </tr>
     <?php endforeach; ?>
     </tbody>

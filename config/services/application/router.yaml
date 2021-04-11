@@ -1,0 +1,11 @@
+services:
+
+    EasyAdmin\Application\Router:
+        class: EasyAdmin\Application\Router
+        arguments:
+            -
+                - '@EasyAdmin\Application\Controller\Create\CreateController'
+                - '@EasyAdmin\Application\Controller\Update\UpdateController'
+                - '@EasyAdmin\Application\Controller\DisplayList\ListController'
+                - '@EasyAdmin\Application\Controller\Remove\RemoveController'
+            - '@Symfony\Component\HttpFoundation\Request'

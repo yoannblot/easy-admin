@@ -18,4 +18,6 @@ interface ItemRepository
      * @return ItemStructure[]
      */
     public function getItemValues(ItemStructure $structure): array;
+
+    public function remove(ItemStructure $structure): bool;
 }
