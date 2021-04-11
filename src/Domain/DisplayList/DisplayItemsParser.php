@@ -9,11 +9,11 @@ use EasyAdmin\Infrastructure\Helper\Convertor\StringToIntegerConvertor;
 
 final class DisplayItemsParser
 {
-    private ColumnsParser $columnsParser;
+    private FieldsParser $columnsParser;
 
     private StringToIntegerConvertor $integerConvertor;
 
-    public function __construct(ColumnsParser $columnsParser, StringToIntegerConvertor $integerConvertor)
+    public function __construct(FieldsParser $columnsParser, StringToIntegerConvertor $integerConvertor)
     {
         $this->columnsParser = $columnsParser;
         $this->integerConvertor = $integerConvertor;

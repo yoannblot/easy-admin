@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Domain\DisplayList;
 
-final class Column
+final class Field
 {
     private string $name;
 

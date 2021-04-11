@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Infrastructure\Parser\Xml;
 
-use EasyAdmin\Domain\DisplayList\Column;
 use EasyAdmin\Domain\DisplayList\DisplayItem;
+use EasyAdmin\Domain\DisplayList\Field;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 use EasyAdmin\Domain\Parser\ListParser;
 use Exception;
@@ -23,7 +23,7 @@ final class XmlListParser implements ListParser
         $xmlElement = $this->createXmlElementFromFile($path);
 
         return new DisplayItem(
-            $this->getColumns($xmlElement),
+            $this->getFields($xmlElement),
             '',
             ''
         );
@@ -48,23 +48,23 @@ final class XmlListParser implements ListParser
     /**
      * @param SimpleXMLElement $xmlRootElement
      *
-     * @return Column[]
+     * @return Field[]
      *
      * @throws InvalidArgumentException
      */
-    private function getColumns(SimpleXMLElement $xmlRootElement): array
+    private function getFields(SimpleXMLElement $xmlRootElement): array
     {
-        $columns = [];
+        $fields = [];
         foreach ($xmlRootElement->fields as $xmlFieldElement) {
             foreach ($xmlFieldElement->field as $xmlElement) {
                 /** @var SimpleXMLElement $xmlElement */
                 $attributes = $xmlElement->attributes();
                 $name = (string) $attributes['name'];
-                $columns[] = new Column($name, $name, '');
+                $fields[] = new Field($name, $name, '');
             }
         }
 
-        return $columns;
+        return $fields;
     }
 
     /**

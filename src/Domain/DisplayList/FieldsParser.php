@@ -6,22 +6,22 @@ namespace EasyAdmin\Domain\DisplayList;
 
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 
-final class ColumnsParser
+final class FieldsParser
 {
     /**
      * @param ItemStructure $itemStructure
      * @param DisplayItem   $displayItem
      * @param array         $itemValues
      *
-     * @return Column[]
+     * @return Field[]
      */
     public function parse(ItemStructure $itemStructure, DisplayItem $displayItem, array $itemValues): array
     {
         $columns = [];
-        foreach ($displayItem->getColumns() as $column) {
+        foreach ($displayItem->getFields() as $column) {
             $component = $itemStructure->getComponentByName($column->getName());
-            $columnValue = $itemValues[$component->getBind()];
-            $columns[] = new Column($component->getName(), $component->getName(), $columnValue);
+            $fieldValue = $itemValues[$component->getBind()];
+            $columns[] = new Field($component->getName(), $component->getName(), $fieldValue);
         }
 
         return $columns;

@@ -1,6 +1,5 @@
 <?php
 
-use EasyAdmin\Domain\DisplayList\Column;
 use EasyAdmin\Domain\DisplayList\DisplayItem;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 
@@ -11,18 +10,17 @@ use EasyAdmin\Domain\Form\Item\ItemStructure;
 <table>
     <thead>
     <tr>
-        <?php foreach ($items[array_key_first($items)]->getColumns() as $column) : ?>
-            <?php /** @var Column $column */ ?>
-            <th><?= $column->getLabel(); ?></th>
+        <?php foreach ($items[array_key_first($items)]->getFields() as $field) : ?>
+            <th><?= $field->getLabel(); ?></th>
         <?php endforeach; ?>
     </tr>
     </thead>
     <tbody>
     <?php foreach ($items as $displayItem) : ?>
         <tr>
-            <?php foreach ($displayItem->getColumns() as $column) : ?>
+            <?php foreach ($displayItem->getFields() as $field) : ?>
                 <td>
-                    <?= $column->getValue(); ?>
+                    <?= $field->getValue(); ?>
                 </td>
             <?php endforeach; ?>
             <td>

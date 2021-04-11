@@ -7,27 +7,27 @@ namespace EasyAdmin\Domain\DisplayList;
 final class DisplayItem
 {
     /**
-     * @var Column[]
+     * @var Field[]
      */
-    private array $columns;
+    private array $fields;
 
     private string $updateUrl;
 
     private string $removeUrl;
 
-    public function __construct(array $columns, string $updateUrl, string $removeUrl)
+    public function __construct(array $fields, string $updateUrl, string $removeUrl)
     {
-        $this->columns = $columns;
+        $this->fields = $fields;
         $this->updateUrl = $updateUrl;
         $this->removeUrl = $removeUrl;
     }
 
     /**
-     * @return Column[]
+     * @return Field[]
      */
-    public function getColumns(): array
+    public function getFields(): array
     {
-        return $this->columns;
+        return $this->fields;
     }
 
     public function getUpdateUrl(): string
