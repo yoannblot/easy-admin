@@ -51,6 +51,24 @@ final class ItemStructure
     }
 
     /**
+     * @param string $columnName
+     *
+     * @return Component
+     *
+     * @throws InvalidArgumentException
+     */
+    public function getComponentByName(string $columnName): Component
+    {
+        foreach ($this->components as $component) {
+            if ($component->getName() === $columnName) {
+                return $component;
+            }
+        }
+
+        throw new InvalidArgumentException('Component not found with name ' . $columnName);
+    }
+
+    /**
      * @return string
      *
      * @throws LogicException
