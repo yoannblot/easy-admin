@@ -10,16 +10,19 @@ final class ColumnsParser
 {
     /**
      * @param ItemStructure $itemStructure
+     * @param DisplayItem   $displayItem
      * @param array         $itemValues
      *
      * @return Column[]
      */
-    public function parse(ItemStructure $itemStructure, array $itemValues): array
+    public function parse(ItemStructure $itemStructure, DisplayItem $displayItem, array $itemValues): array
     {
         $columns = [];
         foreach ($itemValues as $columnBind => $columnValue) {
             $component = $itemStructure->getComponentByBind($columnBind);
-            $columns[] = new Column($component->getName(), $component->getName(), $columnValue);
+            if ($displayItem->has($component->getName())){
+                $columns[] = new Column($component->getName(), $component->getName(), $columnValue);
+            }
         }
 
         return $columns;

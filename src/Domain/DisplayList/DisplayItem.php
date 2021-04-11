@@ -39,4 +39,15 @@ final class DisplayItem
     {
         return $this->removeUrl;
     }
+
+    public function has(string $columnName): bool
+    {
+        foreach ($this->columns as $column) {
+            if ($column->getName() === $columnName) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

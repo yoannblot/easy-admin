@@ -13,13 +13,23 @@ final class Directory
         $this->path = $path;
     }
 
-    public function has(string $itemName): bool
+    public function hasItem(string $itemName): bool
     {
-        return file_exists($this->getFilePath($itemName));
+        return file_exists($this->getItemFilePath($itemName));
     }
 
-    public function getFilePath(string $itemName): string
+    public function getItemFilePath(string $itemName): string
     {
         return sprintf('%s/items/%s.xml', $this->path, $itemName);
+    }
+
+    public function hasList(string $itemName): bool
+    {
+        return file_exists($this->getListFilePath($itemName));
+    }
+
+    public function getListFilePath(string $itemName): string
+    {
+        return sprintf('%s/list/%s.xml', $this->path, $itemName);
     }
 }

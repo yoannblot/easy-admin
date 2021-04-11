@@ -25,7 +25,7 @@ final class ItemStructureFactory
     {
         $itemName = $request->query->get('type');
 
-        return $this->parser->parse($this->loader->getFilePath($itemName), $this->getValues($request));
+        return $this->parser->parse($this->loader->getItemFilePath($itemName), $this->getValues($request));
     }
 
     private function getValues(Request $request): array

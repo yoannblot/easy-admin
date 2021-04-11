@@ -18,15 +18,26 @@ final class ConfigurationLoader
         $this->directories = [];
     }
 
-    public function getFilePath(string $itemName): string
+    public function getItemFilePath(string $itemName): string
     {
         foreach ($this->directories as $directory) {
-            if ($directory->has($itemName)) {
-                return $directory->getFilePath($itemName);
+            if ($directory->hasItem($itemName)) {
+                return $directory->getItemFilePath($itemName);
             }
         }
 
         throw new InvalidArgumentException('Item not found with name ' . $itemName);
+    }
+
+    public function getListFilePath(string $itemName): string
+    {
+        foreach ($this->directories as $directory) {
+            if ($directory->hasList($itemName)) {
+                return $directory->getListFilePath($itemName);
+            }
+        }
+
+        throw new InvalidArgumentException('List not found with name ' . $itemName);
     }
 
     public function load(string $directory): void

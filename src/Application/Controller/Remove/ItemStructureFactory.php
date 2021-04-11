@@ -35,10 +35,10 @@ final class ItemStructureFactory
         $itemName = $request->query->get('type');
         $itemId = (int) $request->query->get('id');
 
-        $itemStructure = $this->parser->parse($this->loader->getFilePath($itemName), []);
+        $itemStructure = $this->parser->parse($this->loader->getItemFilePath($itemName), []);
 
         return $this->parser->parse(
-            $this->loader->getFilePath($itemName),
+            $this->loader->getItemFilePath($itemName),
             $this->itemRepository->get($itemStructure, $itemId)
         );
     }

@@ -14,12 +14,16 @@ final class ListController implements Controller
 
     private DisplayListViewer $viewer;
 
+    private ListStructureFactory $listStructureFactory;
+
     public function __construct(
         ItemStructureFactory $itemStructureFactory,
-        DisplayListViewer $viewer
+        DisplayListViewer $viewer,
+        ListStructureFactory $listStructureFactory
     ) {
         $this->factory = $itemStructureFactory;
         $this->viewer = $viewer;
+        $this->listStructureFactory = $listStructureFactory;
     }
 
     public function getAction(): string
@@ -32,7 +36,11 @@ final class ListController implements Controller
         $itemStructure = $this->factory->fromRequest($request);
 
         $htmlContent = '<h1>list of ' . $itemStructure->getName() . '</h1>';
-        $htmlContent .= $this->viewer->toHtml($itemStructure);
+
+        $htmlContent .= $this->viewer->toHtml(
+            $itemStructure,
+            $this->listStructureFactory->fromItemStructure($itemStructure)
+        );
 
         return new Response($htmlContent, Response::HTTP_OK);
     }

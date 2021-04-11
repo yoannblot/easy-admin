@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace EasyAdmin\Application\Controller\DisplayList;
 
 use EasyAdmin\Domain\Database\ItemRepository;
+use EasyAdmin\Domain\DisplayList\DisplayItem;
 use EasyAdmin\Domain\DisplayList\DisplayItemsParser;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 
@@ -22,16 +23,14 @@ final class DisplayListViewer
         $this->itemsParser = $itemsParser;
     }
 
-    public function toHtml(ItemStructure $itemStructure): string
+    public function toHtml(ItemStructure $itemStructure, DisplayItem $displayItem): string
     {
-        // TODO only fields to display
-        $displayListStructure = clone $itemStructure;
-
         ob_start();
         /** @noinspection PhpUnusedLocalVariableInspection */
         $items = $this->itemsParser->parse(
-            $displayListStructure,
-            $this->repository->getItemValues($displayListStructure)
+            $itemStructure,
+            $displayItem,
+            $this->repository->getItemValues($itemStructure)
         );
         require __DIR__ . '/../../../Infrastructure/Template/DisplayList/table.php';
 

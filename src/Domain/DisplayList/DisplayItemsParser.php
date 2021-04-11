@@ -21,11 +21,12 @@ final class DisplayItemsParser
 
     /**
      * @param ItemStructure $itemStructure
+     * @param DisplayItem   $displayItem
      * @param array         $itemsValues
      *
      * @return DisplayItem[]
      */
-    public function parse(ItemStructure $itemStructure, array $itemsValues): array
+    public function parse(ItemStructure $itemStructure, DisplayItem $displayItem, array $itemsValues): array
     {
         $items = [];
         foreach ($itemsValues as $itemValues) {
@@ -33,7 +34,7 @@ final class DisplayItemsParser
             $updateUrl = sprintf('/?type=%s&page=update&id=%d', $itemStructure->getTable(), $id);
             $removeUrl = sprintf('/?type=%s&page=remove&id=%d', $itemStructure->getTable(), $id);
             $items[] = new DisplayItem(
-                $this->columnsParser->parse($itemStructure, $itemValues),
+                $this->columnsParser->parse($itemStructure, $displayItem, $itemValues),
                 $updateUrl,
                 $removeUrl
             );

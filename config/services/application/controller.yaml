@@ -67,18 +67,26 @@ services:
         arguments:
             - '@EasyAdmin\Application\Controller\DisplayList\ItemStructureFactory'
             - '@EasyAdmin\Application\Controller\DisplayList\DisplayListViewer'
+            - '@EasyAdmin\Application\Controller\DisplayList\ListStructureFactory'
 
     EasyAdmin\Application\Controller\DisplayList\DisplayListViewer:
         class: EasyAdmin\Application\Controller\DisplayList\DisplayListViewer
         arguments:
             - '@EasyAdmin\Domain\Database\ItemRepository'
             - '@EasyAdmin\Domain\DisplayList\DisplayItemsParser'
+            - '@EasyAdmin\Application\Loader\ConfigurationLoader'
 
     EasyAdmin\Application\Controller\DisplayList\ItemStructureFactory:
         class: EasyAdmin\Application\Controller\DisplayList\ItemStructureFactory
         arguments:
             - '@EasyAdmin\Application\Loader\ConfigurationLoader'
             - '@EasyAdmin\Domain\Parser\ItemParser'
+
+    EasyAdmin\Application\Controller\DisplayList\ListStructureFactory:
+        class: EasyAdmin\Application\Controller\DisplayList\ListStructureFactory
+        arguments:
+            - '@EasyAdmin\Application\Loader\ConfigurationLoader'
+            - '@EasyAdmin\Domain\Parser\ListParser'
 
     ############
     #  REMOVE  #
