@@ -6,6 +6,7 @@ namespace EasyAdmin\Infrastructure\Parser\Xml;
 
 use EasyAdmin\Domain\DisplayList\DisplayItem;
 use EasyAdmin\Domain\DisplayList\Field;
+use EasyAdmin\Domain\DisplayList\Filters;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 use EasyAdmin\Domain\Parser\ListParser;
 use Exception;
@@ -23,6 +24,7 @@ final class XmlListParser implements ListParser
         $xmlElement = $this->createXmlElementFromFile($path);
 
         return new DisplayItem(
+            $this->getFilters($xmlElement),
             $this->getFields($xmlElement),
             '',
             ''
@@ -57,9 +59,7 @@ final class XmlListParser implements ListParser
         $fields = [];
         foreach ($xmlRootElement->fields as $xmlFieldElement) {
             foreach ($xmlFieldElement->field as $xmlElement) {
-                /** @var SimpleXMLElement $xmlElement */
-                $attributes = $xmlElement->attributes();
-                $name = (string) $attributes['name'];
+                $name = (string) $xmlElement['name'];
                 $fields[] = new Field($name, $name, '');
             }
         }
@@ -87,5 +87,14 @@ final class XmlListParser implements ListParser
         }
 
         return $xml;
+    }
+
+    private function getFilters(SimpleXMLElement $xmlElement): Filters
+    {
+        $order = (string) ($xmlElement['order'] ?? 'id');
+        $orderDirection = (string) ($xmlElement['orderDirection'] ?? 'ASC');
+        $size = (int) ($xmlElement['size'] ?? 10);
+
+        return new Filters($order, $orderDirection, $size);
     }
 }

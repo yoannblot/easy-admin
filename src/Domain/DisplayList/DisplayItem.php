@@ -6,6 +6,8 @@ namespace EasyAdmin\Domain\DisplayList;
 
 final class DisplayItem
 {
+    private Filters $filters;
+
     /**
      * @var Field[]
      */
@@ -15,11 +17,17 @@ final class DisplayItem
 
     private string $removeUrl;
 
-    public function __construct(array $fields, string $updateUrl, string $removeUrl)
+    public function __construct(Filters $filters, array $fields, string $updateUrl, string $removeUrl)
     {
+        $this->filters = $filters;
         $this->fields = $fields;
         $this->updateUrl = $updateUrl;
         $this->removeUrl = $removeUrl;
+    }
+
+    public function getFilters(): Filters
+    {
+        return $this->filters;
     }
 
     /**

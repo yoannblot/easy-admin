@@ -34,6 +34,7 @@ final class DisplayItemsParser
             $updateUrl = sprintf('/?type=%s&page=update&id=%d', $itemStructure->getTable(), $id);
             $removeUrl = sprintf('/?type=%s&page=remove&id=%d', $itemStructure->getTable(), $id);
             $items[] = new DisplayItem(
+                $displayItem->getFilters(),
                 $this->columnsParser->parse($itemStructure, $displayItem, $itemValues),
                 $updateUrl,
                 $removeUrl
