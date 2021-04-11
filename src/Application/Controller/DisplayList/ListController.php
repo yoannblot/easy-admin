@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace EasyAdmin\Application\Controller\DisplayList;
 
 use EasyAdmin\Application\Controller\Controller;
-use EasyAdmin\Domain\Database\ItemRepository;
-use EasyAdmin\Domain\DisplayList\DisplayItemsParser;
-use EasyAdmin\Domain\Form\Item\ItemStructure;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,18 +12,14 @@ final class ListController implements Controller
 {
     private ItemStructureFactory $factory;
 
-    private ItemRepository $repository;
-
-    private DisplayItemsParser $itemsParser;
+    private DisplayListViewer $viewer;
 
     public function __construct(
         ItemStructureFactory $itemStructureFactory,
-        ItemRepository $repository,
-        DisplayItemsParser $itemsParser
+        DisplayListViewer $viewer
     ) {
         $this->factory = $itemStructureFactory;
-        $this->repository = $repository;
-        $this->itemsParser = $itemsParser;
+        $this->viewer = $viewer;
     }
 
     public function getAction(): string
@@ -39,17 +32,8 @@ final class ListController implements Controller
         $itemStructure = $this->factory->fromRequest($request);
 
         $htmlContent = '<h1>list of ' . $itemStructure->getName() . '</h1>';
-        $htmlContent .= $this->getTableContent($itemStructure);
+        $htmlContent .= $this->viewer->toHtml($itemStructure);
 
         return new Response($htmlContent, Response::HTTP_OK);
-    }
-
-    private function getTableContent(ItemStructure $itemStructure): string
-    {
-        ob_start();
-        $items = $this->itemsParser->parse($itemStructure, $this->repository->getItemValues($itemStructure));
-        require __DIR__ . '/../../../Infrastructure/Template/DisplayList/table.php';
-
-        return ob_get_clean();
     }
 }
