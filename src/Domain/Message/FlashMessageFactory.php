@@ -26,6 +26,6 @@ final class FlashMessageFactory
             return new ErrorMessage($this->translator->translate($message));
         }
 
-        throw new InvalidArgumentException('Message type "%s" does not exist', $type);
+        throw new InvalidArgumentException(sprintf('Message type "%s" does not exist', $type));
     }
 }
