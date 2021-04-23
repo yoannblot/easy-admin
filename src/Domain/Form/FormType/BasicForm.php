@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace EasyAdmin\Domain\Form\FormType;
 
 use EasyAdmin\Domain\Form\Button\Button;
-use EasyAdmin\Domain\Form\Button\CreateButton;
+use EasyAdmin\Domain\Form\Button\SimpleButton;
 use EasyAdmin\Domain\Form\FormType\Tag\FormTag;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 
@@ -15,9 +15,9 @@ final class BasicForm implements Form
 
     private FormTag $tag;
 
-    private CreateButton $button;
+    private SimpleButton $button;
 
-    public function __construct(FormTag $tag, ItemStructure $structure, CreateButton $button)
+    public function __construct(FormTag $tag, ItemStructure $structure, SimpleButton $button)
     {
         $this->tag = $tag;
         $this->structure = $structure;

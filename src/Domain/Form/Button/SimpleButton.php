@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Domain\Form\Button;
 
-final class CreateButton implements Button
+final class SimpleButton implements Button
 {
     private string $name;
 

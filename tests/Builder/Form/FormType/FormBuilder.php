@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Builder\Form\FormType;
 
-use EasyAdmin\Domain\Form\Button\CreateButton;
+use EasyAdmin\Domain\Form\Button\SimpleButton;
 use EasyAdmin\Domain\Form\FormType\BasicForm;
 use EasyAdmin\Domain\Form\FormType\Tag\FormTag;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
@@ -39,6 +39,6 @@ final class FormBuilder
 
     public function build(): BasicForm
     {
-        return new BasicForm($this->tag, $this->structure, new CreateButton('create', 'submit'));
+        return new BasicForm($this->tag, $this->structure, new SimpleButton('create', 'submit'));
     }
 }

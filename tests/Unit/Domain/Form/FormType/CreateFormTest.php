@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Domain\Form\FormType;
 
-use EasyAdmin\Domain\Form\Button\CreateButton;
+use EasyAdmin\Domain\Form\Button\SimpleButton;
 use PHPUnit\Framework\TestCase;
 use Tests\Builder\Form\FormType\FormBuilder;
 use Tests\Builder\Form\FormType\Tag\FormTagBuilder;
@@ -53,6 +53,6 @@ final class CreateFormTest extends TestCase
         $structure = (new ItemStructureBuilder())->build();
         $form = (new FormBuilder())->withStructure($structure)->build();
 
-        self::assertInstanceOf(CreateButton::class, $form->getButton());
+        self::assertInstanceOf(SimpleButton::class, $form->getButton());
     }
 }

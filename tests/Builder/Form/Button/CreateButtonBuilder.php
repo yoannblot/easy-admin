@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Builder\Form\Button;
 
-use EasyAdmin\Domain\Form\Button\CreateButton;
+use EasyAdmin\Domain\Form\Button\SimpleButton;
 
 final class CreateButtonBuilder
 {
@@ -22,8 +22,8 @@ final class CreateButtonBuilder
         return $this;
     }
 
-    public function build(): CreateButton
+    public function build(): SimpleButton
     {
-        return new CreateButton($this->name, 'submit');
+        return new SimpleButton($this->name, 'submit');
     }
 }
