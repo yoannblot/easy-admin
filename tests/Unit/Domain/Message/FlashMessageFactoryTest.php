@@ -9,7 +9,7 @@ use EasyAdmin\Domain\Message\FlashMessageFactory;
 use EasyAdmin\Domain\Message\SuccessMessage;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Tests\Doubles\Dummy\DummyTranslator;
+use Tests\Doubles\Stub\StubTranslator;
 
 final class FlashMessageFactoryTest extends TestCase
 {
@@ -18,8 +18,9 @@ final class FlashMessageFactoryTest extends TestCase
      */
     public function it_creates_a_success_message(): void
     {
-        $message = $this->getFactory()->create('success', 'error message');
+        $message = $this->getFactory()->create('success', 'success message');
         self::assertInstanceOf(SuccessMessage::class, $message);
+        self::assertSame('success message', $message->getMessage());
     }
 
     /**
@@ -29,6 +30,7 @@ final class FlashMessageFactoryTest extends TestCase
     {
         $message = $this->getFactory()->create('error', 'error message');
         self::assertInstanceOf(ErrorMessage::class, $message);
+        self::assertSame('error message', $message->getMessage());
     }
 
     /**
@@ -42,6 +44,6 @@ final class FlashMessageFactoryTest extends TestCase
 
     private function getFactory(): FlashMessageFactory
     {
-        return new FlashMessageFactory(new DummyTranslator());
+        return new FlashMessageFactory(new StubTranslator());
     }
 }
