@@ -41,6 +41,24 @@ final class DisplayItemsParserTest extends TestCase
     /**
      * @test
      */
+    public function it_creates_remove_urls_from_item_name(): void
+    {
+        $idComponent = (new IdComponentBuilder())->build();
+        $structure = (new ItemStructureBuilder())->withName('contact')->addComponent($idComponent)->build();
+        $displayItem = (new DisplayItemBuilder())->build();
+        $itemsValues = [
+            [
+                $idComponent->getBind() => 1,
+            ],
+        ];
+
+        $displayItems = $this->getParser()->parse($structure, $displayItem, $itemsValues);
+        self::assertStringContainsString('contact', $displayItems[0]->getRemoveUrl());
+    }
+
+    /**
+     * @test
+     */
     public function it_creates_update_urls_from_ids(): void
     {
         $idComponent = (new IdComponentBuilder())->build();
@@ -59,6 +77,24 @@ final class DisplayItemsParserTest extends TestCase
         self::assertCount(2, $displayItems);
         self::assertStringContainsString('1', $displayItems[0]->getUpdateUrl());
         self::assertStringContainsString('2', $displayItems[1]->getUpdateUrl());
+    }
+
+    /**
+     * @test
+     */
+    public function it_creates_update_urls_from_item_name(): void
+    {
+        $idComponent = (new IdComponentBuilder())->build();
+        $structure = (new ItemStructureBuilder())->withName('contact')->addComponent($idComponent)->build();
+        $displayItem = (new DisplayItemBuilder())->build();
+        $itemsValues = [
+            [
+                $idComponent->getBind() => 1,
+            ],
+        ];
+
+        $displayItems = $this->getParser()->parse($structure, $displayItem, $itemsValues);
+        self::assertStringContainsString('contact', $displayItems[0]->getUpdateUrl());
     }
 
     /**

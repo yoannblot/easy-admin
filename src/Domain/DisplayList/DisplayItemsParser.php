@@ -38,8 +38,8 @@ final class DisplayItemsParser
             }
 
             $id = $this->integerConvertor->convert($itemValues[$itemStructure->getIdBind()]);
-            $updateUrl = sprintf('/?type=%s&page=update&id=%d', $itemStructure->getTable(), $id);
-            $removeUrl = sprintf('/?type=%s&page=remove&id=%d', $itemStructure->getTable(), $id);
+            $updateUrl = sprintf('/?type=%s&page=update&id=%d', $itemStructure->getName(), $id);
+            $removeUrl = sprintf('/?type=%s&page=remove&id=%d', $itemStructure->getName(), $id);
             $items[] = new DisplayItem(
                 $displayItem->getFilters(),
                 $this->columnsParser->parse($itemStructure, $displayItem, $itemValues),
