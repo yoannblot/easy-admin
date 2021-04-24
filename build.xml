@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="${project.name}" basedir="." default="build">
+<project name="${project.name}" basedir="." default="run">
     <property file="./build.properties"/>
     <property name="phar.file" value="build/${phing.project.name}.phar"/>
     <property name="composer.exec" value="composer"/>
@@ -18,14 +18,14 @@
         </exec>
     </target>
 
-    <target name="clean" description="Remove dev dependencies">
+    <target name="clean" depends="tests" description="Remove dev dependencies">
         <exec executable="${composer.exec}" passthru="true">
             <arg value="install"/>
             <arg value="--no-dev"/>
         </exec>
     </target>
 
-    <target name="build" depends="tests, clean" description="Create phar file">
+    <target name="build" depends="clean" description="Create phar file">
         <delete file="${phar.file}" quiet="true"/>
         <pharpackage destfile="${phar.file}" basedir="./"
                      compression="gzip">
@@ -40,4 +40,11 @@
             </fileset>
         </pharpackage>
     </target>
+
+    <target name="run" depends="build">
+        <exec executable="${composer.exec}" passthru="true">
+            <arg value="install"/>
+        </exec>
+    </target>
+
 </project>
