@@ -28,9 +28,21 @@ final class TextComponentBuilder
         $this->required = false;
     }
 
+    public function build(): TextComponent
+    {
+        return new TextComponent($this->name, $this->label, $this->textElement, $this->required);
+    }
+
     public function withLabel(Label $label): self
     {
         $this->label = $label;
+
+        return $this;
+    }
+
+    public function withName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
@@ -40,10 +52,5 @@ final class TextComponentBuilder
         $this->textElement = $textElement;
 
         return $this;
-    }
-
-    public function build(): TextComponent
-    {
-        return new TextComponent($this->name, $this->label, $this->textElement, $this->required);
     }
 }
