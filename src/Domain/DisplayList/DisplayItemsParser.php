@@ -6,6 +6,7 @@ namespace EasyAdmin\Domain\DisplayList;
 
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 use EasyAdmin\Infrastructure\Helper\Convertor\StringToIntegerConvertor;
+use LogicException;
 
 final class DisplayItemsParser
 {
@@ -25,11 +26,17 @@ final class DisplayItemsParser
      * @param array         $itemsValues
      *
      * @return DisplayItem[]
+     *
+     * @throws LogicException
      */
     public function parse(ItemStructure $itemStructure, DisplayItem $displayItem, array $itemsValues): array
     {
         $items = [];
         foreach ($itemsValues as $itemValues) {
+            if (!array_key_exists($itemStructure->getIdBind(), $itemValues)) {
+                throw new LogicException('No id found');
+            }
+
             $id = $this->integerConvertor->convert($itemValues[$itemStructure->getIdBind()]);
             $updateUrl = sprintf('/?type=%s&page=update&id=%d', $itemStructure->getTable(), $id);
             $removeUrl = sprintf('/?type=%s&page=remove&id=%d', $itemStructure->getTable(), $id);
