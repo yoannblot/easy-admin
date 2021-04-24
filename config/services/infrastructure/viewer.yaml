@@ -9,6 +9,9 @@ services:
     EasyAdmin\Infrastructure\Viewer\Html\Element\Simple\TextElementViewer:
         class: EasyAdmin\Infrastructure\Viewer\Html\Element\Simple\TextElementViewer
 
+    EasyAdmin\Infrastructure\Viewer\Html\Element\Simple\SelectElementViewer:
+        class: EasyAdmin\Infrastructure\Viewer\Html\Element\Simple\SelectElementViewer
+
     EasyAdmin\Infrastructure\Viewer\Html\Component\ComponentTagViewer:
         class: EasyAdmin\Infrastructure\Viewer\Html\Component\ComponentTagViewer
 
@@ -18,12 +21,21 @@ services:
             - '@EasyAdmin\Infrastructure\Viewer\Html\Component\ComponentTagViewer'
             - '@EasyAdmin\Infrastructure\Viewer\Html\Label\LabelViewer'
             - '@EasyAdmin\Infrastructure\Viewer\Html\Element\Simple\TextElementViewer'
+            - '@EasyAdmin\Infrastructure\Viewer\Html\Element\Simple\SelectElementViewer'
+
+    EasyAdmin\Infrastructure\Viewer\Html\Component\Simple\SelectComponentViewer:
+        class: EasyAdmin\Infrastructure\Viewer\Html\Component\Simple\SelectComponentViewer
+        arguments:
+            - '@EasyAdmin\Infrastructure\Viewer\Html\Component\ComponentTagViewer'
+            - '@EasyAdmin\Infrastructure\Viewer\Html\Label\LabelViewer'
+            - '@EasyAdmin\Infrastructure\Viewer\Html\Element\Simple\SelectElementViewer'
 
     EasyAdmin\Infrastructure\Viewer\HtmlViewer:
         class: EasyAdmin\Infrastructure\Viewer\HtmlViewer
         arguments:
             -
                 - '@EasyAdmin\Infrastructure\Viewer\Html\Component\Simple\TextComponentViewer'
+                - '@EasyAdmin\Infrastructure\Viewer\Html\Component\Simple\SelectComponentViewer'
 
     EasyAdmin\Infrastructure\Viewer\Html\FormType\Tag\FormTagViewer:
         class: EasyAdmin\Infrastructure\Viewer\Html\FormType\Tag\FormTagViewer

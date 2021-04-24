@@ -6,10 +6,22 @@ services:
             - '@EasyAdmin\Infrastructure\Helper\Convertor\StringToBooleanConvertor'
             - '@EasyAdmin\Domain\I18N\Translator'
 
+    EasyAdmin\Infrastructure\Parser\Xml\Component\Common\ValuesParser:
+        class: EasyAdmin\Infrastructure\Parser\Xml\Component\Common\ValuesParser
+        arguments:
+            - '@EasyAdmin\Domain\I18N\Translator'
+
     EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser:
         class: EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser
         arguments:
             - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Common\AttributesParser'
+
+    EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\SelectComponentParser:
+        class: EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\SelectComponentParser
+        arguments:
+            - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Common\AttributesParser'
+            - '@EasyAdmin\Infrastructure\Helper\Convertor\StringToBooleanConvertor'
+            - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Common\ValuesParser'
 
     EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\IdComponentParser:
         class: EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\IdComponentParser
@@ -21,8 +33,9 @@ services:
         class: EasyAdmin\Infrastructure\Parser\Xml\XmlItemParser
         arguments:
             -
-                - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser'
                 - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\IdComponentParser'
+                - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser'
+                - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\SelectComponentParser'
 
     EasyAdmin\Infrastructure\Parser\Xml\XmlListParser:
         class: EasyAdmin\Infrastructure\Parser\Xml\XmlListParser

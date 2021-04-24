@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace EasyAdmin\Application\Controller\Update;
 
 use EasyAdmin\Application\Controller\Controller;
-use EasyAdmin\Application\Controller\Remove\NotFoundHttpResponse;
+use EasyAdmin\Application\Controller\Error\NotFoundHttpResponse;
 use EasyAdmin\Domain\Database\Exception\EntityNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
