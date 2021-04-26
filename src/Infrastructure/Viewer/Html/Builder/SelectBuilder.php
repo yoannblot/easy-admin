@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Infrastructure\Viewer\Html\Builder;
 
-use function sprintf;
-
 final class SelectBuilder
 {
     private ?string $selectedValue;
@@ -51,7 +49,7 @@ final class SelectBuilder
                 $options .= '<option value=""></option>';
             }
         }
-        $attributes .= sprintf(' data-values="%s"', $this->values);
+        $attributes .= sprintf(' data-values="%s"', rawurlencode($this->values));
 
         return sprintf('<select %s>%s</select>', $attributes, $options);
     }

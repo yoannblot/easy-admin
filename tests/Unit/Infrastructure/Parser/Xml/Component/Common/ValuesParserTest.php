@@ -8,7 +8,6 @@ use EasyAdmin\Domain\Database\ItemRepository;
 use EasyAdmin\Domain\Form\Item\ItemFactory;
 use EasyAdmin\Infrastructure\Parser\Xml\Component\Common\ValuesParser;
 use PHPUnit\Framework\TestCase;
-use SimpleXMLElement;
 use Tests\Builder\Form\Component\IdComponentBuilder;
 use Tests\Builder\Form\Component\TextComponentBuilder;
 use Tests\Builder\Form\Item\ItemStructureBuilder;
@@ -48,8 +47,7 @@ final class ValuesParserTest extends TestCase
         ];
         $this->itemRepository->setExpectedValues($expectedValues);
 
-        $xml = '<select values="item:civility|name|name"/>';
-        $values = $this->getParser()->parse('civility', new SimpleXMLElement($xml));
+        $values = $this->getParser()->parse('civility', 'item:civility|name|name');
         self::assertSame(
             [
                 1 => 'mr',
@@ -66,8 +64,7 @@ final class ValuesParserTest extends TestCase
      */
     public function it_parses_from_simple_list(): void
     {
-        $xml = '<select values="mr+ms+miss"/>';
-        $values = $this->getParser()->parse('civility', new SimpleXMLElement($xml));
+        $values = $this->getParser()->parse('civility', 'mr+ms+miss');
         self::assertSame(
             [
                 'mr' => 'civility.mr',
