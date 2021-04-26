@@ -8,3 +8,11 @@ services:
 
     EasyAdmin\Domain\Form\FormType\FormTagFactory:
         class: EasyAdmin\Domain\Form\FormType\FormTagFactory
+
+    EasyAdmin\Domain\Form\Item\LoadedItemFactory:
+        class: EasyAdmin\Domain\Form\Item\LoadedItemFactory
+        arguments:
+            - '@EasyAdmin\Application\Loader\ConfigurationLoader'
+            - '@EasyAdmin\Domain\Parser\ItemParser'
+
+    EasyAdmin\Domain\Form\Item\ItemFactory: '@EasyAdmin\Domain\Form\Item\LoadedItemFactory'

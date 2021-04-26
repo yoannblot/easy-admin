@@ -117,3 +117,11 @@ services:
         arguments:
             - '@EasyAdmin\Infrastructure\Viewer\Html\FormType\RemoveFormViewer'
             - '@EasyAdmin\Domain\Form\FormType\FormFactory'
+
+    ############
+    #   API    #
+    ############
+    EasyAdmin\Application\Controller\Api\Values\ValuesController:
+        class: \EasyAdmin\Application\Controller\Api\Values\ValuesController
+        arguments:
+            - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Common\ValuesParser'

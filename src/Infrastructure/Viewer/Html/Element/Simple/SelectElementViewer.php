@@ -8,7 +8,7 @@ use EasyAdmin\Infrastructure\Viewer\Html\Builder\SelectBuilder;
 
 final class SelectElementViewer
 {
-    public function toHtml(string $selectedValue, array $values, string $componentName, bool $required, bool $emptyValueAllowed): string
+    public function toHtml(string $selectedValue, string $values, string $componentName, bool $required, bool $emptyValueAllowed): string
     {
         $builder = new SelectBuilder();
         $builder->withValues($values);

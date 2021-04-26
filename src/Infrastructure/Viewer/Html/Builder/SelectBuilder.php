@@ -16,7 +16,7 @@ final class SelectBuilder
 
     private bool $required;
 
-    private array $values;
+    private string $values;
 
     private bool $emptyValueAllowed;
 
@@ -26,7 +26,7 @@ final class SelectBuilder
         $this->name = null;
         $this->id = null;
         $this->required = false;
-        $this->values = [];
+        $this->values = '';
         $this->emptyValueAllowed = false;
     }
 
@@ -51,13 +51,7 @@ final class SelectBuilder
                 $options .= '<option value=""></option>';
             }
         }
-        foreach ($this->values as $key => $value) {
-            if ($this->selectedValue === $key) {
-                $options .= sprintf('<option value="%s" selected="selected">%s</option>', $key, $value);
-            } else {
-                $options .= sprintf('<option value="%s">%s</option>', $key, $value);
-            }
-        }
+        $attributes .= sprintf(' data-values="%s"', $this->values);
 
         return sprintf('<select %s>%s</select>', $attributes, $options);
     }
@@ -97,7 +91,7 @@ final class SelectBuilder
         return $this;
     }
 
-    public function withValues(array $values): self
+    public function withValues(string $values): self
     {
         $this->values = $values;
 

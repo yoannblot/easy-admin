@@ -10,11 +10,11 @@ final class SelectElement
 
     private string $bind;
 
-    private array $values;
+    private string $values;
 
     private bool $emptyValueAllowed;
 
-    public function __construct(string $selectedValue, string $bind, array $values, bool $emptyValueAllowed)
+    public function __construct(string $selectedValue, string $bind, string $values, bool $emptyValueAllowed)
     {
         $this->selectedValue = $selectedValue;
         $this->bind = $bind;
@@ -32,7 +32,7 @@ final class SelectElement
         return $this->selectedValue;
     }
 
-    public function getValues(): array
+    public function getValues(): string
     {
         return $this->values;
     }

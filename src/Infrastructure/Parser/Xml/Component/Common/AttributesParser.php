@@ -26,9 +26,10 @@ final class AttributesParser
         $name = (string) $attributes['name'];
         $defaultValue = (string) $attributes['value'];
         $bind = (string) $attributes['bind'];
+        $values = (string) $attributes['values'];
         $required = $this->toBooleanConvertor->convert((string) $attributes['required']);
         $label = $this->translator->translate($name);
        
-        return new ElementAttributes($bind, $name, $label, $defaultValue, $required);
+        return new ElementAttributes($bind, $name, $label, $defaultValue, $required, $values);
     }
 }
