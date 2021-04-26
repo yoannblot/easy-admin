@@ -6,6 +6,7 @@ namespace EasyAdmin\Application;
 
 use EasyAdmin\Application\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 final class Router
 {
@@ -22,11 +23,11 @@ final class Router
         $this->request = $request;
     }
 
-    public function execute(): string
+    public function execute(): Response
     {
         foreach ($this->controllers as $controller) {
             if ($this->getAction() === $controller->getAction()) {
-                return $controller->__invoke($this->request)->getContent();
+                return $controller->__invoke($this->request);
             }
         }
 

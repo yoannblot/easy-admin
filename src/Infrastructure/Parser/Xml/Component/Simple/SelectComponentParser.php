@@ -9,7 +9,6 @@ use EasyAdmin\Domain\Form\Element\Simple\SelectElement;
 use EasyAdmin\Domain\Form\Label\Label;
 use EasyAdmin\Infrastructure\Helper\Convertor\StringToBooleanConvertor;
 use EasyAdmin\Infrastructure\Parser\Xml\Component\Common\AttributesParser;
-use EasyAdmin\Infrastructure\Parser\Xml\Component\Common\ValuesParser;
 use EasyAdmin\Infrastructure\Parser\Xml\Component\XmlComponentParser;
 use SimpleXMLElement;
 
@@ -19,16 +18,12 @@ final class SelectComponentParser implements XmlComponentParser
 
     private StringToBooleanConvertor $booleanConvertor;
 
-    private ValuesParser $valuesParser;
-
     public function __construct(
         AttributesParser $attributesParser,
-        StringToBooleanConvertor $booleanConvertor,
-        ValuesParser $valuesParser
+        StringToBooleanConvertor $booleanConvertor
     ) {
         $this->attributesParser = $attributesParser;
         $this->booleanConvertor = $booleanConvertor;
-        $this->valuesParser = $valuesParser;
     }
 
     public function canHandle(string $componentType): bool
@@ -39,7 +34,11 @@ final class SelectComponentParser implements XmlComponentParser
     public function parse(SimpleXMLElement $xmlElement, array $values): SelectComponent
     {
         $attributes = $this->attributesParser->parse($xmlElement);
-        $selectedValue = $values[$attributes->getName()] ?? $values[$attributes->getBind()] ?? $attributes->getDefaultValue();
+        $selectedValue = $values[$attributes->getName()]
+            ??
+            $values[$attributes->getBind()]
+            ??
+            $attributes->getDefaultValue();
 
         return new SelectComponent(
             $attributes->getName(),
@@ -47,7 +46,7 @@ final class SelectComponentParser implements XmlComponentParser
             new SelectElement(
                 $selectedValue,
                 $attributes->getBind(),
-                $this->valuesParser->parse($attributes->getName(), $xmlElement),
+                $attributes->getValues(),
                 $this->booleanConvertor->convert((string) $xmlElement->attributes()['allowEmpty'])
             ),
             $attributes->isRequired()

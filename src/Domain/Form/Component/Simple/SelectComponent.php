@@ -58,7 +58,7 @@ final class SelectComponent implements Component
         return $this->selectElement->getSelectedValue();
     }
 
-    public function getValues(): array
+    public function getValues(): string
     {
         return $this->selectElement->getValues();
     }

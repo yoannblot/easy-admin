@@ -16,18 +16,32 @@ final class ElementAttributes
 
     private bool $required;
 
-    public function __construct(string $bind, string $name, string $label, string $defaultValue, bool $required)
-    {
+    private string $values;
+
+    public function __construct(
+        string $bind,
+        string $name,
+        string $label,
+        string $defaultValue,
+        bool $required,
+        string $values
+    ) {
         $this->bind = $bind;
         $this->name = $name;
         $this->label = $label;
         $this->defaultValue = $defaultValue;
         $this->required = $required;
+        $this->values = $values;
     }
 
     public function getBind(): string
     {
         return $this->bind;
+    }
+
+    public function getDefaultValue(): string
+    {
+        return $this->defaultValue;
     }
 
     public function getLabel(): string
@@ -40,9 +54,9 @@ final class ElementAttributes
         return $this->name;
     }
 
-    public function getDefaultValue(): string
+    public function getValues(): string
     {
-        return $this->defaultValue;
+        return $this->values;
     }
 
     public function isRequired(): bool

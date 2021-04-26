@@ -10,6 +10,8 @@ services:
         class: EasyAdmin\Infrastructure\Parser\Xml\Component\Common\ValuesParser
         arguments:
             - '@EasyAdmin\Domain\I18N\Translator'
+            - '@EasyAdmin\Domain\Form\Item\ItemFactory'
+            - '@EasyAdmin\Domain\Database\ItemRepository'
 
     EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser:
         class: EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\TextComponentParser
@@ -21,7 +23,6 @@ services:
         arguments:
             - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Common\AttributesParser'
             - '@EasyAdmin\Infrastructure\Helper\Convertor\StringToBooleanConvertor'
-            - '@EasyAdmin\Infrastructure\Parser\Xml\Component\Common\ValuesParser'
 
     EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\IdComponentParser:
         class: EasyAdmin\Infrastructure\Parser\Xml\Component\Simple\IdComponentParser

@@ -6,10 +6,6 @@ namespace EasyAdmin\Domain\I18N;
 
 final class Language
 {
-    private string $name;
-
-    private string $fileName;
-
     public static function fr(): self
     {
         return new Language('french', 'fr_FR');
@@ -20,10 +16,19 @@ final class Language
         return new Language('english', 'en_EN');
     }
 
+    private string $name;
+
+    private string $fileName;
+
     private function __construct(string $name, string $fileName)
     {
         $this->name = $name;
         $this->fileName = $fileName;
+    }
+
+    public function getFileName(): string
+    {
+        return $this->fileName;
     }
 
     public function getName(): string
@@ -31,8 +36,8 @@ final class Language
         return $this->name;
     }
 
-    public function getFileName(): string
+    public function getShortName(): string
     {
-        return $this->fileName;
+        return substr($this->fileName, 0, 2);
     }
 }

@@ -27,6 +27,6 @@ final class RouterTest extends TestCase
 
         $html = $configFileToHtml->execute();
 
-        self::assertSameFileContents(__DIR__ . '/expected-output.html', $html);
+        self::assertSameFileContents(__DIR__ . '/expected-output.html', $html->getContent());
     }
 }

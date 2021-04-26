@@ -8,4 +8,5 @@ services:
                 - '@EasyAdmin\Application\Controller\Update\UpdateController'
                 - '@EasyAdmin\Application\Controller\DisplayList\ListController'
                 - '@EasyAdmin\Application\Controller\Remove\RemoveController'
+                - '@EasyAdmin\Application\Controller\Api\Values\ValuesController'
             - '@Symfony\Component\HttpFoundation\Request'
