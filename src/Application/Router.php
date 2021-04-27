@@ -31,8 +31,7 @@ final class Router
             }
         }
 
-        // TODO 404
-        return '404';
+        return new Response('Not found', Response::HTTP_NOT_FOUND);
     }
 
     private function getAction(): ?string

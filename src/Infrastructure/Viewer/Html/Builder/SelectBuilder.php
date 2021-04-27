@@ -40,6 +40,10 @@ final class SelectBuilder
         if ($this->required) {
             $attributes .= ' required="required"';
         }
+        if ($this->selectedValue !== null) {
+            $attributes .= sprintf(' data-selected-value="%s"', rawurlencode($this->selectedValue));
+        }
+        $attributes .= sprintf(' data-values="%s"', rawurlencode($this->values));
 
         $options = '';
         if ($this->emptyValueAllowed) {
@@ -49,7 +53,6 @@ final class SelectBuilder
                 $options .= '<option value=""></option>';
             }
         }
-        $attributes .= sprintf(' data-values="%s"', rawurlencode($this->values));
 
         return sprintf('<select %s>%s</select>', $attributes, $options);
     }
