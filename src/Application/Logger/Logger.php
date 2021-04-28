@@ -11,7 +11,7 @@ use Monolog\Logger as MonologLogger;
 use Monolog\Processor\IntrospectionProcessor;
 use Monolog\Processor\WebProcessor;
 
-final class Logger extends MonologLogger
+final class Logger extends MonologLogger implements LoggerInterface
 {
     public function __construct()
     {

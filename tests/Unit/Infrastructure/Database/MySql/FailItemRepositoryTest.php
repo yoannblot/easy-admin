@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Infrastructure\Database\MySql;
 
-use EasyAdmin\Application\Logger\Logger;
 use EasyAdmin\Domain\Database\Exception\EntityNotFoundException;
 use EasyAdmin\Domain\Form\Item\ItemStructure;
 use EasyAdmin\Infrastructure\Database\MySql\ItemRepository;
@@ -13,6 +12,7 @@ use Tests\Builder\DisplayList\FiltersBuilder;
 use Tests\Builder\Form\Component\IdComponentBuilder;
 use Tests\Builder\Form\Item\ItemStructureBuilder;
 use Tests\Doubles\Stub\FailConnector;
+use Tests\Doubles\Stub\NullLogger;
 
 final class FailItemRepositoryTest extends TestCase
 {
@@ -69,6 +69,6 @@ final class FailItemRepositoryTest extends TestCase
 
     private function getRepository(): ItemRepository
     {
-        return new ItemRepository(new FailConnector(), new Logger());
+        return new ItemRepository(new FailConnector(), new NullLogger());
     }
 }

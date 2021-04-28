@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Infrastructure\Database\MySql;
 
-use EasyAdmin\Application\Logger\Logger;
+use EasyAdmin\Application\Logger\LoggerInterface;
 use EasyAdmin\Domain\Database\Connector;
 use EasyAdmin\Domain\Database\Exception\EntityNotFoundException;
 use EasyAdmin\Domain\Database\Exception\QueryException;
@@ -17,9 +17,9 @@ final class ItemRepository implements ItemRepositoryInterface
 {
     private Connector $connector;
 
-    private Logger $logger;
+    private LoggerInterface $logger;
 
-    public function __construct(Connector $connector, Logger $logger)
+    public function __construct(Connector $connector, LoggerInterface $logger)
     {
         $this->connector = $connector;
         $this->logger = $logger;
