@@ -92,11 +92,14 @@ final class ItemRepository implements ItemRepositoryInterface
             $filters->getOrderDirection(),
             $filters->getSize()
         );
-
-        $statement = $this->connector->exec($query);
         $all = [];
-        foreach ($statement->fetchAll(\PDO::FETCH_ASSOC) as $elementValues) {
-            $all[] = $elementValues;
+        try {
+            $statement = $this->connector->exec($query);
+            foreach ($statement->fetchAll(\PDO::FETCH_ASSOC) as $elementValues) {
+                $all[] = $elementValues;
+            }
+        } catch (QueryException $e) {
+            $this->logger->queryError($e);
         }
 
         return $all;
