@@ -54,7 +54,7 @@ final class SelectBuilder
             }
         }
 
-        return sprintf('<select %s>%s</select>', $attributes, $options);
+        return sprintf('<select%s>%s</select>', $attributes, $options);
     }
 
     public function emptyValueAllowed(): self
