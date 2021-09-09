@@ -11,10 +11,3 @@ services:
 
     EasyAdmin\Infrastructure\Database\ConnectionLoader:
         class: EasyAdmin\Infrastructure\Database\ConnectionLoader
-
-    EasyAdmin\Infrastructure\Database\ConnectorLoader:
-        class: EasyAdmin\Infrastructure\Database\ConnectorLoader
-        arguments:
-            - '@EasyAdmin\Domain\Database\Connector'
-            - '@EasyAdmin\Application\Loader\ConfigurationLoader'
-            - '@EasyAdmin\Infrastructure\Database\ConnectionLoader'

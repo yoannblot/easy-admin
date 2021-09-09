@@ -6,7 +6,7 @@ use EasyAdmin\Application\Loader\ConfigurationLoader;
 use EasyAdmin\Application\Router;
 use EasyAdmin\Domain\I18N\LanguageDetector;
 use EasyAdmin\Domain\I18N\Loader;
-use EasyAdmin\Infrastructure\Database\ConnectorLoader;
+use EasyAdmin\Domain\Database\ConnectorLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\JsonResponse;
 

@@ -3,3 +3,10 @@ services:
     EasyAdmin\Domain\Database\Connector: '@EasyAdmin\Infrastructure\Database\MySql\MysqlConnector'
 
     EasyAdmin\Domain\Database\ItemRepository: '@EasyAdmin\Infrastructure\Database\MySql\ItemRepository'
+
+    EasyAdmin\Domain\Database\ConnectorLoader:
+        class: EasyAdmin\Domain\Database\ConnectorLoader
+        arguments:
+            - '@EasyAdmin\Domain\Database\Connector'
+            - '@EasyAdmin\Application\Loader\ConfigurationLoader'
+            - '@EasyAdmin\Infrastructure\Database\ConnectionLoader'

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace EasyAdmin\Infrastructure\Database;
+namespace EasyAdmin\Domain\Database;
 
 use EasyAdmin\Application\Loader\ConfigurationLoader;
-use EasyAdmin\Domain\Database\Connector;
+use EasyAdmin\Infrastructure\Database\ConnectionLoader;
 
 final class ConnectorLoader
 {
