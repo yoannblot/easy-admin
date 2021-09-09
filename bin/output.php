@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 use EasyAdmin\Application\Loader\ConfigurationLoader;
 use EasyAdmin\Application\Router;
-use EasyAdmin\Domain\Database\Connector;
 use EasyAdmin\Domain\I18N\LanguageDetector;
 use EasyAdmin\Domain\I18N\Loader;
-use EasyAdmin\Infrastructure\Database\MySql\MysqlConnexion;
+use EasyAdmin\Infrastructure\Database\ConnectorLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -25,10 +24,9 @@ $loader->load(__DIR__ . '/../var/conf');
 $i18nLoader = $containerBuilder->get(Loader::class);
 $i18nLoader->load(__DIR__ . '/../var/lang');
 
-/** @var Connector $connector */
-$connector = $containerBuilder->get(Connector::class);
-// TODO move to configuration
-$connector->load(new MysqlConnexion('database', 'localhost', 'root', 'password'));
+/** @var ConnectorLoader $connectorLoader */
+$connectorLoader = $containerBuilder->get(ConnectorLoader::class);
+$connectorLoader->load();
 
 $response = $configFileToHtml->execute();
 

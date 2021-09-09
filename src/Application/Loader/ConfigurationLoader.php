@@ -18,6 +18,17 @@ final class ConfigurationLoader
         $this->directories = [];
     }
 
+    public function getDatabaseFile(): string
+    {
+        foreach ($this->directories as $directory) {
+            if ($directory->hasDatabaseConfiguration()) {
+                return $directory->getDatabaseConfigurationPath();
+            }
+        }
+
+        throw new InvalidArgumentException('Database configuration not found.');
+    }
+
     public function getItemFilePath(string $itemName): string
     {
         foreach ($this->directories as $directory) {
