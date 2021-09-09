@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Domain\Database;
 
-use EasyAdmin\Domain\Database\Exception\InvalidConnexionException;
+use EasyAdmin\Domain\Database\Exception\InvalidConnectionException;
 use EasyAdmin\Domain\Database\Exception\QueryException;
 use PDOStatement;
 
 interface Connector
 {
     /**
-     * @param Connexion $connexion
+     * @param Connection $connexion
      *
-     * @throws InvalidConnexionException
+     * @throws InvalidConnectionException
      */
-    public function load(Connexion $connexion): void;
+    public function load(Connection $connexion): void;
 
     /**
      * @param string $sQuery
@@ -24,7 +24,7 @@ interface Connector
      *
      * @throws QueryException
      *
-     * @throws InvalidConnexionException
+     * @throws InvalidConnectionException
      */
     public function exec(string $sQuery): PDOStatement;
 
@@ -35,7 +35,7 @@ interface Connector
      *
      * @throws QueryException
      *
-     * @throws InvalidConnexionException
+     * @throws InvalidConnectionException
      */
     public function execOnce(string $sQuery): bool;
 }

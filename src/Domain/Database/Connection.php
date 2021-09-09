@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Domain\Database;
 
-interface Connexion
+interface Connection
 {
     public function getDsn(): string;
 

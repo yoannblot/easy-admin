@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Infrastructure\Database\MySql;
 
-use EasyAdmin\Domain\Database\Connexion;
+use EasyAdmin\Domain\Database\Connection;
 
-final class MysqlConnexion implements Connexion
+final class MysqlConnection implements Connection
 {
     private string $database;
 

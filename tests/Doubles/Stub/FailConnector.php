@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Doubles\Stub;
 
 use EasyAdmin\Domain\Database\Connector;
-use EasyAdmin\Domain\Database\Connexion;
+use EasyAdmin\Domain\Database\Connection;
 use EasyAdmin\Domain\Database\Exception\QueryException;
 use PDOStatement;
 
@@ -21,7 +21,7 @@ final class FailConnector implements Connector
         throw QueryException::fromQuery('query', 'message');
     }
 
-    public function load(Connexion $connexion): void
+    public function load(Connection $connexion): void
     {
         throw QueryException::fromQuery('query', 'message');
     }

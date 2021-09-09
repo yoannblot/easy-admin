@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Builder\Database\MySql;
 
-use EasyAdmin\Infrastructure\Database\MySql\MysqlConnexion;
+use EasyAdmin\Infrastructure\Database\MySql\MysqlConnection;
 
-final class MySqlConnexionBuilder
+final class MySqlConnectionBuilder
 {
     private string $database;
 
@@ -38,8 +38,8 @@ final class MySqlConnexionBuilder
         return $this;
     }
 
-    public function build(): MysqlConnexion
+    public function build(): MysqlConnection
     {
-        return new MysqlConnexion($this->database, $this->host, $this->login, $this->password);
+        return new MysqlConnection($this->database, $this->host, $this->login, $this->password);
     }
 }

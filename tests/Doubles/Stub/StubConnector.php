@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\Doubles\Stub;
 
 use EasyAdmin\Domain\Database\Connector;
-use EasyAdmin\Domain\Database\Connexion;
+use EasyAdmin\Domain\Database\Connection;
 use PDOStatement;
 
 final class StubConnector implements Connector
@@ -20,7 +20,7 @@ final class StubConnector implements Connector
         return true;
     }
 
-    public function load(Connexion $connexion): void
+    public function load(Connection $connexion): void
     {
     }
 

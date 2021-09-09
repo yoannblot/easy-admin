@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace Tests\Unit\Infrastructure\Database\MySql;
 
 use PHPUnit\Framework\TestCase;
-use Tests\Builder\Database\MySql\MySqlConnexionBuilder;
+use Tests\Builder\Database\MySql\MySqlConnectionBuilder;
 
-final class MysqlConnexionTest extends TestCase
+final class MysqlConnectionTest extends TestCase
 {
     /**
      * @test
      */
     public function it_retrieves_dsn(): void
     {
-        $connexion = (new MySqlConnexionBuilder())->withDatabase('database')->withHost('localhost')->build();
+        $connexion = (new MySqlConnectionBuilder())->withDatabase('database')->withHost('localhost')->build();
         $expectedDsn = 'mysql:host=localhost;dbname=database;charset=utf8';
 
         self::assertSame($expectedDsn, $connexion->getDsn());

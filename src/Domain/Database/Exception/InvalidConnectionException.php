@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace EasyAdmin\Domain\Database\Exception;
 
-use EasyAdmin\Domain\Database\Connexion;
+use EasyAdmin\Domain\Database\Connection;
 
-final class InvalidConnexionException extends DatabaseException
+final class InvalidConnectionException extends DatabaseException
 {
-    public static function fromConnexion(Connexion $connexion): self
+    public static function fromConnection(Connection $connexion): self
     {
         return new self(
             sprintf(
@@ -22,7 +22,7 @@ final class InvalidConnexionException extends DatabaseException
 
     public static function notLoaded()
     {
-        return new self('Database connexion not loaded');
+        return new self('Database connection not loaded');
     }
 
     private function __construct(string $message)

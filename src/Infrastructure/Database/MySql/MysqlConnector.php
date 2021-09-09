@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace EasyAdmin\Infrastructure\Database\MySql;
 
 use EasyAdmin\Domain\Database\Connector;
-use EasyAdmin\Domain\Database\Connexion;
-use EasyAdmin\Domain\Database\Exception\InvalidConnexionException;
+use EasyAdmin\Domain\Database\Connection;
+use EasyAdmin\Domain\Database\Exception\InvalidConnectionException;
 use EasyAdmin\Domain\Database\Exception\QueryException;
 use PDO;
 use PDOException;
@@ -21,7 +21,7 @@ final class MysqlConnector implements Connector
         $this->connection = null;
     }
 
-    public function load(Connexion $connexion): void
+    public function load(Connection $connexion): void
     {
         try {
             $this->connection = new PDO(
@@ -35,13 +35,13 @@ final class MysqlConnector implements Connector
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->connection->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         } catch (PDOException $e) {
-            throw InvalidConnexionException::fromConnexion($connexion);
+            throw InvalidConnectionException::fromConnection($connexion);
         }
     }
 
     public function exec(string $sQuery): PDOStatement
     {
-        $this->assertConnexionIsValid();
+        $this->assertConnectionIsValid();
         try {
             return $this->connection->query($sQuery);
         } catch (PDOException $e) {
@@ -51,7 +51,7 @@ final class MysqlConnector implements Connector
 
     public function execOnce(string $sQuery): bool
     {
-        $this->assertConnexionIsValid();
+        $this->assertConnectionIsValid();
         try {
             $iNbLines = $this->connection->exec($sQuery);
 
@@ -62,12 +62,12 @@ final class MysqlConnector implements Connector
     }
 
     /**
-     * @throws InvalidConnexionException
+     * @throws InvalidConnectionException
      */
-    private function assertConnexionIsValid(): void
+    private function assertConnectionIsValid(): void
     {
         if ($this->connection === null) {
-            throw InvalidConnexionException::notLoaded();
+            throw InvalidConnectionException::notLoaded();
         }
     }
 
